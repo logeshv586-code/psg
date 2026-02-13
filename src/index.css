@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* PSG Business Design System */
+
+@layer base {
+  :root {
+    /* Core brand colors */
+    --background: 0 0% 97%;
+    --foreground: 220 35% 14%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 35% 14%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 35% 14%;
+
+    /* Primary: Dark navy - used for text and primary actions */
+    --primary: 220 35% 14%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary: Light gray surfaces */
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 220 35% 14%;
+
+    /* Accent: Lime green - PSG brand accent */
+    --accent: 84 70% 55%;
+    --accent-foreground: 220 35% 14%;
+
+    /* Muted surfaces */
+    --muted: 210 20% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 84 70% 55%;
+
+    --radius: 0.75rem;
+
+    /* Extended color palette for business cards */
+    --card-environmental: 55 70% 85%;
+    --card-digital-health: 200 70% 90%;
+    --card-construction: 35 70% 90%;
+    --card-tourism: 340 70% 92%;
+    --card-software: 260 50% 92%;
+
+    /* Gradient backgrounds */
+    --gradient-hero: linear-gradient(135deg, hsl(180 30% 96%) 0%, hsl(120 40% 95%) 100%);
+    --gradient-contact: linear-gradient(135deg, hsl(180 40% 92%) 0%, hsl(80 60% 92%) 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5% 26%;
+    --sidebar-primary: 240 6% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 5% 96%;
+    --sidebar-accent-foreground: 240 6% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 84 70% 55%;
+  }
+
+  .dark {
+    --background: 220 35% 8%;
+    --foreground: 0 0% 98%;
+
+    --card: 220 35% 12%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 220 35% 12%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 220 35% 14%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 84 70% 55%;
+    --accent-foreground: 220 35% 14%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 84 70% 55%;
+
+    --sidebar-background: 240 6% 10%;
+    --sidebar-foreground: 240 5% 96%;
+    --sidebar-primary: 224 76% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 4% 16%;
+    --sidebar-accent-foreground: 240 5% 96%;
+    --sidebar-border: 240 4% 16%;
+    --sidebar-ring: 84 70% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Hero section styles */
+  .hero-heading {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold leading-tight;
+    color: hsl(var(--accent));
+  }
+
+  .hero-subheading {
+    @apply text-lg md:text-xl text-muted-foreground;
+  }
+
+  /* Navigation styles */
+  .nav-link {
+    @apply text-foreground/80 hover:text-foreground transition-colors duration-200 font-medium text-sm;
+  }
+
+  .nav-link-active {
+    @apply text-foreground font-semibold;
+  }
+
+  /* Business card styles */
+  .business-card {
+    @apply rounded-2xl p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+
+  .business-card-environmental {
+    background-color: hsl(var(--card-environmental));
+  }
+
+  .business-card-digital-health {
+    background-color: hsl(var(--card-digital-health));
+  }
+
+  .business-card-construction {
+    background-color: hsl(var(--card-construction));
+  }
+
+  .business-card-tourism {
+    background-color: hsl(var(--card-tourism));
+  }
+
+  .business-card-software {
+    background-color: hsl(var(--card-software));
+  }
+
+  /* Contact button with arrow */
+  .contact-button {
+    @apply inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 rounded-full font-medium text-sm transition-all duration-200 hover:bg-primary/90;
+  }
+
+  .contact-button-arrow {
+    @apply w-4 h-4 transition-transform duration-200;
+  }
+
+  .contact-button:hover .contact-button-arrow {
+    @apply translate-x-0.5 -translate-y-0.5;
+  }
+
+  /* Scroll down button */
+  .scroll-button {
+    @apply inline-flex items-center gap-2 text-foreground font-medium text-sm px-5 py-2.5 rounded-full border border-foreground/20 bg-white/80 backdrop-blur-sm transition-all duration-200 hover:bg-white hover:shadow-md;
+  }
+
+  /* Section label badge */
+  .section-badge {
+    @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium bg-[#FF0000] text-white;
+  }
+
+  .section-badge-dot {
+    @apply w-2 h-2 rounded-full bg-accent;
+  }
+
+  /* Footer styles */
+  .footer-link {
+    @apply text-muted-foreground hover:text-foreground transition-colors duration-200 text-sm;
+  }
+
+  /* Gradient backgrounds */
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .gradient-contact {
+    background: var(--gradient-contact);
+  }
+
+  /* Slider dots */
+  .slider-dot {
+    @apply w-2.5 h-2.5 rounded-full bg-foreground/20 transition-all duration-300;
+  }
+
+  .slider-dot-active {
+    @apply bg-foreground w-8;
+  }
+
+  /* Circle arrow button */
+  .circle-arrow {
+    @apply w-12 h-12 rounded-full bg-accent flex items-center justify-center transition-all duration-200 hover:bg-accent/90 hover:scale-105;
+  }
+
+  /* Form styles */
+  .form-input {
+    @apply w-full px-4 py-3 rounded-lg border border-border bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-accent/50 focus:border-accent transition-all duration-200;
+  }
+
+  .form-label {
+    @apply block text-sm font-medium text-foreground mb-1.5;
+  }
+
+  /* Social icon */
+  .social-icon {
+    @apply w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110;
+  }
+
+  .social-icon-linkedin {
+    @apply bg-[#0077B5] text-white;
+  }
+
+  .social-icon-instagram {
+    @apply bg-gradient-to-br from-[#f09433] via-[#e6683c] to-[#bc1888] text-white;
+  }
+
+  .social-icon-facebook {
+    @apply bg-[#1877F2] text-white;
+  }
+
+  .social-icon-x {
+    @apply bg-foreground text-white;
+  }
+
+  .social-icon-youtube {
+    @apply bg-[#FF0000] text-white;
+  }
+
+  .social-icon-whatsapp {
+    @apply bg-[#25D366] text-white;
+  }
+}
+
+@layer utilities {
+  /* Smooth scroll */
+  .scroll-smooth {
+    scroll-behavior: smooth;
+  }
+
+  /* Text balance */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Animation delays */
+  .animate-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animate-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animate-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animate-delay-400 {
+    animation-delay: 400ms;
+  }
+}
