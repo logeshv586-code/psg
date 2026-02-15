@@ -445,6 +445,117 @@
     @apply hover:scale-105 hover:shadow-lg;
   }
 
+  /* Advanced enterprise animations */
+  .animate-fade-in-up {
+    @apply opacity-0 translate-y-6 animate-[fade-in-up_0.6s_ease-out_forwards];
+  }
+
+  .animate-fade-in-left {
+    @apply opacity-0 -translate-x-8 animate-[fade-in-left_0.6s_ease-out_forwards];
+  }
+
+  .animate-fade-in-right {
+    @apply opacity-0 translate-x-8 animate-[fade-in-right_0.6s_ease-out_forwards];
+  }
+
+  .animate-scale-in {
+    @apply opacity-0 scale-95 animate-[scale-in_0.4s_ease-out_forwards];
+  }
+
+  .animate-slide-in-up {
+    @apply opacity-0 translate-y-8 animate-[slide-in-up_0.5s_ease-out_forwards];
+  }
+
+  .animate-float {
+    @apply animate-[float_3s_ease-in-out_infinite];
+  }
+
+  .animate-pulse-slow {
+    @apply animate-[pulse-slow_2s_ease-in-out_infinite];
+  }
+
+  .animate-glow {
+    @apply animate-[glow_2s_ease-in-out_infinite];
+  }
+
+  .animate-shimmer {
+    @apply animate-[shimmer_1.5s_ease-in-out_infinite];
+  }
+
+  /* Hover animations */
+  .hover-lift {
+    @apply transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-2xl;
+  }
+
+  .hover-scale {
+    @apply transition-transform duration-300 ease-out hover:scale-105;
+  }
+
+  .hover-glow {
+    @apply transition-all duration-300 ease-out hover:shadow-[0_0_20px_rgba(134,239,172,0.3)];
+  }
+
+  .hover-shimmer {
+    @apply relative overflow-hidden before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-1000;
+  }
+
+  .hover-border-glow {
+    @apply transition-all duration-300 ease-out hover:border-accent hover:shadow-[0_0_0_2px_rgba(134,239,172,0.3)];
+  }
+
+  /* Interactive elements */
+  .interactive-card {
+    @apply relative overflow-hidden transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-xl before:absolute before:inset-0 before:bg-gradient-to-br before:from-transparent before:to-black/5 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300;
+  }
+
+  .interactive-button {
+    @apply relative overflow-hidden transition-all duration-300 ease-out hover:scale-105 hover:shadow-lg after:absolute after:inset-0 after:bg-gradient-to-r after:from-transparent after:via-white/20 after:to-transparent after:translate-x-[-100%] hover:after:translate-x-[100%] after:transition-transform after:duration-700;
+  }
+
+  /* Parallax effects */
+  .parallax-slow {
+    @apply transform will-change-transform;
+  }
+
+  .parallax-medium {
+    @apply transform will-change-transform;
+  }
+
+  .parallax-fast {
+    @apply transform will-change-transform;
+  }
+
+  /* Staggered animations */
+  .stagger-1 {
+    animation-delay: 100ms;
+  }
+
+  .stagger-2 {
+    animation-delay: 200ms;
+  }
+
+  .stagger-3 {
+    animation-delay: 300ms;
+  }
+
+  .stagger-4 {
+    animation-delay: 400ms;
+  }
+
+  .stagger-5 {
+    animation-delay: 500ms;
+  }
+
+  /* Enterprise focus states */
+  .focus-enterprise {
+    @apply focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background;
+  }
+
+  /* Loading states */
+  .loading-shimmer {
+    @apply relative overflow-hidden bg-gray-200 after:absolute after:inset-0 after:bg-gradient-to-r after:from-transparent after:via-white/50 after:to-transparent after:animate-[shimmer_1.5s_infinite];
+  }
+
   /* Enterprise responsive hiding */
   .hidden-mobile {
     @apply hidden sm:block;
@@ -465,5 +576,16 @@
 
   .aspect-enterprise-lg {
     @apply aspect-[21/9] sm:aspect-[18/9] lg:aspect-[16/7];
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
   }
 }

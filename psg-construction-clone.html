@@ -1,0 +1,1795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PSG - Construction & Interior Supplies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #F5E6D3;
+            --accent-orange: #FF8C42;
+            --dark-text: #2C2C2C;
+            --white: #FFFFFF;
+            --light-gray: #F8F8F8;
+            --border-gray: #E0E0E0;
+            --sidebar-hover: #FFDCC1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--dark-text);
+            background: var(--primary-bg);
+            line-height: 1.7;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 280px;
+            background: var(--primary-bg);
+            padding: 60px 0;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            border-right: 1px solid var(--border-gray);
+        }
+
+        .sidebar-item {
+            padding: 20px 40px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            letter-spacing: 0.3px;
+        }
+
+        .sidebar-item:hover {
+            background: var(--sidebar-hover);
+            padding-left: 45px;
+        }
+
+        .sidebar-item.active {
+            background: var(--sidebar-hover);
+            font-weight: 700;
+        }
+
+        .sidebar-item.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 5px;
+            background: var(--accent-orange);
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                height: 0;
+                top: 50%;
+            }
+            to {
+                height: 100%;
+                top: 0;
+            }
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 40px 60px;
+            max-width: 1400px;
+        }
+
+        .header {
+            margin-bottom: 40px;
+            animation: fadeInDown 0.6s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .header p {
+            font-size: 18px;
+            color: #666;
+            max-width: 800px;
+            line-height: 1.8;
+        }
+
+        /* Tab Navigation */
+        .tab-navigation {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 50px;
+            border-bottom: 2px solid var(--border-gray);
+            animation: fadeIn 0.6s ease-out 0.2s backwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .tab-button {
+            padding: 18px 0;
+            font-size: 15px;
+            font-weight: 600;
+            color: #888;
+            background: none;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-size: 13px;
+        }
+
+        .tab-button:hover {
+            color: var(--dark-text);
+        }
+
+        .tab-button.active {
+            color: var(--dark-text);
+        }
+
+        .tab-button.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--accent-orange);
+            animation: expandWidth 0.3s ease-out;
+        }
+
+        @keyframes expandWidth {
+            from {
+                width: 0;
+                left: 50%;
+            }
+            to {
+                width: 100%;
+                left: 0;
+            }
+        }
+
+        /* Content Sections */
+        .content-section {
+            display: none;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-description {
+            font-size: 16px;
+            line-height: 1.9;
+            color: #555;
+            margin-bottom: 50px;
+            max-width: 900px;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .product-item {
+            text-align: center;
+            transition: transform 0.3s ease;
+            animation: fadeInScale 0.5s ease-out backwards;
+        }
+
+        .product-item:nth-child(1) { animation-delay: 0.1s; }
+        .product-item:nth-child(2) { animation-delay: 0.15s; }
+        .product-item:nth-child(3) { animation-delay: 0.2s; }
+        .product-item:nth-child(4) { animation-delay: 0.25s; }
+        .product-item:nth-child(5) { animation-delay: 0.3s; }
+        .product-item:nth-child(6) { animation-delay: 0.35s; }
+        .product-item:nth-child(7) { animation-delay: 0.4s; }
+        .product-item:nth-child(8) { animation-delay: 0.45s; }
+        .product-item:nth-child(9) { animation-delay: 0.5s; }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .product-item:hover {
+            transform: translateY(-8px);
+        }
+
+        .product-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 3px solid var(--white);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .product-item:hover .product-image {
+            box-shadow: 0 8px 30px rgba(255, 140, 66, 0.2);
+            border-color: var(--accent-orange);
+        }
+
+        .product-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark-text);
+            margin-top: 15px;
+        }
+
+        /* Subsection Styling */
+        .subsection {
+            margin-bottom: 80px;
+            padding: 40px;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .subsection-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: var(--dark-text);
+            letter-spacing: -0.3px;
+        }
+
+        .subsection-description {
+            font-size: 15px;
+            line-height: 1.9;
+            color: #555;
+            margin-bottom: 35px;
+        }
+
+        /* Category Pages Hidden by Default */
+        .category-page {
+            display: none;
+        }
+
+        .category-page.active {
+            display: block;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 240px;
+            }
+
+            .main-content {
+                padding: 30px 40px;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 20px 0;
+                display: flex;
+                overflow-x: auto;
+            }
+
+            .sidebar-item {
+                padding: 15px 25px;
+                white-space: nowrap;
+            }
+
+            .main-content {
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 32px;
+            }
+
+            .tab-navigation {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 20px;
+            }
+
+            .product-image {
+                width: 120px;
+                height: 120px;
+            }
+        }
+
+        /* Custom Placeholder Images */
+        .product-image {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar">
+            <div class="sidebar-item active" data-category="timber">Timber</div>
+            <div class="sidebar-item" data-category="plywood">Plywood</div>
+            <div class="sidebar-item" data-category="mdf">MDF & Chip board</div>
+            <div class="sidebar-item" data-category="hardwares">Hardwares</div>
+            <div class="sidebar-item" data-category="mep">MEP</div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <h1>CONSTRUCTION & INTERIOR SUPPLIES</h1>
+                <p>Your trusted source for high-quality construction and interior supplies to elevate every project</p>
+            </div>
+
+            <!-- TIMBER PAGE -->
+            <div class="category-page active" id="timber">
+                <div class="tab-navigation">
+                    <button class="tab-button active" data-tab="timber-interiors">Timber for Interiors</button>
+                    <button class="tab-button" data-tab="timber-construction">Timber for Construction</button>
+                </div>
+
+                <!-- Timber for Interiors Tab -->
+                <div class="content-section active" id="timber-interiors">
+                    <h2 class="section-title">TIMBER FOR INTERIORS</h2>
+                    <p class="section-description">
+                        Wood is an incredibly popular product that is often used by architects and designers to decorate the interiors of our buildings. This is because wood is durable, economical, easy to work with, long-lasting, and combines effortlessly with other textures to create a striking, inspiring aesthetic. As the most sustainable building material available, wood also brings with it additional benefits such as noise absorption and rapid heating and cooling.
+                        <br><br>
+                        The use of solid wood in interiors has increased significantly in recent years ranging from wooden doors, door frames to interior designing and wooden flooring. From hardwood from east to medium and soft woods till west, PSG offers wide range of sawn timber species across the globe.
+                    </p>
+
+                    <div class="product-grid">
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/8B4513/FFFFFF?text=Teak" alt="Teak Wood" class="product-image">
+                            <div class="product-name">Teak Wood</div>
+                        </div>
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/CD853F/FFFFFF?text=Meranti" alt="Meranti" class="product-image">
+                            <div class="product-name">Meranti</div>
+                        </div>
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/A0522D/FFFFFF?text=Iroko" alt="Iroko" class="product-image">
+                            <div class="product-name">Iroko</div>
+                        </div>
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/B8860B/FFFFFF?text=Mahogany" alt="Mahogany" class="product-image">
+                            <div class="product-name">Mahogany</div>
+                        </div>
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/D2691E/FFFFFF?text=Dabema" alt="Dabema" class="product-image">
+                            <div class="product-name">Dabema</div>
+                        </div>
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/8B7355/FFFFFF?text=Oak" alt="Oak" class="product-image">
+                            <div class="product-name">Oak</div>
+                        </div>
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/BC8F8F/FFFFFF?text=Okume" alt="Okume" class="product-image">
+                            <div class="product-name">Okume</div>
+                        </div>
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/A0522D/FFFFFF?text=Merbau" alt="Merbau" class="product-image">
+                            <div class="product-name">Merbau</div>
+                        </div>
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/8B4513/FFFFFF?text=Balau" alt="Balau" class="product-image">
+                            <div class="product-name">Balau</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timber for Construction Tab -->
+                <div class="content-section" id="timber-construction">
+                    <h2 class="section-title">TIMBER FOR CONSTRUCTION</h2>
+                    <p class="section-description">
+                        Wood as shuttering is very common engineering tool for many reasons. For example, wood is light in weight as compared to metallic shuttering and easy to handle. Wood is less costly if compared with other shuttering material like steel and plastic etc. Wood can be cut and modified as per required sizes and shapes.
+                        <br><br>
+                        For this reason, the drawbacks of wood are neglected. Moreover, in areas where labour is not cheap, the depreciation cost of wood is preferred to that of labour. Wood is used in shuttering in many forms, like wooden logs (bally), wooden panels, wooden boards and wooden girders etc.
+                        <br><br>
+                        Pine wood, Spruce, SYP etc. are some of the species PSG offers for the construction field sourcing from European and American countries
+                    </p>
+
+                    <div class="product-grid">
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/DEB887/000000?text=Pine" alt="Pine" class="product-image">
+                            <div class="product-name">Pine</div>
+                        </div>
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/F5DEB3/000000?text=Spruce" alt="Spruce" class="product-image">
+                            <div class="product-name">Spruce</div>
+                        </div>
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/D2B48C/000000?text=SYP" alt="SYP Timber" class="product-image">
+                            <div class="product-name">SYP Timber</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PLYWOOD PAGE -->
+            <div class="category-page" id="plywood">
+                <div class="tab-navigation">
+                    <button class="tab-button active" data-tab="plywood-interior">Plywood for Interior</button>
+                    <button class="tab-button" data-tab="plywood-construction">Plywood for Construction</button>
+                </div>
+
+                <!-- Plywood for Interior Tab -->
+                <div class="content-section active" id="plywood-interior">
+                    <h2 class="section-title">Plywood for Interior</h2>
+                    <p class="section-description">
+                        An extremely versatile product, plywood is used for a wide range of interior applications such as Paneling, Cabinets, Furniture, walls, Ceilings and Interior decorations and timber furnishings.
+                        <br><br>
+                        PSG offers wide range for plywood products ranging from MR grade to Marine BWP grade extensively used in the Interior sector being sourced across Asian countries
+                    </p>
+
+                    <div class="product-grid">
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/8B7355/FFFFFF?text=BWP" alt="BWP" class="product-image">
+                            <div class="product-name">BWP</div>
+                        </div>
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/A0826D/FFFFFF?text=MR+Grade" alt="MR Grade" class="product-image">
+                            <div class="product-name">MR Grade</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plywood for Construction Tab -->
+                <div class="content-section" id="plywood-construction">
+                    <h2 class="section-title">Plywood for Construction</h2>
+                    <p class="section-description">
+                        Shuttering plywood is highly dense hardwood covered with a smooth coating of film on either side. It is primarily used in construction applications such as cement formworks and exterior applications.
+                        <br><br>
+                        They might be used up to 15-20 times before needing to be replaced. Brown and black are the two surface color options available for film-faced plywood. India, Indonesia, Malaysia and Vietnam are major countries from where PSG sources plywood used for construction
+                    </p>
+
+                    <div class="product-grid">
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/4A4A4A/FFFFFF?text=Film+Face" alt="Film Face Shutter" class="product-image">
+                            <div class="product-name">Film Face Shutter</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MDF & CHIP BOARD PAGE -->
+            <div class="category-page" id="mdf">
+                <div class="tab-navigation">
+                    <button class="tab-button active" data-tab="mdf-board">MDF</button>
+                    <button class="tab-button" data-tab="chipboard">Chipboard</button>
+                </div>
+
+                <!-- MDF Tab -->
+                <div class="content-section active" id="mdf-board">
+                    <h2 class="section-title">MDF</h2>
+                    <p class="section-description">
+                        An extremely versatile product, plywood is used for a wide range of interior applications such as Paneling, Cabinets, Furniture, walls, Ceilings and Interior decorations and timber furnishings.
+                        <br><br>
+                        PSG offers wide range for plywood products ranging from MR grade to Marine BWP grade extensively used in the Interior sector being sourced across Asian countries
+                    </p>
+
+                    <div class="product-grid">
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/8B7355/FFFFFF?text=MR+Grade" alt="MR Grade" class="product-image">
+                            <div class="product-name">MR Grade</div>
+                        </div>
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/A0826D/FFFFFF?text=HMR+MDF" alt="HMR MDF" class="product-image">
+                            <div class="product-name">HMR MDF</div>
+                        </div>
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/CD853F/FFFFFF?text=Laminated" alt="Laminated MDF" class="product-image">
+                            <div class="product-name">Laminated MDF</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chipboard Tab -->
+                <div class="content-section" id="chipboard">
+                    <h2 class="section-title">Chipboard</h2>
+                    <p class="section-description">
+                        Chipboard or Particle Board are made by mixing small wood particles with epoxy resin, which are pressed together under intense heat and pressure to produce a rigid board, typically with a smooth surface.
+                        <br><br>
+                        Chipboards are used for making furnitures, interior home accents, kitchen cabinets, Sound proofing, Building and flooring insulation, Packaging etc.
+                        <br><br>
+                        Based on the dense forming and resin used, chipboard varies in densities and finishes. PSG sources MDF and chipboard from Indonesia, Thailand, Vietnam, India and Malaysia.
+                    </p>
+
+                    <div class="product-grid">
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/DEB887/000000?text=Laminated" alt="Laminated" class="product-image">
+                            <div class="product-name">Laminated</div>
+                        </div>
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/F5DEB3/000000?text=Plain" alt="Plain" class="product-image">
+                            <div class="product-name">Plain</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HARDWARES PAGE -->
+            <div class="category-page" id="hardwares">
+                <div class="tab-navigation">
+                    <button class="tab-button active" data-tab="door-hardware">Door Hardware</button>
+                    <button class="tab-button" data-tab="furniture-fittings">Furniture Fittings</button>
+                    <button class="tab-button" data-tab="glass-fittings">Glass Fittings</button>
+                </div>
+
+                <!-- Door Hardware Tab -->
+                <div class="content-section active" id="door-hardware">
+                    <h2 class="section-title">DOOR HARDWARE</h2>
+                    <p class="section-description">
+                        Hardware (door) is a broad term used to group all items that are fitted or related to doors and includes hinges, pull handles, locks and latches, cylinder and keys, door controls, panic exit devices, bolts, hold-open devices, any part of an automatic closing device that is attached to the doorset, and all (door) furniture
+                    </p>
+
+                    <div class="product-grid">
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/696969/FFFFFF?text=Handle" alt="Handle" class="product-image">
+                            <div class="product-name">Handle</div>
+                        </div>
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/808080/FFFFFF?text=Pull+Handle" alt="Pull Handles" class="product-image">
+                            <div class="product-name">Pull Handles</div>
+                        </div>
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/2F4F4F/FFFFFF?text=Locks" alt="Locks" class="product-image">
+                            <div class="product-name">Locks</div>
+                        </div>
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/A9A9A9/FFFFFF?text=Cylinders" alt="Cylinders and Key" class="product-image">
+                            <div class="product-name">Cylinders and Key</div>
+                        </div>
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/696969/FFFFFF?text=Hinges" alt="Hinges" class="product-image">
+                            <div class="product-name">Hinges</div>
+                        </div>
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/778899/FFFFFF?text=Handle" alt="Handle" class="product-image">
+                            <div class="product-name">Handle</div>
+                        </div>
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/708090/FFFFFF?text=Panic" alt="Panic Hardware" class="product-image">
+                            <div class="product-name">Panic Hardware</div>
+                        </div>
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/A9A9A9/FFFFFF?text=Access" alt="Accessories" class="product-image">
+                            <div class="product-name">Accessories</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Furniture Fittings Tab -->
+                <div class="content-section" id="furniture-fittings">
+                    <h2 class="section-title">FURNITURE FITTINGS</h2>
+                    <p class="section-description">
+                        Furniture fittings are the individual pieces needed to create a working, durable piece of furniture or cabinet.
+                        <br><br>
+                        Cabinet hinges, drawer runners, cabinet handles, cabinet knobs and accessories are some of the hardwares where PSG are expertise
+                    </p>
+
+                    <div class="product-grid">
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/696969/FFFFFF?text=Hinges" alt="Hinges" class="product-image">
+                            <div class="product-name">Hinges</div>
+                        </div>
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/808080/FFFFFF?text=Runners" alt="Runners" class="product-image">
+                            <div class="product-name">Runners</div>
+                        </div>
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/A9A9A9/FFFFFF?text=Handles" alt="Handles" class="product-image">
+                            <div class="product-name">Handles</div>
+                        </div>
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/778899/FFFFFF?text=Cabinet" alt="Cabinet Accessories" class="product-image">
+                            <div class="product-name">Cabinet Accessories</div>
+                        </div>
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/708090/FFFFFF?text=Knobs" alt="Cabinet Knobs" class="product-image">
+                            <div class="product-name">Cabinet Knobs</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Glass Fittings Tab -->
+                <div class="content-section" id="glass-fittings">
+                    <h2 class="section-title">GLASS FITTINGS</h2>
+                    <p class="section-description">
+                        Glass fittings are essential components for glass doors and partitions. These include hinges, pivots, posts, handles, sliding door systems, shower fittings and so on.
+                        <br><br>
+                        In association with Hardware experts LOCKRON (UK), PSG offers wide range of complete hardwares related to Door, Furniture and Glass
+                    </p>
+
+                    <div class="product-grid">
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/696969/FFFFFF?text=Spring" alt="Spring" class="product-image">
+                            <div class="product-name">Spring</div>
+                        </div>
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/808080/FFFFFF?text=Patch" alt="Patch Fittings" class="product-image">
+                            <div class="product-name">Patch Fittings</div>
+                        </div>
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/A9A9A9/FFFFFF?text=Pull" alt="Pull Handles" class="product-image">
+                            <div class="product-name">Pull Handles</div>
+                        </div>
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/2F4F4F/FFFFFF?text=Locks" alt="Glass Door Locks" class="product-image">
+                            <div class="product-name">Glass Door Locks</div>
+                        </div>
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/778899/FFFFFF?text=Hinges" alt="Hinges" class="product-image">
+                            <div class="product-name">Hinges</div>
+                        </div>
+                        <div class="product-item">
+                            <img src="https://via.placeholder.com/150/708090/FFFFFF?text=Shower" alt="Shower Fittings" class="product-image">
+                            <div class="product-name">Shower Fittings</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MEP PAGE -->
+            <div class="category-page" id="mep">
+                <div class="tab-navigation">
+                    <button class="tab-button active" data-tab="mechanical-hvac">Mechanical - HVAC</button>
+                    <button class="tab-button" data-tab="electrical">Electrical</button>
+                    <button class="tab-button" data-tab="plumbing">Plumbing</button>
+                    <button class="tab-button" data-tab="fire-fighting">Fire Fighting</button>
+                </div>
+
+                <!-- Mechanical - HVAC Tab -->
+                <div class="content-section active" id="mechanical-hvac">
+                    <h2 class="section-title">MECHANICAL - HVAC</h2>
+                    <p class="section-description">
+                        PSG is a leading provider of a wide range of products and comprehensive solutions for diverse projects. Renowned as one of the most trusted suppliers of engineering and industrial goods in the Middle East and GCC region, PSG delivers exceptional quality and reliability to meet the unique needs of its clients.
+                        <br><br>
+                        HVAC, which stands for Heating, Ventilating, and Air Conditioning, encompasses a range of systems designed to maintain optimal indoor conditions, from residential air conditioners to large-scale systems used in industrial complexes and high-rise buildings. A well-designed HVAC system aims to provide thermal comfort and regulate indoor environments by applying the principles of thermodynamics, fluid mechanics, and heat transfer.
+                        <br><br>
+                        We offer a wide range of HVAC products tailored to meet the needs of residential, commercial, and industrial sectors, including hotels, shopping malls, schools, office buildings, and more.
+                    </p>
+
+                    <!-- GATE VALVE -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">GATE VALVE</h3>
+                        <p class="subsection-description">
+                            Gate valves are bi-directional, multi-purpose valves, available in a variety of materials such as brass, lead-free brass, bronze, and cast iron, with options for either rising or non-rising stems. These valves are widely used in residential and commercial buildings for a range of services, including hot and cold water, HVAC systems, steam, compressed air, gas, and other general utility applications.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/DAA520/FFFFFF?text=Lead+Free" alt="Non rising Stem- lead free brass" class="product-image">
+                                <div class="product-name">Non Rising Stem - Lead Free Brass</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/B8860B/FFFFFF?text=Brass" alt="Non rising stem - brass" class="product-image">
+                                <div class="product-name">Non Rising Stem - Brass</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/CD853F/FFFFFF?text=Brass" alt="non rising stem - brass" class="product-image">
+                                <div class="product-name">Non Rising Stem - Brass</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/D4AF37/FFFFFF?text=Lock" alt="lockshield - brass" class="product-image">
+                                <div class="product-name">Lockshield - Brass</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/696969/FFFFFF?text=Cast+Iron" alt="rising stem - cast iron" class="product-image">
+                                <div class="product-name">Rising Stem - Cast Iron</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/808080/FFFFFF?text=Cast+Iron" alt="non rising stem cast iron" class="product-image">
+                                <div class="product-name">Non Rising Stem - Cast Iron</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BUTTERFLY VALVES -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">BUTTERFLY VALVES</h3>
+                        <p class="subsection-description">
+                            Butterfly valves are bi-directional, quick shut-off valves available in lug, wafer, or double-flanged types, suitable for residential and commercial applications. They operate with a quarter-turn motion, allowing for easy and fast flow control.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/4682B4/FFFFFF?text=Lug" alt="lug type" class="product-image">
+                                <div class="product-name">Lug Type</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/5F9EA0/FFFFFF?text=Wafer" alt="water type" class="product-image">
+                                <div class="product-name">Wafer Type</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/4169E1/FFFFFF?text=Flanged" alt="flanged type" class="product-image">
+                                <div class="product-name">Flanged Type</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/1E90FF/FFFFFF?text=Centric" alt="centric - butterfly valves" class="product-image">
+                                <div class="product-name">Centric - Butterfly Valves</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/6495ED/FFFFFF?text=Eccentric" alt="double eccentric - butterfly valves" class="product-image">
+                                <div class="product-name">Double Eccentric</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BALL VALVES -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">BALL VALVES</h3>
+                        <p class="subsection-description">
+                            Ball valves are quarter-turn shut-off valves made from materials like brass, bronze, lead-free brass, cast iron, and stainless steel. They control the flow of liquids or gases by rotating a ball with a bore 90 degrees to either allow or block flow.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/CD7F32/FFFFFF?text=Bronze" alt="Bronze ball valve" class="product-image">
+                                <div class="product-name">Bronze Ball Valve</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/B8860B/FFFFFF?text=Brass" alt="brass ball valve" class="product-image">
+                                <div class="product-name">Brass Ball Valve</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/DAA520/FFFFFF?text=DZR" alt="dzr brass ball valve" class="product-image">
+                                <div class="product-name">DZR Brass Ball Valve</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/696969/FFFFFF?text=Cast" alt="cast iron ball valve" class="product-image">
+                                <div class="product-name">Cast Iron Ball Valve</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/778899/FFFFFF?text=Ductile" alt="ductile iron ball valve" class="product-image">
+                                <div class="product-name">Ductile Iron Ball Valve</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CHECK VALVES -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">CHECK VALVES</h3>
+                        <p class="subsection-description">
+                            A check valve, or non-return valve, allows fluid to flow in only one direction, preventing backflow. Made from materials like bronze, brass, cast iron, and ductile iron, check valves open with fluid pressure and close automatically when flow reverses.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/DAA520/FFFFFF?text=Swing" alt="Swing check valve - lead free brass" class="product-image">
+                                <div class="product-name">Swing Check Valve - Lead Free Brass</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/B8860B/FFFFFF?text=Lift" alt="lift check valve - brass" class="product-image">
+                                <div class="product-name">Lift Check Valve - Brass</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/CD853F/FFFFFF?text=Swing" alt="swing check valve - brass" class="product-image">
+                                <div class="product-name">Swing Check Valve - Brass</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/CD7F32/FFFFFF?text=Bronze" alt="swing check valve - bronze" class="product-image">
+                                <div class="product-name">Swing Check Valve - Bronze</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/696969/FFFFFF?text=Cast" alt="swing check valve - cast iron" class="product-image">
+                                <div class="product-name">Swing Check Valve - Cast Iron</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/808080/FFFFFF?text=Dual" alt="dual plate check valve - cast iron" class="product-image">
+                                <div class="product-name">Dual Plate Check Valve - Cast Iron</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/A9A9A9/FFFFFF?text=Silent" alt="silent check valve - cast iron" class="product-image">
+                                <div class="product-name">Silent Check Valve - Cast Iron</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/B8860B/FFFFFF?text=Lift" alt="lift check valve - bronze" class="product-image">
+                                <div class="product-name">Lift Check Valve - Bronze</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/778899/FFFFFF?text=Dual" alt="dual plate check valve" class="product-image">
+                                <div class="product-name">Dual Plate Check Valve</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/708090/FFFFFF?text=Nozzle" alt="nozzle type check valve" class="product-image">
+                                <div class="product-name">Nozzle Type Check Valve</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STRAINERS -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">STRAINERS</h3>
+                        <p class="subsection-description">
+                            Strainers are key components used to protect valves, pumps, and other equipment by filtering unwanted particles from fluids. Common types include Y-type and Basket-type strainers.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/B8860B/FFFFFF?text=Y+Type" alt="Y Type Strainers - brass" class="product-image">
+                                <div class="product-name">Y Type Strainers - Brass</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/CD7F32/FFFFFF?text=DSR" alt="Y Type - DSR Bronze" class="product-image">
+                                <div class="product-name">Y Type - DSR Bronze</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/D2691E/FFFFFF?text=Bronze" alt="Y Type Strainers - Bronze" class="product-image">
+                                <div class="product-name">Y Type Strainers - Bronze</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/696969/FFFFFF?text=Cast" alt="Y Type Strainers - Cast Iron" class="product-image">
+                                <div class="product-name">Y Type Strainers - Cast Iron</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/808080/FFFFFF?text=Basket" alt="Basket Type strainers - cast iron" class="product-image">
+                                <div class="product-name">Basket Type Strainers - Cast Iron</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FLEXIBLE JOINTS -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">FLEXIBLE JOINTS</h3>
+                        <p class="subsection-description">
+                            Flexible connectors are vital for piping systems, offering flexibility to absorb noise, vibration, and thermal expansion while allowing movement.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/C0C0C0/000000?text=Flex" alt="Flexible Connection" class="product-image">
+                                <div class="product-name">Flexible Connection</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/2F4F4F/FFFFFF?text=Rubber" alt="Rubber Expansion Joints" class="product-image">
+                                <div class="product-name">Rubber Expansion Joints</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/696969/FFFFFF?text=Tied" alt="Tied Flanged" class="product-image">
+                                <div class="product-name">Tied Flanged</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DOUBLE REGULATING VALVES -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">DOUBLE REGULATING VALVES</h3>
+                        <p class="subsection-description">
+                            A double regulating valve, also known as a balancing valve, is primarily used to control and balance the water flow in chilled water air conditioning systems.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/DAA520/FFFFFF?text=Fixed" alt="Fixed Orifice - DZR Brass" class="product-image">
+                                <div class="product-name">Fixed Orifice - DZR Brass</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/B8860B/FFFFFF?text=Variable" alt="Variable Orifice - DZR Brass" class="product-image">
+                                <div class="product-name">Variable Orifice - DZR Brass</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/696969/FFFFFF?text=Cast" alt="Double Regulating Valve - Cast iron" class="product-image">
+                                <div class="product-name">Double Regulating Valve - Cast Iron</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PRESSURE INDEPENDENT CONTROL VALVES -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">PRESSURE INDEPENDENT CONTROL VALVES</h3>
+                        <p class="subsection-description">
+                            The Pressure Independent Control Valve (PICV) is a combined flow limiter and temperature control valve, designed for both variable and constant temperature systems.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/4682B4/FFFFFF?text=Linear" alt="Linear Characteristic PICV" class="product-image">
+                                <div class="product-name">Linear Characteristic PICV</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/5F9EA0/FFFFFF?text=Equal" alt="Equal Percentage Characteristic PICV" class="product-image">
+                                <div class="product-name">Equal Percentage PICV</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/778899/FFFFFF?text=Ductile" alt="Ductile Iron PICV" class="product-image">
+                                <div class="product-name">Ductile Iron PICV</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DIFFERENTIAL PRESSURE CONTROL VALVE -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">DIFFERENTIAL PRESSURE CONTROL VALVE</h3>
+                        <p class="subsection-description">
+                            These valves maintain a constant differential pressure across hydronic systems with variable flow, ensuring the optimal functioning of system components.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/DAA520/FFFFFF?text=DSR" alt="DSR Brass" class="product-image">
+                                <div class="product-name">DSR Brass</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/696969/FFFFFF?text=Cast" alt="Cast Iron" class="product-image">
+                                <div class="product-name">Cast Iron</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FCU VALVE PACKAGES -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">FCU VALVE PACKAGES</h3>
+                        <p class="subsection-description">
+                            The flushing bypass kit, featuring a pressure-independent control valve and a Filter ball shut-off valve with an integrated strainer, is designed to maintain design flow rates.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/4682B4/FFFFFF?text=FCU" alt="FCU Valve Package" class="product-image">
+                                <div class="product-name">FCU Valve Package</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SOLENOID VALVES -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">SOLENOID VALVES</h3>
+                        <p class="subsection-description">
+                            A solenoid valve is an electromechanical device that uses an electric current to generate a magnetic field, which operates a mechanism to regulate the opening and closing of fluid flow.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/FF6347/FFFFFF?text=Servo" alt="Servo - Activated" class="product-image">
+                                <div class="product-name">Servo - Activated</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- INTELLIGENT CONTROL VALVES -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">INTELLIGENT CONTROL VALVES</h3>
+                        <p class="subsection-description">
+                            Intelligent Control Valves are designed to maintain optimal flow and pressure conditions at all times, ensuring consistent flow, pressure, or levels despite fluctuations in the supply network. These valves help reduce water loss and contribute to efficient water distribution. Integrated with the ACMO PMD communication device, which functions as a local controller, they provide precise control with auto-adaptive PID for various hydraulic conditions. The ACMO PMD offers pre-configurable hydraulic functions, data logging, and real-time communication with flow meters to adjust pressure according to flow, regardless of time.
+                            <br><br>
+                            These intelligent control valves have been proven to reduce leakage and burst frequency, providing cost-effective and reliable pressure control. They are essential for smart networks and are widely used in applications such as central air conditioning, water treatment, and heating systems. Integrated with sensor technology, intelligent actuators, and control valves, they offer several benefits for smart network management:
+                            <br><br>
+                            • Optimized, stable network pressures<br>
+                            • Pressure and valve position feedback<br>
+                            • Reaction to system failures<br>
+                            • Verification of Zones/Pressure Management Areas (PMAs)<br>
+                            • Adjustment of reservoir flows<br>
+                            • Reduced leakage<br>
+                            • Integration with pumps and meters<br>
+                            • Feedback on water temperature and quality<br>
+                            • Remote control of storage levels<br>
+                            • Extended asset life by optimizing maintenance periods
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/4169E1/FFFFFF?text=Intelligent" alt="Watts intelligent control valves" class="product-image">
+                                <div class="product-name">Watts Intelligent Control Valves</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RELIEF VALVES -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">RELIEF VALVES</h3>
+                        <p class="subsection-description">
+                            A relief valve is a safety device that protects pressurized vessels or systems from overpressure by venting fluid when pressure exceeds the design limits.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/FF6347/FFFFFF?text=PRV" alt="Relief Valve" class="product-image">
+                                <div class="product-name">Pressure Relief Valve</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AIR VENTS -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">AIR VENTS</h3>
+                        <p class="subsection-description">
+                            Air Vents and Vacuum Valves are designed to expel large volumes of air during system start-up and allow air to re-enter the line during system shutdown or failure.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/C0C0C0/000000?text=Air+Vent" alt="Air Vent" class="product-image">
+                                <div class="product-name">Air Vent</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BTU METER -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">BTU METER</h3>
+                        <p class="subsection-description">
+                            BTU meters are precision instruments used to measure the thermal energy consumption of chilled water in British Thermal Units (BTU).
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/4682B4/FFFFFF?text=BTU" alt="BTU Meter" class="product-image">
+                                <div class="product-name">BTU Meter</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- WATER LEAK DETECTION SYSTEM -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">WATER LEAK DETECTION SYSTEM</h3>
+                        <p class="subsection-description">
+                            Water leak monitoring is a critical aspect of building management, particularly in areas with sensitive electrical and electronic equipment.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/1E90FF/FFFFFF?text=WLD" alt="Water Leak Detection System" class="product-image">
+                                <div class="product-name">Water Leak Detection System</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- EXHAUST AND FRESH AIR FANS -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">EXHAUST AND FRESH AIR FANS</h3>
+                        <p class="subsection-description">
+                            A fan is a gas flow-producing device equipped with two or more blades or vanes attached to a rotating shaft.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/708090/FFFFFF?text=Axial" alt="Axial type exhaust fans" class="product-image">
+                                <div class="product-name">Axial Type Exhaust Fans</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/778899/FFFFFF?text=Centrifugal" alt="Centrifugal type exhaust fans" class="product-image">
+                                <div class="product-name">Centrifugal Type Exhaust Fans</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/696969/FFFFFF?text=Inline" alt="Inline fresh air fans" class="product-image">
+                                <div class="product-name">Inline Fresh Air Fans</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/808080/FFFFFF?text=Single" alt="Single inlet exhaust fans" class="product-image">
+                                <div class="product-name">Single Inlet Exhaust Fans</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FIRE DAMPERS -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">FIRE DAMPERS</h3>
+                        <p class="subsection-description">
+                            We provide a comprehensive range of mechanical, electromechanical, and actuator-driven fire dampers, designed to operate as standalone units or in conjunction with other dampers.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/DC143C/FFFFFF?text=Fusible" alt="Fusible fire dampers" class="product-image">
+                                <div class="product-name">Fusible Fire Dampers</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/B22222/FFFFFF?text=Motorised" alt="Motorised Fire dampers" class="product-image">
+                                <div class="product-name">Motorised Fire Dampers</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AIR DISTRIBUTION PRODUCTS -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">AIR DISTRIBUTION PRODUCTS</h3>
+                        <p class="subsection-description">
+                            GRILLS WITH COLLAR DAMPERS | DIFFUSERS | VOLUME CONTROL DAMPERS | MOTORISED VOLUME CONTROL DAMPERS
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/A9A9A9/FFFFFF?text=Manual" alt="Manual VCD" class="product-image">
+                                <div class="product-name">Manual VCD</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/778899/FFFFFF?text=Motorised" alt="Motorised VCD" class="product-image">
+                                <div class="product-name">Motorised VCD</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/696969/FFFFFF?text=VAV" alt="VAV" class="product-image">
+                                <div class="product-name">VAV</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/C0C0C0/000000?text=Diffuser" alt="Diffusers and grills" class="product-image">
+                                <div class="product-name">Diffusers and Grills</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- THERMAL AND ACOUSTIC INSULATION -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">THERMAL AND ACOUSTIC INSULATION</h3>
+                        <p class="subsection-description">
+                            Thermal and acoustic insulation in HVAC and industrial applications plays a critical role in enhancing the efficiency and performance of the structure.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/F5DEB3/000000?text=Thermal" alt="Thermal Insulation" class="product-image">
+                                <div class="product-name">Thermal Insulation</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/DEB887/000000?text=Acoustic" alt="Acoustic Insulation" class="product-image">
+                                <div class="product-name">Acoustic Insulation</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- INSULATION ADHESIVE -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">INSULATION ADHESIVE</h3>
+                        <p class="subsection-description">
+                            Thermal Insulation Adhesives are used to seal joints of synthetic rubber insulation foam or major plastic polymers.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/FFE4B5/000000?text=Adhesive" alt="DUC Insulation" class="product-image">
+                                <div class="product-name">DUC Insulation</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PUMPS -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">PUMPS</h3>
+                        <p class="subsection-description">
+                            Pumps are essential components in commercial building systems, serving a range of critical functions such as environmental comfort, potable water supply, and wastewater removal.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/4682B4/FFFFFF?text=Pump" alt="Pipe insulation" class="product-image">
+                                <div class="product-name">HVAC Pumps</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- HVAC SENSORS -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">HVAC SENSORS</h3>
+                        <p class="subsection-description">
+                            <strong>Pressure Sensors for HVAC and Air Handling Systems:</strong> Pressure sensors are essential in HVAC systems to monitor pressure drops and ensure system performance. They provide accurate measurements to maintain system efficiency. The common unit of measurement is the Pascal (Pa), with typical pressure measurements including differential, high, and low pressures.
+                            <br><br>
+                            • Differential Pressure Transducers: These sensors compare the pressure between two areas.<br>
+                            • High Pressure Transducers: These sensors measure the highest-pressure level in a designated area.<br>
+                            • The EE600 is a highly accurate differential air pressure sensor designed for HVAC systems, featuring an IP65 enclosure for durability and reliability.
+                            <br><br>
+                            <strong>Temperature Sensors for HVAC and Air Handling Systems:</strong> Temperature sensors monitor environmental temperature in HVAC systems, providing inputs to control systems that adjust heating or cooling outputs to maintain desired conditions. The EE431 temperature sensor is ideal for HVAC systems, offering active outputs with optional probes for passive recording.
+                            <br><br>
+                            <strong>Humidity Sensors for HVAC and Air Handling Systems:</strong> Humidity sensors regulate pressure and temperature by managing moisture levels within an environment. They ensure optimal humidity to protect infrastructure and maintain controlled environments. The EE150 humidity and temperature transmitter is specifically designed for HVAC applications, offering exceptional performance and value for money.
+                            <br><br>
+                            <strong>Indoor Air Quality Sensors for HVAC and Air Handling Systems:</strong> Indoor air quality sensors are vital for ensuring healthy and well-ventilated environments. These sensors provide data on ventilation efficiency and air filtration effectiveness. The EE800 accurately measures CO2, temperature, relative humidity, and dewpoint, making it an ideal solution for HVAC applications.
+                            <br><br>
+                            <strong>Room Sensors for HVAC and Air Handling Systems:</strong> Room sensors monitor variations in temperature and humidity, ensuring that indoor spaces remain comfortable. These sensors are integral to maintaining optimal conditions in rooms and buildings.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/4169E1/FFFFFF?text=Flow" alt="Water Flow Switch" class="product-image">
+                                <div class="product-name">Water Flow Switch</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/5F9EA0/FFFFFF?text=Air" alt="Indoor Air Quality Sensor" class="product-image">
+                                <div class="product-name">Indoor Air Quality Sensor</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/6495ED/FFFFFF?text=Pressure" alt="Pressure Sensor" class="product-image">
+                                <div class="product-name">Pressure Sensor</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/1E90FF/FFFFFF?text=Humidity" alt="Humidistat" class="product-image">
+                                <div class="product-name">Humidistat</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/4682B4/FFFFFF?text=Temp" alt="Temperature Sensor" class="product-image">
+                                <div class="product-name">Temperature Sensor</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/87CEEB/FFFFFF?text=Diff" alt="Differential Pressure Switch" class="product-image">
+                                <div class="product-name">Differential Pressure Switch</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/00CED1/FFFFFF?text=Temp+Hum" alt="Temperature and Humidity Sensor" class="product-image">
+                                <div class="product-name">Temperature & Humidity Sensor</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/48D1CC/FFFFFF?text=Clean" alt="Clean Room Monitor Sensor" class="product-image">
+                                <div class="product-name">Clean Room Monitor Sensor</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- THERMOSTAT -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">THERMOSTAT</h3>
+                        <p class="subsection-description">
+                            A thermostat is a regulating device component which senses the temperature of a physical system and performs actions so that the system's temperature is maintained near a desired setpoint.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/FF6347/FFFFFF?text=Thermostat" alt="Thermostat" class="product-image">
+                                <div class="product-name">Thermostat</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- HYDRONIC METERS -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">HYDRONIC METERS</h3>
+                        <p class="subsection-description">
+                            A hydrometer is a tool used to measure the density or specific gravity of a liquid when compared to water.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/4682B4/FFFFFF?text=Meter" alt="Hydronic Flow Meter" class="product-image">
+                                <div class="product-name">Hydronic Flow Meter</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- VFD -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">VFD</h3>
+                        <p class="subsection-description">
+                            SINAMICS variable frequency drives offer the ultimate solution for all drive applications, from low voltage to direct current (DC).
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/FF8C00/FFFFFF?text=VFD" alt="VFD" class="product-image">
+                                <div class="product-name">Variable Frequency Drive</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- UPS SYSTEM -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">UPS SYSTEM</h3>
+                        <p class="subsection-description">
+                            An uninterruptible power supply (UPS) is a continuous power system designed to provide automatic backup electricity to a load when the primary power source fails.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/32CD32/FFFFFF?text=UPS" alt="UPS System" class="product-image">
+                                <div class="product-name">UPS System</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- VFD -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">VFD</h3>
+                        <p class="subsection-description">
+                            SINAMICS variable frequency drives offer the ultimate solution for all drive applications, from low voltage to direct current (DC). Designed for enhanced efficiency and versatility, our drives empower your applications to evolve towards a more digital and sustainable future, meeting the demands of modern industries.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/FF8C00/FFFFFF?text=VFD" alt="VFD" class="product-image">
+                                <div class="product-name">Variable Frequency Drive</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Electrical Tab -->
+                <div class="content-section" id="electrical">
+                    <h2 class="section-title">ELECTRICAL</h2>
+                    <p class="section-description">
+                        PSG offers comprehensive electrical solutions including cables, circuit breakers, and electrical distribution systems for residential, commercial, and industrial applications.
+                    </p>
+
+                    <!-- ELECTRICAL CABLES -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">ELECTRICAL CABLES</h3>
+                        <p class="subsection-description">
+                            We provide a wide range of electrical cables including:
+                            <br><br>
+                            • Electric Panel Cables - Flexible cables for wiring electrical cabinets<br>
+                            • Power Cables - Energy cables for industrial and public installations<br>
+                            • Armoured Cables - Cables with aluminum or steel reinforcement<br>
+                            • Rubber Cables - Flexible rubber cables for fixed and mobile services<br>
+                            • Halogen-Free Cables - Low smoke, LSZH cables for enhanced safety<br>
+                            • Fire-Resistant Cables - Maintain functionality during fire exposure<br>
+                            • Control Cables - For machine interconnections and control systems<br>
+                            • Instrumentation Cables - Shielded cables for industrial environments<br>
+                            • Solar Cables - For photovoltaic panel connections<br>
+                            • Aluminium Cables - For power transmission
+                        </p>
+                    </div>
+
+                    <!-- CIRCUIT BREAKERS -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">CIRCUIT BREAKERS</h3>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/FF6347/FFFFFF?text=MCB" alt="MCBs" class="product-image">
+                                <div class="product-name">MCBs</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/DC143C/FFFFFF?text=MCCB" alt="MCCB" class="product-image">
+                                <div class="product-name">MCCB</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/B22222/FFFFFF?text=ACB" alt="ACB" class="product-image">
+                                <div class="product-name">ACB</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/8B0000/FFFFFF?text=ICCB" alt="Insulated Case Circuit Breakers" class="product-image">
+                                <div class="product-name">Insulated Case Circuit Breakers</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plumbing Tab -->
+                <div class="content-section" id="plumbing">
+                    <h2 class="section-title">PLUMBING</h2>
+                    <p class="section-description">
+                        Complete plumbing solutions including pipes, fittings, and fixtures for water supply and drainage systems.
+                    </p>
+
+                    <!-- PVC PIPES AND FITTINGS -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">PVC PIPES AND FITTINGS</h3>
+                        <p class="subsection-description">
+                            The system is an ideal solution for the distribution of water in irrigation, agriculture, tube wells, chemicals, aquaculture, as well as the distribution of compressed air and liquids. It provides an easy, economical, and technically advanced alternative, offering significant advantages over traditional G.I. piping systems.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/708090/FFFFFF?text=PVC" alt="PVC Pipes" class="product-image">
+                                <div class="product-name">PVC Pipes and Fittings</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CPVC PIPES AND FITTINGS -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">CPVC PIPES AND FITTINGS</h3>
+                        <p class="subsection-description">
+                            The CPVC plumbing system is a durable and cost-effective solution for both hot and cold water applications. Made from chlorinated polyvinyl chloride, the pipes and fittings are available in a complete range of sizes from ½" to 2".
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/D2691E/FFFFFF?text=CPVC" alt="CPVC Pipes" class="product-image">
+                                <div class="product-name">CPVC Pipes and Fittings</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- UPVC PIPES AND FITTINGS -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">UPVC PIPES AND FITTINGS</h3>
+                        <p class="subsection-description">
+                            UPVC White Pipe Fittings Systems are the result of advanced polymer chemistry research, designed to withstand harsh weather conditions and demanding usage.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/F5F5F5/000000?text=UPVC" alt="UPVC Pipes" class="product-image">
+                                <div class="product-name">UPVC Pipes and Fittings</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PPR PIPES AND FITTINGS -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">PPR PIPES AND FITTINGS</h3>
+                        <p class="subsection-description">
+                            Indo Green PPR pipes are the latest and most advanced solution for a wide range of plumbing applications. These pipes and their corresponding fittings are designed to handle both hot and cold water, making them versatile for various uses beyond traditional plumbing.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/228B22/FFFFFF?text=PPR" alt="PPR Pipes" class="product-image">
+                                <div class="product-name">PPR Pipes and Fittings</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fire Fighting Tab -->
+                <div class="content-section" id="fire-fighting">
+                    <h2 class="section-title">FIRE FIGHTING PRODUCTS</h2>
+                    <p class="section-description">
+                        Firefighting equipment is essential for effective fire response and mitigation, offering a range of critical tools including fire hoses, portable fire pumps, fire hose reels, fire monitors, nozzles, and more. PSG is a prominent supplier of firefighting products across the Middle East and GCC regions.
+                    </p>
+
+                    <!-- FIRE FIGHTING VALVES -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">FIRE FIGHTING VALVES</h3>
+                        <p class="subsection-description">
+                            A hose or hydrant valve is essential for controlling water flow during fire emergencies or in industrial settings. Our fire protection valves are designed for municipal, rural, and forestry hose applications.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/DC143C/FFFFFF?text=Gate" alt="Gate valves" class="product-image">
+                                <div class="product-name">Gate Valves</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/B22222/FFFFFF?text=Butterfly" alt="butterfly valve" class="product-image">
+                                <div class="product-name">Butterfly Valve</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/8B0000/FFFFFF?text=Check" alt="check valves" class="product-image">
+                                <div class="product-name">Check Valves</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FIRE HYDRANT SYSTEM -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">FIRE HYDRANT SYSTEM</h3>
+                        <p class="subsection-description">
+                            Fire hydrants are fixed pipe systems connected to a reliable water supply for fire protection. We offer two types: Dry Barrel and Wet Barrel types.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/FF0000/FFFFFF?text=Hydrant" alt="Fire Hydrant System" class="product-image">
+                                <div class="product-name">Fire Hydrant System</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PIPES AND FITTINGS -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">PIPES AND FITTINGS</h3>
+                        <p class="subsection-description">
+                            Fire sprinkler pipes and related fittings, typically made from carbon steel or ductile iron, are essential for transporting water to firefighting equipment. Ductile iron is designed to last for at least 100 years.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/696969/FFFFFF?text=Ductile" alt="Ductile Iron Pipes" class="product-image">
+                                <div class="product-name">Ductile Iron Pipes</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FIRE CABLES -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">FIRE CABLES</h3>
+                        <p class="subsection-description">
+                            Mineral insulated (MI) cables are designed for high-temperature and harsh environments, offering excellent fire resistance. Composed of copper conductors and magnesium oxide insulation, these cables maintain performance even at temperatures exceeding 1000°C.
+                        </p>
+                    </div>
+
+                    <!-- FIRE ALARM SYSTEM -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">FIRE ALARM SYSTEM</h3>
+                        <p class="subsection-description">
+                            Fire Detection and Alarm System is meticulously designed to offer comprehensive fire safety solutions across diverse environments.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/FF4500/FFFFFF?text=Voice" alt="Digital voice command" class="product-image">
+                                <div class="product-name">Digital Voice Command</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/FF6347/FFFFFF?text=Cable" alt="Alarm cable" class="product-image">
+                                <div class="product-name">Alarm Cable</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/DC143C/FFFFFF?text=Module" alt="Alarm module" class="product-image">
+                                <div class="product-name">Alarm Module</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/B22222/FFFFFF?text=Panel" alt="Alarm panel" class="product-image">
+                                <div class="product-name">Alarm Panel</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/8B0000/FFFFFF?text=Detector" alt="Fire detector" class="product-image">
+                                <div class="product-name">Fire Detector</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/FF0000/FFFFFF?text=Hooter" alt="Hooter" class="product-image">
+                                <div class="product-name">Hooter</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/CD5C5C/FFFFFF?text=Manual" alt="Manual call point" class="product-image">
+                                <div class="product-name">Manual Call Point</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- VESDA SYSTEM -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">VESDA SYSTEM</h3>
+                        <p class="subsection-description">
+                            The Xtralis Fire Detection and Alarm System, part of Honeywell's suite of safety solutions, offers advanced technologies for early fire detection and comprehensive alarm management.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/FF6347/FFFFFF?text=VESDA" alt="VESDA System" class="product-image">
+                                <div class="product-name">VESDA System</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PRE ACTION SYSTEM -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">PRE ACTION SYSTEM</h3>
+                        <p class="subsection-description">
+                            Pre-action fire sprinkler systems utilize the dry pipe concept, designed for water-sensitive environments.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/DC143C/FFFFFF?text=Interlock" alt="Inter lock" class="product-image">
+                                <div class="product-name">Inter Lock</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/B22222/FFFFFF?text=Double" alt="Double Inter Lock" class="product-image">
+                                <div class="product-name">Double Inter Lock</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/8B0000/FFFFFF?text=Potter" alt="Potter release" class="product-image">
+                                <div class="product-name">Potter Release</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/A52A2A/FFFFFF?text=System" alt="Pre action system" class="product-image">
+                                <div class="product-name">Pre Action System</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/CD5C5C/FFFFFF?text=Dry" alt="Dry Pilot" class="product-image">
+                                <div class="product-name">Interlock - Dry Pilot</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/FF6347/FFFFFF?text=Electric" alt="Electric Release" class="product-image">
+                                <div class="product-name">Interlock - Electric Release</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/FF4500/FFFFFF?text=Wet" alt="Wet Pilot" class="product-image">
+                                <div class="product-name">Interlock - Wet Pilot</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FIRE SPRINKLER SYSTEM -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">FIRE SPRINKLER SYSTEM</h3>
+                        <p class="subsection-description">
+                            Fire sprinklers are compact, thermosensitive devices featuring glass bulbs that activate when exposed to heat. Constructed from brass with various finishes.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/4682B4/FFFFFF?text=Gauge" alt="Pressure Gauge" class="product-image">
+                                <div class="product-name">Pressure Gauge</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/FF6347/FFFFFF?text=Recessed" alt="Recessed Sprinkler" class="product-image">
+                                <div class="product-name">Recessed Sprinkler</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/DC143C/FFFFFF?text=Side" alt="Side wall sprinkler" class="product-image">
+                                <div class="product-name">Side Wall Sprinkler</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/B22222/FFFFFF?text=Guard" alt="Sprinkler guard" class="product-image">
+                                <div class="product-name">Sprinkler Guard</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/8B0000/FFFFFF?text=Swing" alt="Swing check" class="product-image">
+                                <div class="product-name">Swing Check</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/A52A2A/FFFFFF?text=Test" alt="Test and Drain" class="product-image">
+                                <div class="product-name">Test and Drain</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/CD5C5C/FFFFFF?text=Upright" alt="Upright Sprinkler" class="product-image">
+                                <div class="product-name">Upright Sprinkler</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/FF4500/FFFFFF?text=Vertical" alt="Vertical side wall" class="product-image">
+                                <div class="product-name">Vertical Side Wall</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/FF6347/FFFFFF?text=Gong" alt="Water motor gong" class="product-image">
+                                <div class="product-name">Water Motor Gong</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/B8860B/FFFFFF?text=Y" alt="Y Sprinkler" class="product-image">
+                                <div class="product-name">Y Strainer</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/DC143C/FFFFFF?text=Zone" alt="Zone Controlled Manifold" class="product-image">
+                                <div class="product-name">Zone Controlled Manifold</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/4682B4/FFFFFF?text=Butterfly" alt="Butterfly Valve" class="product-image">
+                                <div class="product-name">Butterfly Valve</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/FF0000/FFFFFF?text=Concealed" alt="Concealed Sprinkler" class="product-image">
+                                <div class="product-name">Concealed Sprinkler</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/8B0000/FFFFFF?text=Conventional" alt="Conventional Sprinkler" class="product-image">
+                                <div class="product-name">Conventional Sprinkler</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/1E90FF/FFFFFF?text=Flow" alt="Flow Switch" class="product-image">
+                                <div class="product-name">Flow Switch</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/696969/FFFFFF?text=Gate" alt="Gate Valve" class="product-image">
+                                <div class="product-name">Gate Valve</div>
+                            </div>
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/FF6347/FFFFFF?text=Pendant" alt="Pendant Sprinkler" class="product-image">
+                                <div class="product-name">Pendant Sprinkler</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CO2 FIRE SUPPRESSION SYSTEM -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">CO2 FIRE SUPPRESSION SYSTEM</h3>
+                        <p class="subsection-description">
+                            Our CO2 fire suppression systems are meticulously engineered to protect critical assets such as electrical cabinets, electronic equipment, machinery, and storage areas.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/A9A9A9/FFFFFF?text=CO2" alt="CO2 Gas Suppression System" class="product-image">
+                                <div class="product-name">CO2 Gas Suppression System</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- NOVEC SYSTEM -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">NOVEC SYSTEM</h3>
+                        <p class="subsection-description">
+                            Novec 1230 is a cutting-edge, gas-based chemical extinguishing system that offers rapid, reliable fire suppression with minimal environmental impact.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/00CED1/FFFFFF?text=Novec" alt="Novec System" class="product-image">
+                                <div class="product-name">Novec System</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FIRE FIGHTING PUMPS -->
+                    <div class="subsection">
+                        <h3 class="subsection-title">FIRE FIGHTING PUMPS</h3>
+                        <p class="subsection-description">
+                            We offer comprehensive solutions for firefighting systems, including fire pumps, diesel pumps, jockey pumps, and various types of fire pumps.
+                        </p>
+                        <div class="product-grid">
+                            <div class="product-item">
+                                <img src="https://via.placeholder.com/150/FF4500/FFFFFF?text=Pump" alt="Fire Fighting Pumps" class="product-image">
+                                <div class="product-name">Fire Fighting Pumps</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Category Navigation
+        const sidebarItems = document.querySelectorAll('.sidebar-item');
+        const categoryPages = document.querySelectorAll('.category-page');
+
+        sidebarItems.forEach(item => {
+            item.addEventListener('click', function() {
+                // Remove active class from all sidebar items
+                sidebarItems.forEach(si => si.classList.remove('active'));
+                
+                // Add active class to clicked item
+                this.classList.add('active');
+                
+                // Hide all category pages
+                categoryPages.forEach(page => page.classList.remove('active'));
+                
+                // Show selected category page
+                const category = this.getAttribute('data-category');
+                document.getElementById(category).classList.add('active');
+                
+                // Reset tabs to first tab
+                const activePage = document.getElementById(category);
+                const firstTabButton = activePage.querySelector('.tab-button');
+                const allTabButtons = activePage.querySelectorAll('.tab-button');
+                const allContentSections = activePage.querySelectorAll('.content-section');
+                
+                allTabButtons.forEach(btn => btn.classList.remove('active'));
+                allContentSections.forEach(section => section.classList.remove('active'));
+                
+                firstTabButton.classList.add('active');
+                const firstTabId = firstTabButton.getAttribute('data-tab');
+                document.getElementById(firstTabId).classList.add('active');
+            });
+        });
+
+        // Tab Navigation
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('tab-button')) {
+                const tabButton = e.target;
+                const parentPage = tabButton.closest('.category-page');
+                const allTabButtons = parentPage.querySelectorAll('.tab-button');
+                const allContentSections = parentPage.querySelectorAll('.content-section');
+                
+                // Remove active class from all tab buttons and content sections
+                allTabButtons.forEach(btn => btn.classList.remove('active'));
+                allContentSections.forEach(section => section.classList.remove('active'));
+                
+                // Add active class to clicked tab button
+                tabButton.classList.add('active');
+                
+                // Show corresponding content section
+                const tabId = tabButton.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>

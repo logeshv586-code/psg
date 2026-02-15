@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
 import targetImg from "../../assets/target.png";
+import { MotionSection, MotionCard } from "@/components/ui/motion-ui";
+import { motion } from "framer-motion";
 
 const ArrowIcon = () => (
   <svg
@@ -124,7 +126,7 @@ const VisionMissionSection = () => {
   return (
     <section className="py-12 sm:py-16 lg:py-24 bg-background">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="relative overflow-hidden rounded-3xl shadow-soft-lg lg:min-h-[640px]">
+        <MotionSection className="relative overflow-hidden rounded-3xl shadow-soft-lg lg:min-h-[640px]">
           <div className="grid lg:grid-cols-2">
             <div className="relative bg-[#011232] text-white px-4 sm:px-6 py-8 sm:py-10 lg:px-[50px] lg:py-[60px] lg:pr-[140px] flex flex-col justify-center">
               <div className="inline-flex items-center px-3 sm:px-[14px] py-1 sm:py-[6px] border border-white/30 rounded-[30px] text-xs sm:text-[12px] font-semibold tracking-[1px] uppercase mb-4 sm:mb-[30px] w-fit">
@@ -173,48 +175,59 @@ const VisionMissionSection = () => {
 
             <div className="relative bg-[#F4F7FA] px-6 py-10 lg:px-[50px] lg:py-[60px] lg:pl-[140px] flex flex-col gap-[20px]">
               <div className="relative z-10 space-y-[20px]">
-                <InfoCard title="Vision" icon={<VisionIcon />}>
-                  Our vision is to be a global leader in diverse sectors by
-                  integrating expertise, sustainability, and customer-centric
-                  approaches. We aim to inspire trust and innovation, empowering
-                  businesses and individuals to thrive in a dynamic world
-                </InfoCard>
+                <MotionCard delay={0.2}>
+                  <InfoCard title="Vision" icon={<VisionIcon />}>
+                    Our vision is to be a global leader in diverse sectors by
+                    integrating expertise, sustainability, and customer-centric
+                    approaches. We aim to inspire trust and innovation, empowering
+                    businesses and individuals to thrive in a dynamic world
+                  </InfoCard>
+                </MotionCard>
 
-                <InfoCard title="Mission" icon={<MissionIcon />}>
-                  Our mission is to provide exceptional value and innovative
-                  solutions across diverse industries, including general trading,
-                  technology, travel, and environmental consulting. We are
-                  committed to fostering sustainable practices, enhancing
-                  customer experiences, and driving positive impact in every
-                  community we serve
-                </InfoCard>
+                <MotionCard delay={0.4}>
+                  <InfoCard title="Mission" icon={<MissionIcon />}>
+                    Our mission is to provide exceptional value and innovative
+                    solutions across diverse industries, including general trading,
+                    technology, travel, and environmental consulting. We are
+                    committed to fostering sustainable practices, enhancing
+                    customer experiences, and driving positive impact in every
+                    community we serve
+                  </InfoCard>
+                </MotionCard>
 
-                <InfoCard title="Values" icon={<ValuesIcon />}>
-                  At PSG, we uphold <strong>integrity</strong> and{" "}
-                  <strong>innovation</strong>, prioritizing{" "}
-                  <strong>excellence</strong> and <strong>customer focus</strong>{" "}
-                  in everything we do. We are committed to{" "}
-                  <strong>sustainability</strong> and{" "}
-                  <strong>community engagement</strong>, striving to make a
-                  positive impact in the areas we serve. Together, we empower our
-                  team and hold ourselves <strong>accountable</strong> for
-                  delivering exceptional results.
-                </InfoCard>
+                <MotionCard delay={0.6}>
+                  <InfoCard title="Values" icon={<ValuesIcon />}>
+                    At PSG, we uphold <strong>integrity</strong> and{" "}
+                    <strong>innovation</strong>, prioritizing{" "}
+                    <strong>excellence</strong> and <strong>customer focus</strong>{" "}
+                    in everything we do. We are committed to{" "}
+                    <strong>sustainability</strong> and{" "}
+                    <strong>community engagement</strong>, striving to make a
+                    positive impact in the areas we serve. Together, we empower our
+                    team and hold ourselves <strong>accountable</strong> for
+                    delivering exceptional results.
+                  </InfoCard>
+                </MotionCard>
               </div>
             </div>
           </div>
 
           <div className="pointer-events-none absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 lg:block z-20">
-            <div className="h-[220px] w-[220px] overflow-hidden rounded-full drop-shadow-sm lg:h-[260px] lg:w-[260px]">
+            <motion.div 
+              initial={{ scale: 0, opacity: 0 }}
+              whileInView={{ scale: 1.08, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.5, type: "spring" }}
+              className="h-[220px] w-[220px] overflow-hidden rounded-full drop-shadow-sm lg:h-[260px] lg:w-[260px]"
+            >
               <img
                 src={targetImg}
                 alt=""
-                className="h-full w-full select-none object-cover scale-[1.08]"
+                className="h-full w-full select-none object-cover"
                 draggable={false}
               />
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </MotionSection>
       </div>
     </section>
   );

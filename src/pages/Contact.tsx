@@ -3,6 +3,8 @@ import Layout from "@/components/layout/Layout";
 import { MapPin, Mail, Phone } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import qrCode from "@/assets/qr-code.jpg";
+import { MotionSection, MotionItem } from "@/components/ui/motion-ui";
+import { motion } from "framer-motion";
 
 const socialLinks = [
   {
@@ -106,14 +108,19 @@ const Contact = () => {
       <section className="gradient-contact pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-24">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center mb-8 sm:mb-12">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-3 sm:mb-4 leading-tight">
+            <motion.h1 
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-3 sm:mb-4 leading-tight"
+            >
               Lets talk business
-            </h1>
+            </motion.h1>
           </div>
 
           <div className="grid lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-12">
             {/* Contact Form */}
-            <div className="lg:col-span-3">
+            <MotionSection delay={0.2} className="lg:col-span-3">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
@@ -202,18 +209,20 @@ const Contact = () => {
                   />
                 </div>
 
-                <button
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                   type="submit"
                   disabled={isSubmitting}
                   className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-6 sm:px-8 py-3 rounded-full font-medium hover:bg-accent/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed touch-target"
                 >
                   {isSubmitting ? "Sending..." : "Enquire now"}
-                </button>
+                </motion.button>
               </form>
-            </div>
+            </MotionSection>
 
             {/* Contact Info */}
-            <div className="lg:col-span-2">
+            <MotionSection delay={0.4} className="lg:col-span-2">
               <div className="bg-card rounded-2xl p-4 sm:p-6 lg:p-8 shadow-soft">
                 <h2 className="text-xl sm:text-2xl font-heading font-bold text-foreground mb-4 sm:mb-6">
                   Addresses
@@ -269,7 +278,8 @@ const Contact = () => {
                   />
                   <div className="flex items-center gap-3 mb-3">
                     {socialLinks.map((social) => (
-                      <a
+                      <motion.a
+                        whileHover={{ scale: 1.2, rotate: 5 }}
                         key={social.label}
                         href={social.href}
                         target="_blank"
@@ -278,7 +288,7 @@ const Contact = () => {
                         aria-label={social.label}
                       >
                         {social.icon}
-                      </a>
+                      </motion.a>
                     ))}
                   </div>
                   <p className="text-xs text-muted-foreground">
@@ -287,7 +297,7 @@ const Contact = () => {
                   </p>
                 </div>
               </div>
-            </div>
+            </MotionSection>
           </div>
         </div>
        </section>

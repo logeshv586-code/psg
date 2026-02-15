@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Phone, Mail, ArrowRight, Plane } from "lucide-react";
 import Layout from "@/components/layout/Layout";
+import { AnimatedSection, AnimatedCard, AnimatedButton, StaggeredList } from "@/components/shared/AnimatedComponents";
 
 // Images
 import skydivingImg from "@/assets/tourism_images/07f201db989b67b27e1078ab2c931eae-scaled-qyaqk9uwzzxpgibik3iy0w68dr5sfewdof8lv9sbrk.jpg";
@@ -43,6 +44,11 @@ import heroTourism from "@/assets/new images/Enhanced Dubai Skyline.png";
 
 const Tourism = () => {
   const [activeTab, setActiveTab] = useState("uae");
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   const tabs = [
     { id: "uae", label: "UAE Tourism" },
@@ -121,7 +127,7 @@ const Tourism = () => {
     <Layout>
       {/* Hero Section */}
       <section className="relative h-screen flex items-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 parallax-slow">
           <img
             src={heroTourism}
             alt="Tourism Hero"
@@ -131,17 +137,17 @@ const Tourism = () => {
         </div>
         
         <div className="container mx-auto px-4 relative z-10 text-white h-full flex flex-col justify-center">
-          <div className="max-w-4xl mt-20">
-            <h1 className="text-6xl md:text-8xl font-bold mb-8 tracking-tight">Tourism</h1>
+          <div className={`max-w-4xl mt-20 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <h1 className="text-6xl md:text-8xl font-bold mb-8 tracking-tight animate-fade-in-up stagger-1 hover-scale">Tourism</h1>
             
-            <div className="relative pl-6 border-l-4 border-[#C785EC] mb-12">
+            <div className="relative pl-6 border-l-4 border-[#C785EC] mb-12 animate-fade-in-up stagger-2">
               <p className="text-xl md:text-3xl font-light leading-relaxed italic">
                 "Traveling, It leaves you speechless, then turns you into a storyteller"
               </p>
               <p className="text-lg mt-4 font-semibold text-[#C785EC]">– Ibn Battuta</p>
             </div>
             
-            <a href="#tour-form" className="bg-[#0e1a35] text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-slate-900 transition-all flex items-center gap-3 group w-fit">
+            <a href="#tour-form" className="bg-[#0e1a35] text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-slate-900 transition-all flex items-center gap-3 group w-fit animate-fade-in-up stagger-3 interactive-button">
               Get in touch 
               <span className="bg-[#C785EC] rounded-full w-8 h-8 flex items-center justify-center text-[#0e1a35] group-hover:scale-110 transition-transform">
                 <ArrowRight size={18} />
@@ -153,70 +159,74 @@ const Tourism = () => {
       </section>
 
       {/* Explore the World Section */}
-      <section className="py-24 bg-white relative overflow-hidden">
+      <AnimatedSection className="py-24 bg-white relative overflow-hidden" animationType="fade-in-up">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center mb-16 relative">
-             <div className="absolute -top-10 -left-20 pointer-events-none hidden md:block">
+             <div className="absolute -top-10 -left-20 pointer-events-none hidden md:block animate-float">
                 <img src={group8} alt="Decor" className="w-64 opacity-50" />
             </div>
-            <h2 className="text-5xl md:text-6xl font-bold mb-8 text-[#0e1a35] leading-tight relative z-10">
+            <h2 className="text-5xl md:text-6xl font-bold mb-8 text-[#0e1a35] leading-tight relative z-10 animate-fade-in-up stagger-2">
               Explore the World<br />
               with PSG Tourism
             </h2>
             <div className="space-y-6 text-lg text-gray-700 leading-relaxed max-w-4xl mx-auto">
-                <p>
+                <p className="animate-fade-in-up stagger-3">
                 Start planning your dream getaway today and create memories that will last forever.
                 </p>
-                <p>
+                <p className="animate-fade-in-up stagger-4">
                 At PSG Tourism, we focus on creating custom travel experiences for all types of travellers. Whether you're seeking adventure through trekking and hiking, looking to Indulge in a Romantic Honeymoon, or Planning a memorable Group Tour, we offer the perfect package for you. Our carefully crafted itineraries span destinations across the globe, offering something for every type of explorer.
                 </p>
             </div>
-             <div className="absolute -bottom-10 -right-20 pointer-events-none hidden md:block">
+             <div className="absolute -bottom-10 -right-20 pointer-events-none hidden md:block animate-float" style={{animationDelay: '1s'}}>
                 <img src={group8} alt="Decor" className="w-64 opacity-50 transform rotate-180" />
             </div>
           </div>
 
-          <div className="w-full mb-24">
-             <img src={group197} alt="World Map" className="w-full h-auto object-contain" />
+          <div className="w-full mb-24 animate-scale-in stagger-5">
+             <img src={group197} alt="World Map" className="w-full h-auto object-contain hover-scale" />
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* Effortless Travel Solutions */}
-      <section className="py-24 bg-[#FDF4FF]">
+      <AnimatedSection className="py-24 bg-[#FDF4FF]" animationType="fade-in-right">
         <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row items-center gap-16 max-w-7xl mx-auto">
                 <div className="flex-1">
-                    <button className="bg-white text-[#0e1a35] px-6 py-2 rounded-full font-bold text-sm mb-6 border border-gray-100 shadow-sm flex items-center gap-2">
-                        Why Choose PSG <span className="bg-[#C785EC] rounded-full w-2 h-2"></span>
-                    </button>
-                    <h2 className="text-4xl md:text-5xl font-bold mb-8 text-[#0e1a35]">
+                    <AnimatedButton variant="outline" size="sm" className="mb-6" animationType="lift">
+                        Why Choose PSG <span className="bg-[#C785EC] rounded-full w-2 h-2 ml-2"></span>
+                    </AnimatedButton>
+                    <h2 className="text-4xl md:text-5xl font-bold mb-8 text-[#0e1a35] animate-fade-in-up stagger-2">
                         Effortless Travel<br />
                         Solutions with PSG
                     </h2>
                     <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
-                        <p>
+                        <p className="animate-fade-in-up stagger-3">
                             At PSG Tourism, we focus on creating custom travel experiences for all types of travellers. Whether you're seeking adventure through trekking and hiking, looking to Indulge in a Romantic Honeymoon, or Planning a memorable Group Tour, we offer the perfect package for you. Our carefully crafted itineraries span destinations across the globe, offering something for every type of explorer.
                         </p>
-                        <p>
+                        <p className="animate-fade-in-up stagger-4">
                             In addition to visa services, PSG provides affordable, tailored tourism packages designed to meet the needs of both leisure and business travelers. Our solutions are crafted to deliver exceptional experiences without exceeding your budget.
                         </p>
-                        <p>
+                        <p className="animate-fade-in-up stagger-5">
                             Choose PSG for hassle-free travel planning, expert guidance, and seamless support every step of the way.
                         </p>
                     </div>
                 </div>
                 <div className="flex-1 flex gap-4">
                      <div className="flex-1">
-                        <img src={group9} alt="Travel 1" className="w-full h-auto rounded-3xl shadow-lg" />
+                        <AnimatedCard hoverEffect="lift" className="rounded-3xl overflow-hidden">
+                           <img src={group9} alt="Travel 1" className="w-full h-auto rounded-3xl shadow-lg hover-scale" />
+                        </AnimatedCard>
                      </div>
                      <div className="flex-1 pt-12">
-                        <img src={maskGroup15} alt="Travel 2" className="w-full h-auto rounded-3xl shadow-lg" />
+                        <AnimatedCard hoverEffect="lift" className="rounded-3xl overflow-hidden stagger-2">
+                           <img src={maskGroup15} alt="Travel 2" className="w-full h-auto rounded-3xl shadow-lg hover-scale" />
+                        </AnimatedCard>
                      </div>
                 </div>
             </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* VISA Services */}
       <section className="py-24 bg-white">

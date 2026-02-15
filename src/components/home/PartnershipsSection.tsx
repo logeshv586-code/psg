@@ -1,12 +1,14 @@
 import partnershipImg from "../../assets/new images/Enhanced IT Professional.png";
+import { MotionSection, MotionItem } from "@/components/ui/motion-ui";
+import { motion } from "framer-motion";
 
 const PartnershipsSection = () => {
   return (
-    <section className="py-20 bg-gray-50">
+    <section className="py-20 bg-gray-50 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
-          <div>
+          <MotionSection className="relative z-10">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border-2 border-gray-300 mb-6">
               <span className="text-sm font-medium text-gray-700 uppercase tracking-wide">
                 EXCELLENCE THROUGH COLLABORATION
@@ -30,7 +32,7 @@ const PartnershipsSection = () => {
             </p>
 
             {/* Quote Box */}
-            <div className="bg-gradient-to-r from-blue-50 to-green-50 rounded-2xl p-8 relative">
+            <MotionItem delay={0.2} className="bg-gradient-to-r from-blue-50 to-green-50 rounded-2xl p-8 relative">
               <div className="absolute top-0 right-0 w-32 h-32 opacity-10">
                 <svg viewBox="0 0 100 100" className="w-full h-full text-lime-400">
                   <path
@@ -46,24 +48,30 @@ const PartnershipsSection = () => {
               <p className="text-gray-800 text-lg leading-relaxed mt-4 relative z-10">
                 Join us as we pave the way for a brighter future across multiple sectors."
               </p>
-            </div>
-          </div>
+            </MotionItem>
+          </MotionSection>
 
           {/* Right Image */}
           <div className="flex justify-center lg:justify-end">
-            <div className="relative">
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              viewport={{ once: true }}
+              className="relative"
+            >
               {/* Dashed border circle */}
-              <div className="absolute inset-0 rounded-full border-4 border-dashed border-lime-400 animate-spin-slow"></div>
+              <div className="absolute inset-0 -m-4 rounded-full border-4 border-dashed border-lime-400 animate-spin-slow"></div>
               
               {/* Inner solid circle - Enterprise responsive sizing */}
-              <div className="relative w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] md:w-[300px] md:h-[300px] lg:w-[350px] lg:h-[350px] xl:w-[400px] xl:h-[400px] rounded-full bg-primary overflow-hidden">
+              <div className="relative w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] md:w-[300px] md:h-[300px] lg:w-[350px] lg:h-[350px] xl:w-[400px] xl:h-[400px] rounded-full bg-primary overflow-hidden shadow-2xl">
                 <img
                   src={partnershipImg}
                   alt="Professional woman with tablet"
                   className="w-full h-full object-cover"
                 />
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
