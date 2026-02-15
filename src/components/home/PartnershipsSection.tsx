@@ -1,4 +1,4 @@
-import partnershipImg from "../../assets/html-css-collage-concept-with-person-1-768x512.jpg.jpeg";
+import partnershipImg from "../../assets/new images/Enhanced IT Professional.png";
 
 const PartnershipsSection = () => {
   return (

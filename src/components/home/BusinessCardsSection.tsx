@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import environmentalImg from "../../assets/environmental.jpg";
-import digitalHealthImg from "../../assets/digital-health.jpg";
-import tourismImg from "../../assets/tourism.jpg";
-import timberImg from "../../assets/scraped/hero-timber.jpg";
-import softwareImg from "../../assets/software.jpg";
+import environmentalImg from "../../assets/new images/Enhanced Environmental.png";
+import digitalHealthImg from "../../assets/new images/Enhanced Digital Health.png";
+import tourismImg from "../../assets/new images/Enhanced Dubai Skyline.png";
+import timberImg from "../../assets/new images/Enhanced Timber Logs.png";
+import softwareImg from "../../assets/new images/Enhanced IT Professional.png";
 import arrowIcon from "../../assets/arrow-icon.png";
 
 const BusinessCardsSection = () => {
@@ -34,7 +34,12 @@ const BusinessCardsSection = () => {
             <Link
               to="/environmental"
               className="group relative overflow-hidden rounded-2xl min-h-[180px] sm:min-h-[220px] lg:min-h-0 lg:h-full"
-              style={{ backgroundImage: `url(${environmentalImg})` }}
+              style={{
+                backgroundImage: `url(${environmentalImg})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
             >
               <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
               <div className="relative flex h-full flex-col justify-between p-4 sm:p-6">
@@ -57,7 +62,12 @@ const BusinessCardsSection = () => {
             <Link
               to="/software"
               className="group relative overflow-hidden rounded-2xl min-h-[220px] lg:min-h-0 lg:h-full"
-              style={{ backgroundImage: `url(${softwareImg})` }}
+              style={{
+                backgroundImage: `url(${softwareImg})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
             >
               <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-transparent" />
               <div className="relative flex h-full flex-col justify-between p-6">
@@ -81,7 +91,12 @@ const BusinessCardsSection = () => {
           <Link
             to="/construction"
             className="group relative overflow-hidden rounded-2xl min-h-[260px] lg:row-span-2 lg:min-h-0"
-            style={{ backgroundImage: `url(${timberImg})` }}
+            style={{
+              backgroundImage: `url(${timberImg})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+            }}
           >
             <div className="absolute inset-0 bg-black/40" />
             <div className="relative flex h-full flex-col items-center justify-center p-8 text-center">
@@ -105,7 +120,12 @@ const BusinessCardsSection = () => {
             <Link
               to="/tourism"
               className="group relative overflow-hidden rounded-2xl min-h-[220px] lg:min-h-0 lg:h-full"
-              style={{ backgroundImage: `url(${tourismImg})` }}
+              style={{
+                backgroundImage: `url(${tourismImg})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
             >
               <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
               <div className="relative flex h-full flex-col justify-between p-6">
@@ -128,7 +148,12 @@ const BusinessCardsSection = () => {
             <Link
               to="/digital-health"
               className="group relative overflow-hidden rounded-2xl min-h-[220px] lg:min-h-0 lg:h-full"
-              style={{ backgroundImage: `url(${digitalHealthImg})` }}
+              style={{
+                backgroundImage: `url(${digitalHealthImg})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
             >
               <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
               <div className="relative flex h-full flex-col justify-between p-6">

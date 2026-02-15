@@ -2,11 +2,11 @@ import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
 import arrowIcon from "@/assets/arrow-icon.png";
-import digitalHealth from "@/assets/scraped/hero-health.webp";
-import timber from "@/assets/scraped/hero-timber.jpg";
-import tourism from "@/assets/scraped/hero-tourism.jpg";
-import software from "@/assets/scraped/hero-software.jpeg";
-import environmental from "@/assets/scraped/hero-environmental.jpg";
+import digitalHealth from "@/assets/new images/Enhanced Digital Health.png";
+import timber from "@/assets/new images/Enhanced Timber Logs.png";
+import tourism from "@/assets/new images/Enhanced Dubai Skyline.png";
+import software from "@/assets/new images/Enhanced IT Professional.png";
+import environmental from "@/assets/new images/Enhanced Environmental.png";
 
 interface Slide {
   id: number;

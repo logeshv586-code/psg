@@ -39,7 +39,7 @@ import saudi633 from "@/assets/tourism_images/Group-633.png";
 import saudi632 from "@/assets/tourism_images/Group-632.png";
 import saudi631 from "@/assets/tourism_images/Group-631.png";
 
-import heroTourism from "@/assets/scraped/hero-tourism.jpg"; 
+import heroTourism from "@/assets/new images/Enhanced Dubai Skyline.png"; 
 
 const Tourism = () => {
   const [activeTab, setActiveTab] = useState("uae");

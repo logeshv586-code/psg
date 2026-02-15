@@ -1,10 +1,10 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import environmentalImg from "../../assets/environmental.jpg";
-import constructionImg from "../../assets/scraped/hero-timber.jpg";
-import tourismImg from "../../assets/tourism.jpg";
-import itImg from "../../assets/software.jpg";
-import digitalHealthImg from "../../assets/digital-health.jpg";
+import environmentalImg from "../../assets/new images/Enhanced Environmental.png";
+import constructionImg from "../../assets/new images/Enhanced Timber Logs.png";
+import tourismImg from "../../assets/new images/Enhanced Dubai Skyline.png";
+import itImg from "../../assets/new images/Enhanced IT Professional.png";
+import digitalHealthImg from "../../assets/new images/Enhanced Digital Health.png";
 
 const BusinessVerticalsGrid = () => {
   const verticals = [

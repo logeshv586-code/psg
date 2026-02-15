@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import heroSoftware from "@/assets/software.jpg";
-import heroTourism from "@/assets/tourism.jpg";
-import heroHealth from "@/assets/digital-health.jpg";
-import heroTimber from "@/assets/timber.png";
-import heroEnvironmental from "@/assets/environmental.jpg";
+import heroSoftware from "@/assets/new images/Enhanced IT Professional.png";
+import heroTourism from "@/assets/new images/Enhanced Dubai Skyline.png";
+import heroHealth from "@/assets/new images/Enhanced Digital Health.png";
+import heroTimber from "@/assets/new images/Enhanced Timber Logs.png";
+import heroEnvironmental from "@/assets/new images/Enhanced Environmental.png";
 
 const services = [
   {

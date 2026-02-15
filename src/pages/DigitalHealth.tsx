@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Layout from "@/components/layout/Layout";
-import DigitalHealthHero from "../assets/digital-health.jpg";
+import DigitalHealthHero from "../assets/new images/Enhanced Digital Health.png";
 
 const DigitalHealth = () => {
   const [activeTab, setActiveTab] = useState('scribing');

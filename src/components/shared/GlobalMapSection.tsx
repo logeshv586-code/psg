@@ -1,19 +1,19 @@
 import { Link } from "react-router-dom";
-import mapImg from "../../assets/world-map-night.jpg";
+import mapImg from "../../assets/new images/Enhanced Global Network.png";
 import logoImg from "../../assets/psg_logo-removebg-preview-1.png";
 import arrowImg from "../../assets/left-circle-arrow.png";
 
 const GlobalMapSection = () => {
   return (
     <section className="bg-background">
-      <div className="relative w-full overflow-hidden bg-black h-[320px] sm:h-[280px] md:h-[300px] lg:h-[360px]">
+      <div className="relative w-full overflow-hidden bg-background h-[320px] sm:h-[280px] md:h-[300px] lg:h-[360px]">
         <img
           src={mapImg}
           alt=""
-          className="absolute inset-0 h-full w-full object-cover object-center opacity-90"
+          className="absolute inset-0 h-full w-full object-cover object-center opacity-100 brightness-110"
           draggable={false}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/35 to-black/75" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-black/5 to-black/20" />
 
         <div className="relative z-10 flex h-full items-center justify-center px-4">
           <div className="relative w-full max-w-[440px] overflow-hidden rounded-2xl bg-gradient-to-br from-[#DDFBC7] to-[#F4FFD8] p-5 sm:p-6 shadow-2xl">

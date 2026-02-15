@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import environmentalImg from "../../assets/environmental.jpg";
-import digitalHealthImg from "../../assets/digital-health.jpg";
-import constructionImg from "../../assets/timber.png";
-import tourismImg from "../../assets/tourism.jpg";
-import softwareImg from "../../assets/software.jpg";
+import environmentalImg from "../../assets/new images/Enhanced Environmental.png";
+import digitalHealthImg from "../../assets/new images/Enhanced Digital Health.png";
+import constructionImg from "../../assets/new images/Enhanced Timber Logs.png";
+import tourismImg from "../../assets/new images/Enhanced Dubai Skyline.png";
+import softwareImg from "../../assets/new images/Enhanced IT Professional.png";
 
 const AboutBusinessCardsSection = () => {
   const cards = [
