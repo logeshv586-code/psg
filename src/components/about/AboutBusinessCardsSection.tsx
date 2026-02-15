@@ -62,30 +62,34 @@ const AboutBusinessCardsSection = () => {
           </p>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-5">
-          {cards.map((card) => (
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-5 items-start">
+          {cards.map((card, index) => (
             <Link
               key={card.title}
               to={card.link}
-              className={`group relative overflow-hidden rounded-2xl ${card.bgClass} min-h-[220px]`}
+              className={`group relative overflow-hidden rounded-3xl h-[320px] lg:h-[400px] shadow-lg transition-all duration-300 hover:shadow-xl ${card.bgClass}
+                ${index === 1 || index === 3 ? 'lg:mt-12' : ''}
+                ${index === 2 ? 'lg:mt-24' : ''}
+              `}
             >
-              <div className="relative z-10 flex h-full flex-col items-center px-6 pt-6 text-center">
-                <h3 className="text-sm font-semibold text-foreground leading-snug min-h-[40px]">
+              {/* Background Image */}
+              <img
+                src={card.image}
+                alt={card.title}
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              
+              {/* Overlay Gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 transition-opacity duration-300" />
+
+              {/* Content */}
+              <div className="relative z-10 flex h-full flex-col justify-end p-6">
+                <h3 className="text-lg lg:text-xl font-bold text-white leading-tight mb-2 transform transition-transform duration-300 group-hover:-translate-y-1">
                   {card.title}
                 </h3>
-                <p className="mt-3 text-[11px] leading-relaxed text-muted-foreground">
+                <p className="text-sm text-gray-200 opacity-0 transform translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 delay-75">
                   {card.description}
                 </p>
-                <div className="mt-auto w-full pt-5">
-                  <div className="h-[110px] w-full overflow-hidden rounded-xl">
-                    <img
-                      src={card.image}
-                      alt=""
-                      className={`h-full w-full ${card.imageClass} transition-transform duration-300 group-hover:scale-[1.03]`}
-                      draggable={false}
-                    />
-                  </div>
-                </div>
               </div>
             </Link>
           ))}
