@@ -103,15 +103,15 @@ const Contact = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="gradient-contact py-16 lg:py-24">
+      <section className="gradient-contact pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-24">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl lg:text-5xl font-heading font-bold text-foreground mb-4">
+          <div className="text-center mb-8 sm:mb-12">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-3 sm:mb-4 leading-tight">
               Lets talk business
             </h1>
           </div>
 
-          <div className="grid lg:grid-cols-5 gap-8 lg:gap-12">
+          <div className="grid lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-12">
             {/* Contact Form */}
             <div className="lg:col-span-3">
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -205,7 +205,7 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-8 py-3 rounded-full font-medium hover:bg-accent/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-6 sm:px-8 py-3 rounded-full font-medium hover:bg-accent/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed touch-target"
                 >
                   {isSubmitting ? "Sending..." : "Enquire now"}
                 </button>
@@ -214,8 +214,8 @@ const Contact = () => {
 
             {/* Contact Info */}
             <div className="lg:col-span-2">
-              <div className="bg-card rounded-2xl p-6 lg:p-8 shadow-soft">
-                <h2 className="text-2xl font-heading font-bold text-foreground mb-6">
+              <div className="bg-card rounded-2xl p-4 sm:p-6 lg:p-8 shadow-soft">
+                <h2 className="text-xl sm:text-2xl font-heading font-bold text-foreground mb-4 sm:mb-6">
                   Addresses
                 </h2>
 

@@ -98,12 +98,12 @@ const HeroSlider = () => {
 
   return (
     <section className="relative min-h-[calc(100vh-80px)] gradient-hero overflow-hidden">
-      <div className="container mx-auto px-4 lg:px-8 py-12 lg:py-20">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center min-h-[60vh]">
+      <div className="container mx-auto px-4 lg:px-8 pt-24 pb-8 sm:pt-28 sm:pb-12 lg:pt-32 lg:pb-20">
+        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-16 items-center min-h-[50vh] sm:min-h-[60vh]">
           {/* Left Content */}
           <div className="order-2 lg:order-1">
             <h1
-              className="hero-heading mb-6 animate-slide-in-left"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 animate-slide-in-left leading-tight"
               key={currentSlide}
             >
               {currentSlideData.title.map((line, index) => (
@@ -138,7 +138,7 @@ const HeroSlider = () => {
                 <img
                   src={currentSlideData.image}
                   alt={currentSlideData.category}
-                  className="w-full h-[300px] lg:h-[400px] object-cover"
+                  className="w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] object-cover"
                 />
               </div>
 
@@ -157,7 +157,7 @@ const HeroSlider = () => {
               </div>
 
               {/* Description */}
-              <p className="mt-4 text-foreground/70 text-sm lg:text-base leading-relaxed max-w-md">
+              <p className="mt-3 sm:mt-4 text-foreground/70 text-sm md:text-base leading-relaxed max-w-md">
                 {currentSlideData.description}
               </p>
             </div>

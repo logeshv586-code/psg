@@ -63,7 +63,7 @@ const Career = () => {
     <Layout>
       <section className="bg-gradient-to-b from-[#d9eef4] to-[#e8f5df]">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="py-10 lg:py-14 text-center">
+          <div className="pt-24 pb-10 lg:pt-32 lg:pb-14 text-center">
             <h1 className="text-3xl lg:text-4xl font-heading font-bold text-foreground">
               Join with us
             </h1>

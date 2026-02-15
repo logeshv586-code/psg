@@ -9,9 +9,20 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: {
+        DEFAULT: "1rem",
+        sm: "1.5rem",
+        lg: "2rem",
+        xl: "3rem",
+        "2xl": "4rem",
+      },
       screens: {
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1280px",
         "2xl": "1400px",
+        "3xl": "1600px",
       },
     },
     extend: {
@@ -117,6 +128,16 @@ export default {
       boxShadow: {
         "soft": "0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)",
         "soft-lg": "0 10px 40px -15px rgba(0, 0, 0, 0.1)",
+      },
+      screens: {
+        'xs': '475px',
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1400px',
+        '3xl': '1600px',
+        '4xl': '1920px',
       },
     },
   },

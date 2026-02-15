@@ -14,17 +14,17 @@ const PartnershipsSection = () => {
               <div className="w-3 h-3 rounded-full bg-lime-400"></div>
             </div>
 
-            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-6 leading-tight">
               Building Partnerships<br />
               with Trust and Vision
             </h2>
 
-            <p className="text-lg text-gray-700 mb-6">
+            <p className="text-base sm:text-lg text-gray-700 mb-6 leading-relaxed">
               Our dedicated team of professionals is committed to excellence, leveraging 
               their extensive knowledge and experience to meet the unique needs of our clients.
             </p>
 
-            <p className="text-lg text-gray-700 mb-8">
+            <p className="text-base sm:text-lg text-gray-700 mb-8 leading-relaxed">
               We believe in fostering strong relationships with our customers and partners, 
               built on trust, collaboration, and a shared vision for success.
             </p>
@@ -55,8 +55,8 @@ const PartnershipsSection = () => {
               {/* Dashed border circle */}
               <div className="absolute inset-0 rounded-full border-4 border-dashed border-lime-400 animate-spin-slow"></div>
               
-              {/* Inner solid circle */}
-              <div className="relative w-[400px] h-[400px] rounded-full bg-primary overflow-hidden">
+              {/* Inner solid circle - Enterprise responsive sizing */}
+              <div className="relative w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] md:w-[300px] md:h-[300px] lg:w-[350px] lg:h-[350px] xl:w-[400px] xl:h-[400px] rounded-full bg-primary overflow-hidden">
                 <img
                   src={partnershipImg}
                   alt="Professional woman with tablet"

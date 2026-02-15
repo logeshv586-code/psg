@@ -101,17 +101,17 @@ type InfoCardProps = {
 const InfoCard = ({ title, icon, children, className }: InfoCardProps) => {
   return (
     <div
-      className={`rounded-[20px] bg-white p-[10px] shadow-[0_10px_40px_rgba(0,0,0,0.02)] hover:-translate-y-[5px] transition-transform duration-300 ${
+      className={`rounded-[20px] bg-white p-3 sm:p-[10px] shadow-[0_10px_40px_rgba(0,0,0,0.02)] hover:-translate-y-[5px] transition-transform duration-300 ${
         className ?? ""
       }`}
     >
-      <div className="flex items-start gap-[5px]">
-        <div className="flex-shrink-0 w-[80px] h-[80px]">{icon}</div>
+      <div className="flex items-start gap-2 sm:gap-[5px]">
+        <div className="flex-shrink-0 w-[50px] h-[50px] sm:w-[60px] sm:h-[60px] lg:w-[80px] lg:h-[80px]">{icon}</div>
         <div>
-          <h3 className="text-[28px] font-semibold text-[#011232] mb-[15px] leading-tight">
+          <h3 className="text-lg sm:text-2xl lg:text-[28px] font-semibold text-[#011232] mb-2 sm:mb-[15px] leading-tight">
             {title}
           </h3>
-          <div className="text-base leading-[1.6] text-[#555555]">
+          <div className="text-sm sm:text-base leading-[1.6] text-[#555555]">
             {children}
           </div>
         </div>
@@ -122,22 +122,22 @@ const InfoCard = ({ title, icon, children, className }: InfoCardProps) => {
 
 const VisionMissionSection = () => {
   return (
-    <section className="py-16 lg:py-24 bg-background">
+    <section className="py-12 sm:py-16 lg:py-24 bg-background">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="relative overflow-hidden rounded-3xl shadow-soft-lg lg:min-h-[640px]">
           <div className="grid lg:grid-cols-2">
-            <div className="relative bg-[#011232] text-white px-[50px] py-[60px] lg:pr-[140px] flex flex-col justify-center">
-              <div className="inline-flex items-center px-[14px] py-[6px] border border-white/30 rounded-[30px] text-[12px] font-semibold tracking-[1px] uppercase mb-[30px] w-fit">
+            <div className="relative bg-[#011232] text-white px-4 sm:px-6 py-8 sm:py-10 lg:px-[50px] lg:py-[60px] lg:pr-[140px] flex flex-col justify-center">
+              <div className="inline-flex items-center px-3 sm:px-[14px] py-1 sm:py-[6px] border border-white/30 rounded-[30px] text-xs sm:text-[12px] font-semibold tracking-[1px] uppercase mb-4 sm:mb-[30px] w-fit">
                 <span>About Us</span>
-                <span className="ml-[10px] w-[10px] h-[10px] rounded-full bg-[#A2E033]" />
+                <span className="ml-2 sm:ml-[10px] w-2 h-2 sm:w-[10px] sm:h-[10px] rounded-full bg-[#A2E033]" />
               </div>
 
-              <h2 className="text-[44px] font-bold mb-[30px] leading-[1.2]">
+              <h2 className="text-2xl sm:text-3xl lg:text-[44px] font-bold mb-4 sm:mb-[30px] leading-[1.2]">
                 About our Vision &amp; Mission
               </h2>
 
-              <div className="text-[16px] leading-[1.8] text-white/90 max-w-[650px] mb-[40px] text-justify">
-                <p className="mb-[20px]">
+              <div className="text-sm sm:text-[16px] leading-[1.8] text-white/90 max-w-[650px] mb-6 sm:mb-[40px] text-justify">
+                <p className="mb-4 sm:mb-[20px]">
                   At Prime Source Global, we are committed to{" "}
                   <strong>pioneering solutions globally</strong> across diverse
                   sectors, including trading, travel and tourism, eHealth,
@@ -162,16 +162,16 @@ const VisionMissionSection = () => {
 
               <a
                 href="https://psgbiz.com/?page_id=1830"
-                className="inline-flex items-center px-[20px] py-[10px] bg-white text-[#011232] no-underline rounded-[30px] font-bold text-[14px] transition-all duration-300 w-fit group"
+                className="inline-flex items-center px-4 sm:px-[20px] py-2 sm:py-[10px] bg-white text-[#011232] no-underline rounded-[30px] font-bold text-xs sm:text-[14px] transition-all duration-300 w-fit group touch-target"
               >
                 Learn More
-                <span className="flex items-center justify-center w-[26px] h-[26px] bg-[#A0E75A] rounded-full ml-[12px] transition-transform duration-300 group-hover:translate-x-[4px] group-hover:-translate-y-[4px]">
+                <span className="flex items-center justify-center w-5 h-5 sm:w-[26px] sm:h-[26px] bg-[#A0E75A] rounded-full ml-2 sm:ml-[12px] transition-transform duration-300 group-hover:translate-x-[4px] group-hover:-translate-y-[4px]">
                   <ArrowIcon />
                 </span>
               </a>
             </div>
 
-            <div className="relative bg-[#F4F7FA] px-[50px] py-[60px] lg:pl-[140px] flex flex-col gap-[20px]">
+            <div className="relative bg-[#F4F7FA] px-6 py-10 lg:px-[50px] lg:py-[60px] lg:pl-[140px] flex flex-col gap-[20px]">
               <div className="relative z-10 space-y-[20px]">
                 <InfoCard title="Vision" icon={<VisionIcon />}>
                   Our vision is to be a global leader in diverse sectors by

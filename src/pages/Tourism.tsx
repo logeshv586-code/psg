@@ -28,7 +28,6 @@ import logo385 from "@/assets/tourism_images/Group-385-1.png";
 import logo388 from "@/assets/tourism_images/Group-388-1.png";
 
 import logo258 from "@/assets/tourism_images/logo-258x300.png";
-import footerLogo from "@/assets/tourism_images/psg_logo-removebg-preview-qw0nj8mw7fyynvalj5e03w049ktigl2o9v6mwi1ffs.png";
 
 // Saudi Logos
 import saudi627 from "@/assets/tourism_images/Group-627.png";
@@ -150,10 +149,6 @@ const Tourism = () => {
             </a>
           </div>
           
-          <div className="absolute bottom-12 left-4 md:left-20 animate-bounce flex flex-col items-center gap-2 text-[#C785EC]">
-             <span className="text-sm uppercase tracking-widest text-white">Scroll Down</span>
-             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-          </div>
         </div>
       </section>
 
@@ -464,29 +459,7 @@ const Tourism = () => {
           </div>
         </div>
       </section>
-      {/* Sustainable Future Section */}
-      <section className="py-24 bg-white relative">
-         <div className="container mx-auto px-4">
-             <div className="flex flex-col md:flex-row items-center justify-center gap-12 text-center md:text-left">
-                 <div className="w-64">
-                    <img src={footerLogo} alt="PSG Logo" className="w-full h-auto object-contain" />
-                 </div>
-                 <div>
-                    <h2 className="text-4xl md:text-5xl font-bold text-[#0e1a35] mb-8 leading-tight">
-                        Innovating for a<br />
-                        Sustainable Future<br />
-                        Worldwide
-                    </h2>
-                     <button className="bg-[#0e1a35] text-white px-6 py-2 rounded-full font-bold text-sm flex items-center gap-3 group w-fit mx-auto md:mx-0">
-                      Learn More 
-                      <span className="bg-[#A0E75A] rounded-full w-6 h-6 flex items-center justify-center text-[#0e1a35] group-hover:scale-110 transition-transform">
-                        <ArrowRight size={14} />
-                      </span>
-                    </button>
-                 </div>
-             </div>
-         </div>
-      </section>
+      
 
     </Layout>
   );

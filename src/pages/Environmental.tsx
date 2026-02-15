@@ -17,17 +17,17 @@ const Environmental = () => {
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://www.psgbiz.com/wp-content/uploads/2024/12/7a54dfb0668a6bc8a82014168d836a97.jpg')`
         }}
       >
-        <div className="container mx-auto px-6 pt-20">
+        <div className="container mx-auto px-6 pt-24 md:pt-20">
             <div className="max-w-3xl text-white">
-                <img src="https://www.psgbiz.com/wp-content/uploads/2024/12/environmental-white-logo-300x124.png" alt="PSG Logo" className="h-16 mb-8" />
-                <h1 className="text-6xl font-bold mb-6">Environmental consultancy and Studies</h1>
-                <p className="text-xl italic mb-4">"What we are doing to the forests of the world is but a mirror reflection of what we are doing to ourselves and to one another"</p>
-                <p className="text-lg">— Mahatma Gandhi</p>
+                <img src="https://www.psgbiz.com/wp-content/uploads/2024/12/environmental-white-logo-300x124.png" alt="PSG Logo" className="h-10 md:h-16 mb-6 md:mb-8" />
+                <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 md:mb-6 leading-tight break-words">Environmental Consultancy and Studies</h1>
+                <p className="text-base sm:text-lg md:text-xl italic mb-3 md:mb-4">"What we are doing to the forests of the world is but a mirror reflection of what we are doing to ourselves and to one another"</p>
+                <p className="text-sm md:text-lg">— Mahatma Gandhi</p>
             </div>
         </div>
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white animate-bounce cursor-pointer">
-            <p className="text-sm uppercase tracking-widest mb-2">Scroll Down</p>
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <div className="absolute bottom-6 md:bottom-10 left-1/2 transform -translate-x-1/2 text-white animate-bounce cursor-pointer">
+            <p className="text-xs md:text-sm uppercase tracking-widest mb-2">Scroll Down</p>
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 md:h-6 md:w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
             </svg>
         </div>
@@ -148,14 +148,7 @@ const Environmental = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-green-900 text-white overflow-hidden relative">
-        <div className="container mx-auto px-6 relative z-10 text-center">
-            <h2 className="text-5xl font-bold mb-8 leading-tight">Innovating for a Sustainable Future Worldwide</h2>
-            <p className="text-xl text-green-100 mb-10">Prime Source Global delivers innovative solutions globally with a focus on environmental sustainability.</p>
-            <a href="#" className="inline-block bg-white text-green-900 px-10 py-4 rounded-full font-bold hover:bg-green-400 hover:text-white transition duration-300">Learn More</a>
-        </div>
-      </section>
+      
     </Layout>
   );
 };

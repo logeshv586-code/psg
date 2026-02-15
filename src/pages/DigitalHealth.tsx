@@ -167,14 +167,7 @@ const DigitalHealth = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gray-900 text-white overflow-hidden relative">
-        <div className="container mx-auto px-6 relative z-10 text-center">
-          <h2 className="text-5xl font-bold mb-8 leading-tight">Innovating for a Sustainable Future Worldwide</h2>
-          <p className="text-xl text-gray-400 mb-10">Prime Source Global delivers innovative solutions globally.</p>
-          <a href="#" className="inline-block bg-white text-gray-900 px-10 py-4 rounded-full font-bold hover:bg-blue-400 hover:text-white transition duration-300">Learn More</a>
-        </div>
-      </section>
+      
     </Layout>
   );
 };

@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import psgLogo from "@/assets/psg-logo.png";
 import psgLogoFull from "@/assets/psg-logo-full.png";
+import coloredLogo from "@/assets/Prime-source-global-logo.png";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -37,17 +38,17 @@ const Header = () => {
           : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+      <div className="container mx-auto px-4 lg:px-8 safe-area-left safe-area-right">
+        <div className="flex items-center justify-between h-16 lg:h-20 safe-area-top">
           {/* Logo */}
           <Link to="/" className="flex-shrink-0">
             <img
-              src={psgLogo}
+              src={isScrolled ? coloredLogo : psgLogo}
               alt="PSG Logo"
               className="h-10 lg:h-12 w-auto block lg:hidden"
             />
             <img
-              src={psgLogoFull}
+              src={isScrolled ? coloredLogo : psgLogoFull}
               alt="Prime Source Global"
               className="h-10 lg:h-12 w-auto hidden lg:block"
             />
@@ -133,7 +134,7 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 rounded-lg hover:bg-secondary transition-colors"
+            className="lg:hidden p-2 rounded-lg hover:bg-secondary transition-colors touch-target"
             aria-label="Toggle menu"
           >
             {isMenuOpen ? (

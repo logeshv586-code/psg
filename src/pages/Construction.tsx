@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Layout from "@/components/layout/Layout";
 import { ChevronRight } from "lucide-react";
+import heroTimber from "@/assets/scraped/hero-timber.jpg";
 
 import imgGeneric from "../../www.psgbiz.com/Frame-29.png";
 
@@ -747,8 +748,29 @@ const Construction = () => {
 
   return (
     <Layout>
+      {/* Hero Section */}
+      <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img
+            src={heroTimber}
+            alt="Construction Hero"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/50"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10 text-white text-center pt-20">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
+              Construction & Interior
+            </h1>
+            <p className="text-lg md:text-2xl font-light max-w-3xl mx-auto leading-relaxed">
+              Building the future with sustainable timber and innovative construction solutions
+            </p>
+        </div>
+      </section>
+
       <section className="bg-[#F5E6D3]">
-        <div className="flex min-h-[80vh]">
+        <div className="flex flex-col lg:flex-row min-h-[80vh]">
           <aside className="w-[280px] bg-[#F5E6D3] pt-[60px] sticky top-16 h-[calc(100vh-4rem)] border-r border-[#E0E0E0] overflow-y-auto hidden lg:block">
             {categoryList.map((c) => (
               <button
@@ -780,6 +802,43 @@ const Construction = () => {
               </button>
             ))}
           </aside>
+          
+          {/* Mobile Category Navigation */}
+          <div className="lg:hidden w-full overflow-x-auto bg-[#F5E6D3] sticky top-[64px] z-40 border-b border-[#E0E0E0] px-4 py-3 whitespace-nowrap scrollbar-hide">
+             <div className="flex space-x-3">
+              {categoryList.map((c) => (
+                <button
+                  key={c.id}
+                  onClick={() => {
+                    setActiveCategory(c.id);
+                    setActiveSubTab(
+                      c.id === "timber"
+                        ? "timber-interior"
+                        : c.id === "plywood"
+                          ? "plywood-interior"
+                          : c.id === "mdf-chipboard"
+                            ? "mdf"
+                            : c.id === "mep"
+                              ? "hvac"
+                              : c.id === "hardwares" 
+                                ? "door-hardware" 
+                                : "timber-interior"
+                    );
+                    // Optional: Scroll to top of content
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
+                  className={`px-5 py-2 rounded-full text-sm font-medium transition-all border ${
+                    activeCategory === c.id 
+                      ? "bg-[#FF8C42] text-white border-[#FF8C42] shadow-md" 
+                      : "bg-white text-[#555] border-[#E0E0E0]"
+                  }`}
+                >
+                  {c.label}
+                </button>
+              ))}
+             </div>
+          </div>
+
           <main className="flex-1 px-5 sm:px-8 md:px-12 py-10 max-w-[1400px]">
             {activeCategory === "timber" && (
               <div>
