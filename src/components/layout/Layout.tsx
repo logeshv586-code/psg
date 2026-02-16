@@ -12,7 +12,7 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="min-h-screen flex flex-col prevent-overflow">
       <Header />
-      <PageTransition className="flex-1 pt-16 lg:pt-20 safe-area-top">
+      <PageTransition className="flex-1">
         <main>{children}</main>
       </PageTransition>
       <GlobalMapSection />

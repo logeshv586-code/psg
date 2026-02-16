@@ -2,6 +2,7 @@ import Layout from "@/components/layout/Layout";
 import { useMemo, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import heroImage from "@/assets/new images/Future Smart City.png";
 import gallery1 from "@/assets/blog_1733819064.jpg.jpeg";
 import gallery2 from "@/assets/7a54dfb0668a6bc8a82014168d836a97.jpg.jpeg";
 import gallery3 from "@/assets/d6612fd275f0f4f34915416326106123-min.jpg.jpeg";
@@ -57,11 +58,23 @@ const Media = () => {
 
   return (
     <Layout>
-      {/* Breadcrumb */}
-      <section className="bg-secondary py-4">
-        <div className="container mx-auto px-4 lg:px-8">
-          <p className="text-sm text-muted-foreground">
-            HOME &gt; GALLERY
+      {/* Hero Section */}
+      <section className="relative h-[60vh] min-h-[400px] w-full flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img
+            src={heroImage}
+            alt="Media Hero"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/50" />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10 text-white text-center">
+          <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in-up">
+            Media
+          </h1>
+          <p className="text-lg md:text-xl max-w-2xl mx-auto animate-fade-in-up stagger-1">
+            Explore our latest updates and gallery
           </p>
         </div>
       </section>

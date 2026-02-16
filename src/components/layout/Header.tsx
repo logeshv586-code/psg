@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import psgLogo from "@/assets/psg-logo.png";
@@ -28,12 +28,28 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const location = useLocation();
-  const isScrolled = true;
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      if (offset > 10) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
+        isScrolled || isMenuOpen
           ? "bg-background/95 backdrop-blur-md shadow-soft"
           : "bg-transparent"
       }`}
@@ -43,12 +59,12 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex-shrink-0">
             <img
-              src={isScrolled ? coloredLogo : psgLogo}
+              src={isScrolled || isMenuOpen ? coloredLogo : psgLogo}
               alt="PSG Logo"
               className="h-10 lg:h-12 w-auto block lg:hidden"
             />
             <img
-              src={isScrolled ? coloredLogo : psgLogoFull}
+              src={isScrolled || isMenuOpen ? coloredLogo : psgLogoFull}
               alt="Prime Source Global"
               className="h-10 lg:h-12 w-auto hidden lg:block"
             />
@@ -67,7 +83,9 @@ const Header = () => {
               >
                 {item.children ? (
                   <button
-                    className="nav-link px-4 py-2 flex items-center gap-1"
+                    className={`nav-link px-4 py-2 flex items-center gap-1 ${
+                      !isScrolled ? "text-white hover:text-white/80" : ""
+                    }`}
                     onClick={() => {
                       if (location.pathname === "/") {
                         document.getElementById("business-section")?.scrollIntoView({
@@ -86,7 +104,7 @@ const Header = () => {
                     to={item.href}
                     className={`nav-link px-4 py-2 block ${
                       location.pathname === item.href ? "nav-link-active" : ""
-                    }`}
+                    } ${!isScrolled ? "text-white hover:text-white/80" : ""}`}
                   >
                     {item.label}
                   </Link>
@@ -134,7 +152,11 @@ const Header = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 rounded-lg hover:bg-secondary transition-colors touch-target"
+            className={`lg:hidden p-2 rounded-lg transition-colors touch-target ${
+              isScrolled || isMenuOpen
+                ? "hover:bg-secondary text-foreground"
+                : "text-white hover:bg-white/10"
+            }`}
             aria-label="Toggle menu"
           >
             {isMenuOpen ? (
