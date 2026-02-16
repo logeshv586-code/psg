@@ -1,106 +1,210 @@
 import Layout from "@/components/layout/Layout";
-import { ExternalLink, Handshake, Target, TrendingUp, Users } from "lucide-react";
+import { 
+  ExternalLink, 
+  Handshake, 
+  Target, 
+  TrendingUp, 
+  Users, 
+  Construction, 
+  HeartPulse, 
+  Leaf, 
+  Plane, 
+  Code2,
+  ArrowRight
+} from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import partnershipsBg from "@/assets/new images/Strategic Partnership.png";
+import { motion } from "framer-motion";
 
 const partnershipBenefits = [
   {
-    icon: <Handshake className="w-12 h-12" />,
+    icon: <Handshake className="w-10 h-10" />,
     title: "Collaborative Growth",
     description: "We believe in mutual success through strategic collaboration, working together to achieve shared goals and sustainable growth.",
   },
   {
-    icon: <Target className="w-12 h-12" />,
+    icon: <Target className="w-10 h-10" />,
     title: "Shared Vision",
     description: "Our partnerships are built on aligned objectives and a common vision for excellence across diverse industries.",
   },
   {
-    icon: <Users className="w-12 h-12" />,
+    icon: <Users className="w-10 h-10" />,
     title: "Trust & Integrity",
     description: "We foster long-term relationships based on transparency, reliability, and unwavering commitment to our partners.",
   },
   {
-    icon: <TrendingUp className="w-12 h-12" />,
+    icon: <TrendingUp className="w-10 h-10" />,
     title: "Innovation Focus",
     description: "Together with our partners, we drive innovation and adapt to changing market dynamics to stay ahead.",
   },
 ];
 
+const sectors = [
+  {
+    title: "Construction & Interior Supplies",
+    description: "Partner with us to supply quality timber, hardware, and MEP services to construction projects across the GCC region.",
+    icon: <Construction className="w-10 h-10 text-lime-600" />
+  },
+  {
+    title: "Digital Health Solutions",
+    description: "Collaborate on innovative healthcare technology solutions including virtual scribing, medical transcription, and coding services.",
+    icon: <HeartPulse className="w-10 h-10 text-lime-600" />
+  },
+  {
+    title: "Environmental Consulting",
+    description: "Join us in promoting sustainability through expert environmental management and consulting services.",
+    icon: <Leaf className="w-10 h-10 text-lime-600" />
+  },
+  {
+    title: "Travel & Tourism",
+    description: "Partner to create memorable travel experiences and tourism packages across the UAE and beyond.",
+    icon: <Plane className="w-10 h-10 text-lime-600" />
+  },
+  {
+    title: "Software Development & AI",
+    description: "Collaborate on cutting-edge software solutions and AI-powered applications for diverse industries.",
+    icon: <Code2 className="w-10 h-10 text-lime-600" />
+  },
+];
+
+const partners = [
+  { name: "Touchmark Descience", href: "https://touchmarkdes.com/" },
+  { name: "Md24 Global", href: "https://md24global.com/cgi-sys/suspendedpage.cgi" },
+  { name: "Maqnah", href: "https://www.maqnah.com/" },
+  { name: "R&R Environment", href: "https://www.rnrenvironmental.com/" },
+  { name: "Era Timbers", href: "https://eratimbers.com/" },
+  { name: "Plymarc", href: "https://www.plymarc.com/" },
+];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
+
 const StrategicPartnership = () => {
   const { toast } = useToast();
-
-  const partners = [
-    { name: "Touchmark Descience", href: "https://touchmarkdes.com/" },
-    { name: "Md24 Global", href: "https://md24global.com/cgi-sys/suspendedpage.cgi" },
-    { name: "Maqnah", href: "https://www.maqnah.com/" },
-    { name: "R&R Environment", href: "https://www.rnrenvironmental.com/" },
-    { name: "Era Timbers", href: "https://eratimbers.com/" },
-    { name: "Plymarc", href: "https://www.plymarc.com/" },
-  ];
 
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center bg-gradient-to-br from-navy to-navy/80">
-        <div
-          className="container mx-auto px-4 lg:px-8 py-20 relative z-10"
-          style={{
-            backgroundImage: `url(${partnershipsBg})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-        >
-          <div className="max-w-3xl">
-            <div className="inline-block mb-6">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border-2 border-lime-400 text-lime-400 font-semibold">
-                <span className="w-2 h-2 bg-lime-400 rounded-full"></span>
-                PARTNERSHIPS
+      <section className="relative min-h-[70vh] flex items-center overflow-hidden">
+        {/* Background Image with Parallax-like scale effect */}
+        <div className="absolute inset-0 z-0">
+          <motion.div
+            initial={{ scale: 1.1 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 10, ease: "easeOut" }}
+            className="w-full h-full"
+          >
+            <img 
+              src={partnershipsBg} 
+              alt="Strategic Partnerships Background" 
+              className="w-full h-full object-cover object-top"
+            />
+          </motion.div>
+          <div className="absolute inset-0 bg-gradient-to-br from-navy/90 via-navy/70 to-black/60"></div>
+        </div>
+
+        <div className="container mx-auto px-4 lg:px-8 py-20 relative z-10 flex flex-col items-center text-center">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="max-w-4xl"
+          >
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="inline-block mb-6"
+            >
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-lime-400/30 bg-lime-400/10 text-lime-400 font-semibold backdrop-blur-sm">
+                <span className="w-2 h-2 bg-lime-400 rounded-full animate-pulse"></span>
+                STRATEGIC ALLIANCES
               </span>
-            </div>
-            <h1 className="text-4xl lg:text-5xl xl:text-6xl font-heading font-bold text-white mb-6">
-              Strategic Partnerships for Mutual Success
+            </motion.div>
+            <h1 className="text-4xl lg:text-6xl xl:text-7xl font-heading font-bold text-white mb-6 tracking-tight">
+              Partnerships for <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-400 to-emerald-400">
+                Mutual Success
+              </span>
             </h1>
-            <p className="text-xl text-white/80 leading-relaxed">
-              At Prime Source Global, we believe in the power of collaboration. Our strategic partnerships are designed to create value, drive innovation, and achieve excellence together.
+            <p className="text-xl text-white/80 leading-relaxed max-w-2xl mx-auto">
+              Creating value, driving innovation, and achieving excellence through powerful collaboration and shared vision.
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Introduction Section */}
-      <section className="py-16 lg:py-24 bg-background">
+      <section className="py-20 lg:py-32 bg-background relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl lg:text-4xl font-heading font-bold text-foreground mb-6">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={containerVariants}
+            className="max-w-4xl mx-auto text-center"
+          >
+            <motion.h2 variants={itemVariants} className="text-3xl lg:text-5xl font-heading font-bold text-foreground mb-8">
               Building Partnerships with Purpose
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+            </motion.h2>
+            <motion.p variants={itemVariants} className="text-lg text-muted-foreground leading-relaxed mb-8">
               Prime Source Global is committed to forming strategic partnerships that go beyond traditional business relationships. We seek partners who share our values of quality, innovation, and sustainability across construction, digital health, environmental consulting, tourism, and software development sectors.
-            </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
+            </motion.p>
+            <motion.p variants={itemVariants} className="text-lg text-muted-foreground leading-relaxed">
               Our collaborative approach ensures that both parties benefit from shared expertise, resources, and market opportunities, creating a foundation for long-term success.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
         </div>
       </section>
 
-      <section className="py-12 lg:py-16 bg-background">
+      {/* Our Partners Grid */}
+      <section className="py-16 lg:py-24 bg-secondary/30">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-10">
-              <h2 className="text-3xl lg:text-4xl font-heading font-bold text-foreground mb-3">
-                Our Partners
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto"
+          >
+            <div className="text-center mb-12">
+              <h2 className="text-3xl lg:text-4xl font-heading font-bold text-foreground mb-4">
+                Our Esteemed Partners
               </h2>
+              <div className="w-20 h-1.5 bg-lime-400 mx-auto rounded-full mb-6"></div>
               <p className="text-muted-foreground">
-                Visit our partner websites. Each link opens in a new tab.
+                Collaborating with industry leaders to deliver excellence.
               </p>
             </div>
 
-            <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
+            <motion.div 
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
+            >
               {partners.map((partner) => (
-                <a
+                <motion.a
                   key={partner.name}
+                  variants={itemVariants}
                   href={partner.href}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -108,131 +212,169 @@ const StrategicPartnership = () => {
                   onClick={() =>
                     toast({
                       title: "Opening partner website",
-                      description: partner.name,
+                      description: `Redirecting to ${partner.name}...`,
                     })
                   }
-                  className="group flex touch-manipulation items-center justify-between gap-3 rounded-2xl border border-border bg-card px-4 py-3 sm:px-5 sm:py-4 shadow-soft transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-accent/50"
+                  whileHover={{ y: -5, scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group flex flex-col items-center justify-center p-8 rounded-2xl border border-border bg-card shadow-sm hover:shadow-xl hover:border-lime-400/50 transition-all duration-300 relative overflow-hidden"
                 >
-                  <span className="min-w-0 font-heading font-semibold text-foreground break-words">
+                  <div className="absolute inset-0 bg-gradient-to-br from-lime-400/0 to-lime-400/5 group-hover:from-lime-400/5 group-hover:to-lime-400/10 transition-colors duration-300"></div>
+                  <span className="font-heading font-bold text-lg text-foreground mb-3 z-10 text-center">
                     {partner.name}
                   </span>
-                  <span className="flex-shrink-0 inline-flex items-center gap-1.5 text-sm text-muted-foreground group-hover:text-foreground transition-colors">
-                    <span className="hidden sm:inline">Visit</span>
-                    <ExternalLink className="h-4 w-4" />
+                  <span className="inline-flex items-center gap-2 text-sm text-lime-600 font-medium z-10 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                    Visit Website <ExternalLink className="h-3 w-3" />
                   </span>
-                </a>
+                </motion.a>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
       {/* Partnership Benefits */}
-      <section className="py-16 lg:py-24 bg-secondary">
+      <section className="py-20 lg:py-32 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-heading font-bold text-foreground mb-4">
+          <div className="text-center mb-16">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-3xl lg:text-5xl font-heading font-bold text-foreground mb-6"
+            >
               Why Partner with PSG?
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, delay: 0.1 }}
+              className="text-muted-foreground max-w-2xl mx-auto text-lg"
+            >
               Our partnerships are built on core principles that ensure mutual benefit and sustainable growth
-            </p>
+            </motion.p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+          >
             {partnershipBenefits.map((benefit, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="bg-card rounded-2xl p-8 shadow-soft text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                variants={itemVariants}
+                whileHover={{ y: -5 }}
+                className="relative group bg-card rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-border/50 hover:border-lime-400/30 overflow-hidden"
               >
-                <div className="w-20 h-20 mx-auto mb-6 bg-accent/10 rounded-2xl flex items-center justify-center text-accent">
-                  {benefit.icon}
+                <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-lime-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                <div className="relative z-10">
+                  <div className="w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br from-lime-400/10 to-lime-400/20 flex items-center justify-center text-lime-600 group-hover:scale-110 transition-transform duration-300 shadow-inner">
+                    {benefit.icon}
+                  </div>
+                  
+                  <h3 className="text-xl font-heading font-bold text-foreground mb-3 group-hover:text-lime-600 transition-colors duration-300">
+                    {benefit.title}
+                  </h3>
+                  
+                  <p className="text-muted-foreground leading-relaxed text-sm lg:text-base">
+                    {benefit.description}
+                  </p>
                 </div>
-                <h3 className="text-xl font-heading font-semibold text-foreground mb-4">
-                  {benefit.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {benefit.description}
-                </p>
-              </div>
+                
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-lime-400/0 via-lime-400/50 to-lime-400/0 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Partnership Sectors */}
-      <section className="py-16 lg:py-24 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl lg:text-4xl font-heading font-bold text-foreground mb-8 text-center">
-              Partnership Opportunities Across Sectors
-            </h2>
-            
-            <div className="space-y-6">
-              <div className="bg-card rounded-xl p-6 shadow-soft">
-                <h3 className="text-xl font-heading font-semibold text-foreground mb-3">
-                  Construction & Interior Supplies
-                </h3>
-                <p className="text-muted-foreground">
-                  Partner with us to supply quality timber, hardware, and MEP services to construction projects across the GCC region.
-                </p>
-              </div>
+      <section className="py-20 lg:py-32 bg-navy relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-white/5 to-transparent pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-lime-400/10 rounded-full blur-3xl pointer-events-none"></div>
 
-              <div className="bg-card rounded-xl p-6 shadow-soft">
-                <h3 className="text-xl font-heading font-semibold text-foreground mb-3">
-                  Digital Health Solutions
-                </h3>
-                <p className="text-muted-foreground">
-                  Collaborate on innovative healthcare technology solutions including virtual scribing, medical transcription, and coding services.
-                </p>
-              </div>
-
-              <div className="bg-card rounded-xl p-6 shadow-soft">
-                <h3 className="text-xl font-heading font-semibold text-foreground mb-3">
-                  Environmental Consulting
-                </h3>
-                <p className="text-muted-foreground">
-                  Join us in promoting sustainability through expert environmental management and consulting services.
-                </p>
-              </div>
-
-              <div className="bg-card rounded-xl p-6 shadow-soft">
-                <h3 className="text-xl font-heading font-semibold text-foreground mb-3">
-                  Travel & Tourism
-                </h3>
-                <p className="text-muted-foreground">
-                  Partner to create memorable travel experiences and tourism packages across the UAE and beyond.
-                </p>
-              </div>
-
-              <div className="bg-card rounded-xl p-6 shadow-soft">
-                <h3 className="text-xl font-heading font-semibold text-foreground mb-3">
-                  Software Development & AI
-                </h3>
-                <p className="text-muted-foreground">
-                  Collaborate on cutting-edge software solutions and AI-powered applications for diverse industries.
-                </p>
-              </div>
-            </div>
+        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+          <div className="max-w-3xl mx-auto text-center mb-16">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-3xl lg:text-5xl font-heading font-bold text-white mb-6"
+            >
+              Partnership Opportunities
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, delay: 0.1 }}
+              className="text-white/70 text-lg"
+            >
+              Explore diverse sectors where we can create impact together
+            </motion.p>
           </div>
+          
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            {sectors.map((sector, index) => (
+              <motion.div 
+                key={index}
+                variants={itemVariants}
+                className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:bg-white/10 hover:border-lime-400/30 transition-all duration-300 group"
+              >
+                <div className="bg-white/10 w-16 h-16 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  {sector.icon}
+                </div>
+                <h3 className="text-xl font-heading font-semibold text-white mb-3 group-hover:text-lime-400 transition-colors">
+                  {sector.title}
+                </h3>
+                <p className="text-white/60 leading-relaxed">
+                  {sector.description}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 lg:py-24 bg-navy text-white">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-heading font-bold mb-6">
-            Ready to Explore Partnership Opportunities?
-          </h2>
-          <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
-            Let's discuss how we can work together to achieve mutual success and drive innovation across industries.
-          </p>
-          <a
-            href="/contact"
-            className="inline-flex items-center gap-3 bg-lime-400 text-navy px-8 py-4 rounded-full font-semibold text-lg hover:bg-lime-300 transition-all duration-300 hover:scale-105"
+      <section className="py-24 bg-background relative">
+        <div className="container mx-auto px-4 lg:px-8">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="bg-navy rounded-[3rem] p-12 lg:p-24 text-center relative overflow-hidden"
           >
-            Get in Touch
-          </a>
+            {/* Background Gradient */}
+            <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy to-lime-900/20"></div>
+            
+            <div className="relative z-10 max-w-3xl mx-auto">
+              <h2 className="text-3xl lg:text-5xl font-heading font-bold text-white mb-8">
+                Ready to Forge a Strategic Alliance?
+              </h2>
+              <p className="text-xl text-white/80 mb-10 leading-relaxed">
+                Let's discuss how we can combine our strengths to achieve mutual success and drive innovation across industries.
+              </p>
+              <motion.a
+                href="/contact"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center gap-3 bg-lime-400 text-navy px-10 py-5 rounded-full font-bold text-lg hover:bg-lime-300 transition-all duration-300 shadow-lg shadow-lime-400/20"
+              >
+                Get in Touch <ArrowRight className="w-5 h-5" />
+              </motion.a>
+            </div>
+          </motion.div>
         </div>
       </section>
 

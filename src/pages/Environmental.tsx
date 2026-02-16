@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import Layout from "@/components/layout/Layout";
+import OrganizationalPreparednessImg from "../assets/new images/Organizational Preparedness.png";
+import EnhancedEnvironmentalImg from "../assets/new images/Enhanced Environmental.png";
 
 const Environmental = () => {
   const [openSection, setOpenSection] = useState<number | null>(1);
@@ -26,7 +28,7 @@ const Environmental = () => {
       <section 
         className="h-screen flex items-center justify-start relative bg-cover bg-center parallax-slow"
         style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://www.psgbiz.com/wp-content/uploads/2024/12/7a54dfb0668a6bc8a82014168d836a97.jpg')`
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('${EnhancedEnvironmentalImg}')`
         }}
       >
         <div className="container mx-auto px-6 pt-24 md:pt-20">
@@ -168,7 +170,7 @@ const Environmental = () => {
                             <li className="flex items-center animate-fade-in-left stagger-2"><span className="text-green-600 mr-3 text-lg">✔</span> Organizational Sustainable Strategy</li>
                         </ul>
                         <div className="rounded-2xl overflow-hidden shadow-xl hover-scale">
-                            <img src="https://www.psgbiz.com/wp-content/uploads/elementor/thumbs/a3f650220a22129759e5113045663730-scaled-qyawql9j47sc2z180o7r8n806z3v694m9u2p16v6ue.jpg" alt="Organizational Preparedness" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
+                            <img src={OrganizationalPreparednessImg} alt="Organizational Preparedness" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
                         </div>
                     </div>
                 </div>

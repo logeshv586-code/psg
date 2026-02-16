@@ -1,7 +1,7 @@
 import VirtualMedicalScribingImg from "../assets/Digital Health_files/a8ba5c8afdb45991203a5eec73595a6f-qydy79aaxqwqv79a1it4eugpoy70bbo1ewyaluyqv2.jpg";
 import MedicalTranscriptionImg from "../assets/Digital Health_files/7cd298736d839252c55182e6dae504a3-1-qyduuqfamhx676bptfb8p9czmc8pch726dkzclo0ou.jpg";
 import MedicalCodingImg from "../assets/Digital Health_files/1f69e56d9a8c12bd79a5ccfd18663010-1-qydv92goujjl93i544df8551qvl7qb3p5bqjtievsu.jpg";
-import MedicalSummarizationImg from "../assets/Digital Health_files/440017376dc44be6e06cda12fcd1edd6-1-qydw0xeherojd11bfnwcmm1vl09uvcpan7tmvr3tdq.jpg";
+import MedicalSummarizationImg from "../assets/new images/Medical Summarization Service.png";
 
 export const digitalHealthTabsData = [
   {

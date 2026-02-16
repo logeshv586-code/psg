@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Layout from "@/components/layout/Layout";
 import { softwareTabsData } from "./SoftwareData";
+import softwareHero from "@/assets/new images/softwareai.png";
 
 const Software = () => {
   const [activeTab, setActiveTab] = useState(softwareTabsData[0].tab);
@@ -14,7 +15,7 @@ const Software = () => {
       <section 
         className="relative py-32 bg-cover bg-center min-h-[600px] flex items-center"
         style={{
-          backgroundImage: "url('https://www.psgbiz.com/wp-content/uploads/2024/12/9a936956f5986fd8d23072ec6feb477c.jpg')",
+          backgroundImage: `url('${softwareHero}')`,
         }}
       >
         <div className="absolute inset-0 bg-black/40" /> {/* Overlay for readability */}

@@ -1,38 +1,101 @@
 import Layout from "@/components/layout/Layout";
 import { useMemo, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ZoomIn, X } from "lucide-react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import heroImage from "@/assets/new images/Future Smart City.png";
-import gallery1 from "@/assets/blog_1733819064.jpg.jpeg";
-import gallery2 from "@/assets/7a54dfb0668a6bc8a82014168d836a97.jpg.jpeg";
-import gallery3 from "@/assets/d6612fd275f0f4f34915416326106123-min.jpg.jpeg";
-import gallery4 from "@/assets/489d79ce08e955d326d3131a4f044b2a-min.jpg.jpeg";
-import gallery5 from "@/assets/092dee7be6e9c847cacfb1aa87a4b670-min.jpg.jpeg";
-import gallery6 from "@/assets/307e015cdd77da97213ac844689139ff-2-min.jpg.jpeg";
-import gallery7 from "@/assets/fd104e86cd5780d9456e5f4a34aa687e-1-1-scaled.jpg.jpeg";
-import gallery8 from "@/assets/022595491cdca69d6dfc7e59d94c7ee2-1-1-scaled-r1cfy28wzznw7shiyk881j142jcoilys6gcmo3wcls.jpg.jpeg";
-import gallery9 from "@/assets/e2464fb205dea9068331091ab83aebaf-3-min.jpg.jpeg";
-import gallery10 from "@/assets/html-css-collage-concept-with-person-1-2048x1365.jpg.jpeg";
-import gallery11 from "@/assets/05e8a2810fcbd7444725afc024cc2c65-1.png";
-import gallery12 from "@/assets/Frame-29.png";
+import { motion, AnimatePresence } from "framer-motion";
+import { Button } from "@/components/ui/button";
 
-const galleryImages = [
-  { id: 1, src: gallery1, alt: "Gallery image 1" },
-  { id: 2, src: gallery2, alt: "Gallery image 2" },
-  { id: 3, src: gallery3, alt: "Gallery image 3" },
-  { id: 4, src: gallery4, alt: "Gallery image 4" },
-  { id: 5, src: gallery5, alt: "Gallery image 5" },
-  { id: 6, src: gallery6, alt: "Gallery image 6" },
-  { id: 7, src: gallery7, alt: "Gallery image 7" },
-  { id: 8, src: gallery8, alt: "Gallery image 8" },
-  { id: 9, src: gallery9, alt: "Gallery image 9" },
-  { id: 10, src: gallery10, alt: "Gallery image 10" },
-  { id: 11, src: gallery11, alt: "Gallery image 11" },
-  { id: 12, src: gallery12, alt: "Gallery image 12" },
+// Helper type for imported modules
+type ImgModule = { default: string };
+
+// Dynamic imports using import.meta.glob
+const newImages = import.meta.glob<ImgModule>('@/assets/new images/*.{png,jpg,jpeg,webp}', { eager: true });
+const scrapedImages = import.meta.glob<ImgModule>('@/assets/scraped/*.{png,jpg,jpeg,webp}', { eager: true });
+// We'll skip root assets for the gallery to avoid logos mixed in, unless specific ones are needed.
+// Instead, let's include some high quality ones from tourism if relevant, or just stick to the professional ones.
+const tourismImages = import.meta.glob<ImgModule>('@/assets/tourism_images/*.{png,jpg,jpeg,webp}', { eager: true });
+
+// Specific hero image
+import heroImage from "@/assets/new images/Future Smart City.png";
+import enhancedSoftware from "@/assets/new images/Enhanced IT Professional.png";
+import enhancedHealth from "@/assets/new images/Enhanced Digital Health.png";
+import enhancedEnvironmental from "@/assets/new images/Enhanced Environmental.png";
+import enhancedTimber from "@/assets/new images/Enhanced Timber Logs.png";
+
+// Combine and process images
+const rawImages = [
+  ...Object.entries(newImages),
+  ...Object.entries(scrapedImages),
+  ...Object.entries(tourismImages)
 ];
+
+// Filter and format images
+const galleryImages = rawImages
+  .map(([path, module], index) => {
+    let src = module.default;
+    const filename = path.split('/').pop()?.split('.')[0] || "";
+    
+    // Override src for specific hero items to use enhanced versions
+    if (filename === 'hero-software') src = enhancedSoftware;
+    if (filename === 'hero-health') src = enhancedHealth;
+    if (filename === 'hero-environmental') src = enhancedEnvironmental;
+    if (filename === 'hero-timber') src = enhancedTimber;
+
+    // Filter out logos, small icons, and non-photo assets based on filename
+    const lowerFilename = filename.toLowerCase();
+    const excludePatterns = [
+      'logo', 'icon', 'group', 'vector', 'mask', 'frame', 
+      'xmlid', 'target', 'arrow', 'qr-code', 'qr code',
+      'common-logo', '150x150', '300x', 'global network',
+      '174613dbe', 'scaled', 'softwareai'
+    ];
+    
+    if (excludePatterns.some(pattern => lowerFilename.includes(pattern))) return null;
+
+    // Create a display title
+    let title = filename
+      .replace(/[-_]/g, ' ')
+      .replace(/Enhanced/gi, '')
+      .replace(/min/gi, '')
+      .replace(/scaled/gi, '')
+      .replace(/copy/gi, '')
+      .replace(/\./g, '')
+      .replace(/\d+/g, ' ') // Replace numbers with space to avoid "Image 1" looking like "Image1"
+      .trim();
+
+    // Capitalize first letter of each word
+    title = title.replace(/\b\w/g, c => c.toUpperCase()).trim();
+
+    // Assign category based on source path
+    let category = "Business";
+    if (path.includes("tourism")) category = "Tourism";
+    else if (path.includes("scraped")) category = "Projects";
+    
+    return {
+      id: index,
+      src,
+      alt: title || "Gallery Image",
+      title: title || "Project Image",
+      category
+    };
+  })
+  .filter((img): img is NonNullable<typeof img> => img !== null)
+  // Remove duplicates based on src
+  .filter((img, index, self) => index === self.findIndex((t) => t.src === img.src))
+  // Sort slightly to mix them or keep them grouped? Grouped by category might be nice, but random mix is more dynamic.
+  // Let's keep them somewhat sorted by category for now.
+  .sort((a, b) => a.category.localeCompare(b.category));
 
 const Media = () => {
   const [activeId, setActiveId] = useState<number | null>(null);
+  const [filter, setFilter] = useState<string>("All");
+
+  const categories = ["All", ...Array.from(new Set(galleryImages.map(img => img.category)))];
+
+  const filteredImages = useMemo(() => {
+    if (filter === "All") return galleryImages;
+    return galleryImages.filter(img => img.category === filter);
+  }, [filter]);
 
   const activeIndex = useMemo(() => {
     if (activeId === null) return -1;
@@ -44,13 +107,18 @@ const Media = () => {
   const openImage = (id: number) => setActiveId(id);
   const closeImage = () => setActiveId(null);
 
-  const showPrev = () => {
+  const showPrev = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
     if (activeIndex < 0) return;
+    // Find previous index in the *full* list to ensure navigation works even if filtered? 
+    // Usually navigation should be within filtered context, but for simplicity let's navigate the full list
+    // or the filtered list. Let's stick to full list for continuity in modal.
     const prevIndex = (activeIndex - 1 + galleryImages.length) % galleryImages.length;
     setActiveId(galleryImages[prevIndex].id);
   };
 
-  const showNext = () => {
+  const showNext = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
     if (activeIndex < 0) return;
     const nextIndex = (activeIndex + 1) % galleryImages.length;
     setActiveId(galleryImages[nextIndex].id);
@@ -59,92 +127,158 @@ const Media = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative h-[60vh] min-h-[400px] w-full flex items-center justify-center overflow-hidden">
+      <section className="relative h-[50vh] min-h-[400px] w-full flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
             src={heroImage}
             alt="Media Hero"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
         </div>
 
         <div className="container mx-auto px-4 relative z-10 text-white text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in-up">
-            Media
-          </h1>
-          <p className="text-lg md:text-xl max-w-2xl mx-auto animate-fade-in-up stagger-1">
-            Explore our latest updates and gallery
-          </p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 font-heading">
+              Our Gallery
+            </h1>
+            <p className="text-lg md:text-xl max-w-2xl mx-auto text-gray-200">
+              Exploring the intersection of innovation, construction, and sustainable development.
+            </p>
+          </motion.div>
         </div>
       </section>
 
       {/* Gallery Section */}
       <section className="py-16 lg:py-24 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
-          {/* Heading */}
-          <h1 className="text-4xl lg:text-5xl font-heading font-bold text-center mb-12">
-            Lets talk business
-          </h1>
-
-          {/* Masonry Grid Gallery */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {galleryImages.map((image) => (
-              <button
-                key={image.id}
-                className="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer bg-transparent p-0 text-left"
-                onClick={() => openImage(image.id)}
-                type="button"
-              >
-                <div className="aspect-[4/3] bg-secondary">
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-                {/* Overlay on hover */}
-                <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 transition-all duration-300" />
-              </button>
-            ))}
+          {/* Header & Filter */}
+          <div className="flex flex-col md:flex-row justify-between items-center mb-12 gap-6">
+            <div className="text-center md:text-left">
+              <h2 className="text-3xl lg:text-4xl font-heading font-bold mb-2">Lets Talk Business</h2>
+              <p className="text-muted-foreground">Visualizing our expertise and global reach.</p>
+            </div>
+            
+            <div className="flex flex-wrap justify-center gap-2">
+              {categories.map(cat => (
+                <Button
+                  key={cat}
+                  variant={filter === cat ? "default" : "outline"}
+                  onClick={() => setFilter(cat)}
+                  className="rounded-full px-6 transition-all duration-300"
+                  size="sm"
+                >
+                  {cat}
+                </Button>
+              ))}
+            </div>
           </div>
 
-          {/* Note about gallery */}
-          <div className="mt-12 text-center">
-            <p className="text-muted-foreground">
-              Showcasing our timber, construction materials, and business operations
+          {/* Gallery Grid */}
+          <motion.div 
+            layout
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          >
+            <AnimatePresence>
+              {filteredImages.map((image) => (
+                <motion.div
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.3 }}
+                  key={image.id}
+                  className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 bg-card cursor-pointer"
+                  onClick={() => openImage(image.id)}
+                >
+                  {/* Image Container */}
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      loading="lazy"
+                    />
+                  </div>
+
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                    <p className="text-white text-sm font-medium opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-100">
+                      {image.category}
+                    </p>
+                    <h3 className="text-white text-lg font-bold opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
+                      {image.title}
+                    </h3>
+                    <div className="mt-2 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-150">
+                       <span className="inline-flex items-center text-xs text-primary-foreground bg-primary/20 backdrop-blur-sm border border-primary/30 px-3 py-1 rounded-full">
+                         <ZoomIn className="w-3 h-3 mr-1" /> View
+                       </span>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
+
+          {filteredImages.length === 0 && (
+            <div className="text-center py-20 text-muted-foreground">
+              No images found in this category.
+            </div>
+          )}
+
+          {/* Footer Note */}
+          <div className="mt-16 text-center border-t pt-8 max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-sm">
+              Our portfolio spans across timber sourcing, construction materials, and large-scale MEP installations. 
+              We are committed to delivering excellence in every project.
             </p>
           </div>
         </div>
       </section>
 
+      {/* Lightbox Modal */}
       <Dialog open={activeId !== null} onOpenChange={(open) => (!open ? closeImage() : undefined)}>
-        <DialogContent className="max-w-[95vw] sm:max-w-[90vw] lg:max-w-[1100px] p-0 overflow-hidden bg-black border-none">
+        <DialogContent className="max-w-[95vw] h-[90vh] md:h-auto md:max-w-[90vw] lg:max-w-[1200px] p-0 bg-black/95 border-none shadow-2xl focus:outline-none flex items-center justify-center">
           {activeImage && (
-            <div className="relative">
+            <div className="relative w-full h-full flex items-center justify-center outline-none">
+              <button 
+                onClick={closeImage}
+                className="absolute top-4 right-4 z-50 p-2 bg-black/50 hover:bg-white/20 rounded-full text-white transition-colors"
+              >
+                <X className="w-6 h-6" />
+              </button>
+
               <img
                 src={activeImage.src}
                 alt={activeImage.alt}
-                className="w-full h-auto max-h-[85vh] object-contain bg-black"
-                draggable={false}
+                className="max-w-full max-h-[85vh] object-contain shadow-2xl"
               />
+
+              <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 to-transparent text-white">
+                <h3 className="text-xl font-bold">{activeImage.title}</h3>
+                <p className="text-sm text-gray-300">{activeImage.category}</p>
+              </div>
 
               <button
                 type="button"
                 onClick={showPrev}
-                className="absolute left-3 top-1/2 -translate-y-1/2 grid h-10 w-10 place-items-center rounded-full bg-white/10 text-white hover:bg-white/20"
+                className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/50 hover:bg-white/20 text-white transition-all hover:scale-110"
                 aria-label="Previous image"
               >
-                <ChevronLeft className="h-5 w-5" />
+                <ChevronLeft className="h-8 w-8" />
               </button>
 
               <button
                 type="button"
                 onClick={showNext}
-                className="absolute right-3 top-1/2 -translate-y-1/2 grid h-10 w-10 place-items-center rounded-full bg-white/10 text-white hover:bg-white/20"
+                className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/50 hover:bg-white/20 text-white transition-all hover:scale-110"
                 aria-label="Next image"
               >
-                <ChevronRight className="h-5 w-5" />
+                <ChevronRight className="h-8 w-8" />
               </button>
             </div>
           )}

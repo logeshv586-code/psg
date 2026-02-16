@@ -81,10 +81,6 @@ const Construction = () => {
             <p className="text-lg md:text-2xl mb-6 md:mb-8 animate-fade-in-up stagger-2">
               {currentContent.subtitle}
             </p>
-            <div 
-              className="text-base md:text-xl mb-8 md:mb-12 max-w-3xl mx-auto animate-fade-in-up stagger-3"
-              dangerouslySetInnerHTML={{ __html: currentContent.description }}
-            />
             <AnimatedButton 
               onClick={() => {
                 if (currentContent.sections) {

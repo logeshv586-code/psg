@@ -101,7 +101,7 @@ const HeroSlider = () => {
     <section className="relative min-h-[calc(100vh-80px)] overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
-        <AnimatePresence mode="wait">
+        <AnimatePresence>
           <motion.div
             key={currentSlide}
             initial={{ opacity: 0, scale: 1.1 }}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Layout from "@/components/layout/Layout";
 import DigitalHealthHero from "../assets/new images/Enhanced Digital Health.png";
+import MedicalSummarizationImg from "../assets/new images/Medical Summarization Service.png";
 
 const DigitalHealth = () => {
   const [activeTab, setActiveTab] = useState('scribing');
@@ -160,7 +161,7 @@ const DigitalHealth = () => {
                 </ul>
               </div>
               <div className="rounded-3xl overflow-hidden shadow-2xl">
-                <img src="https://www.psgbiz.com/wp-content/uploads/elementor/thumbs/a62a93798935272379e491e847335e23-qydvlt7z2e4mpxp8271n12l29j0j3vlyv2n75p8g46.jpg" alt="Medical Summarization" className="w-full h-auto" />
+                <img src={MedicalSummarizationImg} alt="Medical Summarization" className="w-full h-auto" />
               </div>
             </div>
           </div>
