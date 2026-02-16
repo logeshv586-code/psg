@@ -215,7 +215,7 @@ const VisionMissionSection = () => {
           <div className="pointer-events-none absolute left-1/2 top-1/2 hidden -translate-x-1/2 -translate-y-1/2 lg:block z-20">
             <motion.div 
               initial={{ scale: 0, opacity: 0 }}
-              whileInView={{ scale: 1.08, opacity: 1 }}
+              whileInView={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.5, type: "spring" }}
               className="h-[220px] w-[220px] overflow-hidden rounded-full drop-shadow-sm lg:h-[260px] lg:w-[260px]"
             >
