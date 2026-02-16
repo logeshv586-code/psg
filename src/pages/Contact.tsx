@@ -2,6 +2,7 @@ import { useState } from "react";
 import Layout from "@/components/layout/Layout";
 import { MapPin, Mail, Phone } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import contactHero from "@/assets/contact-hero.png";
 import qrCode from "@/assets/qr-code.jpg";
 import { MotionSection, MotionItem } from "@/components/ui/motion-ui";
 import { motion } from "framer-motion";
@@ -105,19 +106,29 @@ const Contact = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="gradient-contact pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-24">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center mb-8 sm:mb-12">
-            <motion.h1 
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-foreground mb-3 sm:mb-4 leading-tight"
-            >
-              Lets talk business
-            </motion.h1>
-          </div>
+      <section className="relative h-[40vh] min-h-[400px] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src={contactHero}
+            alt="Contact Us"
+            className="w-full h-full object-cover object-top"
+          />
+          <div className="absolute inset-0 bg-black/50" />
+        </div>
+        <div className="relative container mx-auto px-4 lg:px-8 text-center z-10">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-white mb-3 sm:mb-4 leading-tight"
+          >
+            Lets talk business
+          </motion.h1>
+        </div>
+      </section>
 
+      <section className="py-12 sm:py-16 lg:py-24 bg-gradient-to-b from-[#d9eef4] to-[#e8f5df]">
+        <div className="container mx-auto px-4 lg:px-8">
           <div className="grid lg:grid-cols-5 gap-6 sm:gap-8 lg:gap-12">
             {/* Contact Form */}
             <MotionSection delay={0.2} className="lg:col-span-3">

@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import psgLogo from "@/assets/psg-logo.png";
 import psgLogoFull from "@/assets/psg-logo-full.png";
-import coloredLogo from "@/assets/Prime-source-global-logo.png";
+import coloredLogo from "@/assets/new images/psg_logo.png";
 
 const navItems = [
   { label: "Home", href: "/" },

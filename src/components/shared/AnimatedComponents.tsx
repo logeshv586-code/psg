@@ -143,7 +143,7 @@ export const AnimatedText: React.FC<{
 };
 
 export const StaggeredList: React.FC<{
-  items: string[];
+  items: (string | React.ReactNode)[];
   className?: string;
   itemClassName?: string;
   animationType?: 'fade-in-left' | 'fade-in-right' | 'fade-in-up';

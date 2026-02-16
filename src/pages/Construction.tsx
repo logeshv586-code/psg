@@ -7,6 +7,28 @@ import heroConstruction from "@/assets/new images/Construction Industry.png";
 import { AnimatedSection, AnimatedCard, AnimatedButton, StaggeredList } from "@/components/shared/AnimatedComponents";
 import { constructionData } from "./ConstructionData";
 
+interface ConstructionSection {
+  title: string;
+  description: string;
+  products: {
+    name: string;
+    image: string;
+    category: string;
+  }[];
+}
+
+interface ConstructionContent {
+  id: string;
+  label: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  image: string;
+  cta: string;
+  features?: string[];
+  sections?: ConstructionSection[];
+}
+
 const Construction = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("overview");
@@ -29,7 +51,7 @@ const Construction = () => {
     { id: "electrical", label: "Electrical" },
   ];
 
-  const currentContent = constructionData[activeTab as keyof typeof constructionData];
+  const currentContent = constructionData[activeTab as keyof typeof constructionData] as ConstructionContent;
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
