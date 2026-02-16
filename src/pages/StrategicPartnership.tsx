@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import partnershipsBg from "@/assets/new images/Strategic Partnership.png";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 const partnershipBenefits = [
   {
@@ -76,7 +76,7 @@ const partners = [
   { name: "Plymarc", href: "https://www.plymarc.com/" },
 ];
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -87,7 +87,7 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { y: 20, opacity: 0 },
   visible: {
     y: 0,
@@ -248,7 +248,8 @@ const StrategicPartnership = () => {
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, delay: 0.1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
               className="text-muted-foreground max-w-2xl mx-auto text-lg"
             >
               Our partnerships are built on core principles that ensure mutual benefit and sustainable growth
@@ -311,7 +312,8 @@ const StrategicPartnership = () => {
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, delay: 0.1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
               className="text-white/70 text-lg"
             >
               Explore diverse sectors where we can create impact together

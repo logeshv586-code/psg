@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import Layout from "@/components/layout/Layout";
 import DigitalHealthHero from "../assets/new images/Enhanced Digital Health.png";
-import MedicalSummarizationImg from "../assets/new images/Medical Summarization Service.png";
+import MedicalSummarizationImg from "../assets/new images/Natural Medical Summarization.png";
+import VirtualScribingImg from "../assets/new images/Enhanced Lab Coat Professional.png";
+import MedicalTranscriptionImg from "../assets/new images/Enhanced Nurse with Tablet.png";
+import MedicalCodingImg from "../assets/new images/Enhanced Holographic Medical Display.png";
 
 const DigitalHealth = () => {
   const [activeTab, setActiveTab] = useState('scribing');
@@ -101,7 +104,7 @@ const DigitalHealth = () => {
                 </div>
               </div>
               <div className="rounded-3xl overflow-hidden shadow-2xl">
-                <img src="https://www.psgbiz.com/wp-content/uploads/elementor/thumbs/a8ba5c8afdb45991203a5eec73595a6f-qydy79aaxqwqv79a1it4eugpoy70bbo1ewyaluyqv2.jpg" alt="Virtual Scribing" className="w-full h-auto" />
+                <img src={VirtualScribingImg} alt="Virtual Scribing" className="w-full h-auto" />
               </div>
             </div>
           </div>
@@ -121,7 +124,7 @@ const DigitalHealth = () => {
                 </ul>
               </div>
               <div className="rounded-3xl overflow-hidden shadow-2xl">
-                <img src="https://www.psgbiz.com/wp-content/uploads/elementor/thumbs/7cd298736d839252c55182e6dae504a3-1-qyduuqfamhx676bptfb8p9czmc8pch726dkzclo0ou.jpg" alt="Medical Transcription" className="w-full h-auto" />
+                <img src={MedicalTranscriptionImg} alt="Medical Transcription" className="w-full h-auto" />
               </div>
             </div>
           </div>
@@ -141,7 +144,7 @@ const DigitalHealth = () => {
                 </ul>
               </div>
               <div className="rounded-3xl overflow-hidden shadow-2xl">
-                <img src="https://www.psgbiz.com/wp-content/uploads/elementor/thumbs/1f69e56d9a8c12bd79a5ccfd18663010-1-qydv92goujjl93i544df8551qvl7qb3p5bqjtievsu.jpg" alt="Medical Coding" className="w-full h-auto" />
+                <img src={MedicalCodingImg} alt="Medical Coding" className="w-full h-auto" />
               </div>
             </div>
           </div>
