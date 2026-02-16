@@ -92,9 +92,11 @@ const Privacy = () => {
             <h2 className="text-xl font-semibold">10. Contact Us</h2>
             <p>For questions or requests regarding this Privacy Policy, contact:</p>
             <p>
-              Email: [insert address]
+              Email: Sales@psgbiz.com
               <br />
-              Address: [insert address]
+              Address: Compass Building - Al Shuhada' Rd
+Al Hamra Industrial Free Zone
+Ras Al Khaimah - UAE
             </p>
           </div>
         </div>
