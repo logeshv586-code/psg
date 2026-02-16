@@ -206,7 +206,7 @@ const Footer = () => {
             <p>© 2026 Prime Source Global</p>
             <div className="flex items-center gap-4">
               <Link to="/terms" className="hover:text-primary-foreground">
-                Terms of Use
+                Terms of Service
               </Link>
               <Link to="/privacy" className="hover:text-primary-foreground">
                 Privacy Policy
