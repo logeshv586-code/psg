@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import Layout from "@/components/layout/Layout";
 import OrganizationalPreparednessImg from "../assets/new images/Organizational Preparedness.png";
 import EnhancedEnvironmentalImg from "../assets/new images/Enhanced Environmental.png";
+import EnvironmentalManagementImg from "../assets/new images/Environmental Management - Real.png";
+import SustainabilityReportImg from "../assets/new images/Sustainability Report - Real.png";
+import InnovativeTechnologiesImg from "../assets/new images/Innovative Sustainability Tech - Real.png";
 
 const Environmental = () => {
   const [openSection, setOpenSection] = useState<number | null>(1);
@@ -104,7 +107,7 @@ const Environmental = () => {
                             <li className="flex items-center animate-fade-in-left stagger-1"><span className="text-green-600 mr-3 text-lg">✔</span> Emergency Response Manuals and Procedures</li>
                         </ul>
                         <div className="rounded-2xl overflow-hidden shadow-xl hover-scale">
-                            <img src="https://www.psgbiz.com/wp-content/uploads/elementor/thumbs/b1a09fa6251cd61180db14220781156d-scaled-qyaw8ot9658qk1ple4v3d973d8jwe9tntczqzev36e.jpg" alt="Environmental Management" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
+                            <img src={EnvironmentalManagementImg} alt="Environmental Management" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
                         </div>
                     </div>
                 </div>
@@ -127,7 +130,7 @@ const Environmental = () => {
                             <li className="flex items-center animate-fade-in-right stagger-4"><span className="text-green-600 mr-3 text-lg">✔</span> Clean Development Mechanism (CDM) Projects</li>
                         </ul>
                         <div className="rounded-2xl overflow-hidden shadow-xl hover-scale">
-                            <img src="https://www.psgbiz.com/wp-content/uploads/elementor/thumbs/5593cea288782c77260f94caa508d976-qyawi1bh4u1e0g4st6bj5wa416haxwxkfmjksh05au.jpg" alt="Sustainability Report" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
+                            <img src={SustainabilityReportImg} alt="Sustainability Report" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
                         </div>
                     </div>
                 </div>
@@ -149,7 +152,7 @@ const Environmental = () => {
                             <li className="flex items-center animate-fade-in-left stagger-3"><span className="text-green-600 mr-3 text-lg">✔</span> Robust Sustainable Business Models</li>
                         </ul>
                         <div className="rounded-2xl overflow-hidden shadow-xl hover-scale">
-                            <img src="https://www.psgbiz.com/wp-content/uploads/elementor/thumbs/7d714e3dcc774d47060977d1a4c6a770-scaled-qyawm5tz4nooyu52pyil3usxw25aq3b5o1mam6vxzq.jpg" alt="Innovative Technologies" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
+                            <img src={InnovativeTechnologiesImg} alt="Innovative Technologies" className="w-full h-auto transition-transform duration-500 hover:scale-105" />
                         </div>
                     </div>
                 </div>
