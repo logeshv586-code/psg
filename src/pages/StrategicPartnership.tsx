@@ -69,7 +69,6 @@ const sectors = [
 
 const partners = [
   { name: "Touchmark Descience", href: "https://touchmarkdes.com/" },
-  { name: "Md24 Global", href: "https://md24global.com/cgi-sys/suspendedpage.cgi" },
   { name: "Maqnah", href: "https://www.maqnah.com/" },
   { name: "R&R Environment", href: "https://www.rnrenvironmental.com/" },
   { name: "Era Timbers", href: "https://eratimbers.com/" },
