@@ -36,11 +36,6 @@ const Environmental = () => {
       >
         <div className="container mx-auto px-6 pt-24 md:pt-20">
             <div className={`max-w-3xl text-white transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-                <img 
-                  src="https://www.psgbiz.com/wp-content/uploads/2024/12/environmental-white-logo-300x124.png" 
-                  alt="PSG Logo" 
-                  className={`h-10 md:h-16 mb-6 md:mb-8 animate-fade-in-up stagger-1 hover-scale`} 
-                />
                 <h1 className={`text-3xl sm:text-4xl md:text-6xl font-bold mb-4 md:mb-6 leading-tight break-words animate-fade-in-up stagger-2 hover-scale`}>
                   Environmental Consultancy and Studies
                 </h1>
