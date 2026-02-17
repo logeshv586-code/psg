@@ -3,6 +3,7 @@ import { useState } from "react";
 import Layout from "@/components/layout/Layout";
 import { softwareTabsData } from "./SoftwareData";
 import softwareHero from "@/assets/new images/softwareai.png";
+import { ragTypes } from "@/data/ragData";
 
 const Software = () => {
   const [activeTab, setActiveTab] = useState(softwareTabsData[0].tab);
@@ -123,6 +124,51 @@ const Software = () => {
               ))}
             </div>
             
+          </div>
+        </div>
+      </section>
+
+      {/* RAG Agent Services Section */}
+      <section className="py-16 bg-slate-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-[1200px] mx-auto">
+            <div className="text-center mb-12">
+              <span className="inline-block bg-[#E8F8D6] text-[#69B51E] px-4 py-1 rounded-full text-sm font-bold tracking-wide mb-6">
+                AI SOLUTIONS
+              </span>
+              <h2 className="text-4xl font-bold mb-4 text-slate-900">RAG Agent Services</h2>
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                Advanced Retrieval-Augmented Generation solutions for enterprise needs.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {ragTypes.map((r) => {
+                const Icon = r.icon;
+                return (
+                  <div key={r.key} className="relative rounded-2xl border border-gray-200 bg-white p-6 hover:shadow-xl transition-shadow duration-300">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-500">
+                        <Icon className="w-6 h-6" />
+                      </div>
+                      <div className="text-lg font-bold text-slate-900">{r.title}</div>
+                    </div>
+                    <p className="text-sm text-gray-600 min-h-[48px] mb-4">{r.short}</p>
+                    
+                    <div className="space-y-3">
+                       <div>
+                          <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Capabilities</div>
+                          <div className="flex flex-wrap gap-2">
+                            {r.canDo.slice(0, 2).map((item, i) => (
+                              <span key={i} className="text-xs px-2 py-1 rounded-full bg-gray-100 text-gray-600">{item}</span>
+                            ))}
+                          </div>
+                       </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>

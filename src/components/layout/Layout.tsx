@@ -3,6 +3,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import GlobalMapSection from "@/components/shared/GlobalMapSection";
 import { PageTransition } from "./PageTransition";
+import Chatbot from "@/components/chatbot/Chatbot";
 
 interface LayoutProps {
   children: ReactNode;
@@ -17,6 +18,7 @@ const Layout = ({ children }: LayoutProps) => {
       </PageTransition>
       <GlobalMapSection />
       <Footer />
+      <Chatbot />
     </div>
   );
 };
