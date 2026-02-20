@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { ThumbsUp, ThumbsDown, Copy, Send, LayoutGrid, X, Minus, Mic, Bot } from 'lucide-react';
+import { ThumbsUp, ThumbsDown, Copy, Send, LayoutGrid, X, Minus, Mic, Bot, Trash2 } from 'lucide-react';
 import { motion, useMotionValue } from 'framer-motion';
 import Robot3D from './Robot3D';
 import MiniRobot from './MiniRobot';
@@ -164,6 +164,10 @@ const Chatbot: React.FC = () => {
     return defaultResponse ? defaultResponse.response : "I'm sorry, I didn't understand that.";
   };
 
+  const handleClearChat = () => {
+    setMessages(INITIAL_MESSAGES);
+  };
+
   const handleSend = async (textOverride?: string) => {
     const text = (textOverride ?? inputValue).trim();
     if (!text) return;
@@ -293,10 +297,14 @@ const Chatbot: React.FC = () => {
               </div>
             </div>
             <div className="flex items-center gap-1">
-              <button onClick={() => setIsOpen(false)} className="p-2 hover:bg-[#172033]/10 rounded-full text-[#172033]/70 hover:text-[#172033] transition">
-                <Minus className="w-5 h-5" />
+              <button
+                onClick={handleClearChat}
+                className="p-2 hover:bg-[#172033]/10 rounded-full text-[#172033]/70 hover:text-[#172033] transition"
+                title="Clear Chat"
+              >
+                <Trash2 className="w-5 h-5" />
               </button>
-              <button onClick={() => setIsOpen(false)} className="p-2 hover:bg-[#172033]/10 rounded-full text-[#172033]/70 hover:text-[#172033] transition">
+              <button onClick={() => setIsOpen(false)} className="p-2 hover:bg-[#172033]/10 rounded-full text-[#172033]/70 hover:text-[#172033] transition" title="Close">
                 <X className="w-5 h-5" />
               </button>
             </div>
