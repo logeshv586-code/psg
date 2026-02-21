@@ -16,7 +16,7 @@ export const chatbotData: ChatbotResponse[] = [
   {
     id: 'about',
     keywords: ['who are you', 'what is psg', 'about psg', 'what do you do', 'company overview'],
-    response: "Prime Source Global (PSG) is a diversified company committed to 'Pioneering Solutions Globally'. We operate across multiple sectors including trading, travel and tourism, eHealth, environmental consulting, and software development.",
+    response: "Prime Source Global (PSG) is a diversified company committed to 'Pioneering Solutions Globally'. We operate across multiple sectors including General Trading, HVAC Trading, Timber, Advanced Healthcare Supplies, IT, Tourism, and Environmental Consultancy.",
     category: 'general'
   },
   {
@@ -34,13 +34,31 @@ export const chatbotData: ChatbotResponse[] = [
   {
     id: 'services',
     keywords: ['services', 'what services', 'offerings', 'verticals', 'business areas'],
-    response: "PSG offers specialized services in five main verticals: 1. Construction & Interior Supplies, 2. Environmental Consultancy, 3. Digital Health (eHealth), 4. Software Development & AI, and 5. Tourism.",
+    response: "PSG offers specialized services in: 1. General Trading (Steel Pipes), 2. HVAC Trading, 3. Timber, 4. Advanced Healthcare Supplies, 5. IT, 6. Tourism, and 7. Environmental Consultancy.",
     category: 'services'
   },
   {
-    id: 'construction',
-    keywords: ['construction', 'interior', 'building materials', 'wood', 'timber', 'hardware', 'mep', 'plumbing', 'electrical'],
-    response: "Our Construction & Interior Supplies vertical provides Timber & Wood Products (Teak, Meranti, Mahogany, etc.), Hardware Solutions, and MEP Solutions including Valves, HVAC, Fire Fighting, Electrical, and Plumbing systems.",
+    id: 'general_trading',
+    keywords: ['general trading', 'trading', 'steel', 'pipes', 'seamless', 'welded', 'galvanized'],
+    response: "Our General Trading division supplies high-quality steel pipes, including seamless, welded, and galvanized options for industrial applications.",
+    category: 'services'
+  },
+  {
+    id: 'hvac',
+    keywords: ['hvac', 'ac', 'air conditioning', 'mep', 'valves', 'pumps', 'fire fighting', 'plumbing', 'electrical'],
+    response: "Our HVAC Trading division offers comprehensive solutions including Valves, HVAC systems, Fire Fighting equipment, Plumbing, and Electrical systems.",
+    category: 'services'
+  },
+  {
+    id: 'timber',
+    keywords: ['timber', 'wood', 'plywood', 'mdf', 'construction materials', 'hardware'],
+    response: "Our Timber division provides premium Timber & Wood Products (Teak, Meranti, Mahogany, etc.), Plywood, MDF, and Hardware Solutions for construction and interiors.",
+    category: 'services'
+  },
+  {
+    id: 'healthcare',
+    keywords: ['health', 'healthcare', 'medical', 'transcription', 'coding', 'summarization', 'supplies', 'advanced healthcare'],
+    response: "Our Advanced Healthcare Supplies division includes Medical Transcription, Medical Coding, and Medical Summarization to improve operational efficiency in healthcare.",
     category: 'services'
   },
   {
@@ -50,15 +68,9 @@ export const chatbotData: ChatbotResponse[] = [
     category: 'services'
   },
   {
-    id: 'ehealth',
-    keywords: ['health', 'ehealth', 'medical', 'transcription', 'coding', 'summarization', 'healthcare'],
-    response: "Our Digital Health (eHealth) services include Medical Transcription, Medical Coding, and Medical Summarization to improve operational efficiency in healthcare.",
-    category: 'services'
-  },
-  {
-    id: 'software',
+    id: 'it',
     keywords: ['software', 'it', 'app', 'web', 'ai', 'development', 'technology', 'blockchain', 'iot'],
-    response: "Our Software Development & AI division offers App & Web Development, AI/ML solutions, IoT, Blockchain, and IT Consulting including Cloud Strategy and Salesforce Integration.",
+    response: "Our IT division offers App & Web Development, AI/ML solutions, IoT, Blockchain, and IT Consulting including Cloud Strategy and Salesforce Integration.",
     category: 'services'
   },
   {

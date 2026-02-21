@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import Layout from "@/components/layout/Layout";
 import DigitalHealthHero from "../assets/new images/Enhanced Digital Health.png";
@@ -6,7 +7,7 @@ import VirtualScribingImg from "../assets/new images/Enhanced Lab Coat Professio
 import MedicalTranscriptionImg from "../assets/new images/Enhanced Nurse with Tablet.png";
 import MedicalCodingImg from "../assets/new images/Enhanced Holographic Medical Display.png";
 
-const DigitalHealth = () => {
+const AdvancedHealthcare = () => {
   const [activeTab, setActiveTab] = useState('scribing');
 
   const showTab = (tabId: string) => {
@@ -24,7 +25,7 @@ const DigitalHealth = () => {
       >
         <div className="container mx-auto px-6 pt-20">
           <div className="max-w-2xl text-white">
-            <h1 className="text-6xl font-bold mb-6">Digital Health</h1>
+            <h1 className="text-6xl font-bold mb-6">Advanced Healthcare Supplies</h1>
             <p className="text-xl italic mb-4">"Great things in business are never done by one person, they're done by a team of people"</p>
             <p className="text-lg">— Unknown</p>
           </div>
@@ -171,9 +172,8 @@ const DigitalHealth = () => {
         </div>
       </section>
 
-      
     </Layout>
   );
 };
 
-export default DigitalHealth;
+export default AdvancedHealthcare;

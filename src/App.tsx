@@ -13,7 +13,9 @@ const Index = lazy(() => import("./pages/Index"));
 const About = lazy(() => import("./pages/About"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Construction = lazy(() => import("./pages/Construction"));
-const DigitalHealth = lazy(() => import("./pages/DigitalHealth"));
+const HvacTrading = lazy(() => import("./pages/HvacTrading"));
+const GeneralTrading = lazy(() => import("./pages/GeneralTrading"));
+const AdvancedHealthcare = lazy(() => import("./pages/AdvancedHealthcare"));
 const Environmental = lazy(() => import("./pages/Environmental"));
 const Tourism = lazy(() => import("./pages/Tourism"));
 const Software = lazy(() => import("./pages/Software"));
@@ -36,7 +38,9 @@ const AnimatedRoutes = () => {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/construction" element={<Construction />} />
-        <Route path="/digital-health" element={<DigitalHealth />} />
+        <Route path="/hvac-trading" element={<HvacTrading />} />
+        <Route path="/general-trading" element={<GeneralTrading />} />
+        <Route path="/advanced-healthcare" element={<AdvancedHealthcare />} />
         <Route path="/environmental" element={<Environmental />} />
         <Route path="/tourism" element={<Tourism />} />
         <Route path="/software" element={<Software />} />

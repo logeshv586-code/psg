@@ -1,13 +1,13 @@
+
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import { ChevronRight } from "lucide-react";
-import heroTimber from "@/assets/scraped/hero-timber.jpg";
 import heroConstruction from "@/assets/new images/Construction Industry.png";
 import { AnimatedSection, AnimatedCard, AnimatedButton, StaggeredList } from "@/components/shared/AnimatedComponents";
-import { constructionData } from "./ConstructionData";
+import { generalTradingData } from "./GeneralTradingData";
 
-interface ConstructionSection {
+interface TradingSection {
   title: string;
   description: string;
   products: {
@@ -17,7 +17,7 @@ interface ConstructionSection {
   }[];
 }
 
-interface ConstructionContent {
+interface TradingContent {
   id: string;
   label: string;
   title: string;
@@ -26,10 +26,10 @@ interface ConstructionContent {
   image: string;
   cta: string;
   features?: string[];
-  sections?: ConstructionSection[];
+  sections?: TradingSection[];
 }
 
-const Construction = () => {
+const GeneralTrading = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("overview");
   const [isVisible, setIsVisible] = useState(false);
@@ -40,13 +40,10 @@ const Construction = () => {
 
   const tabs = [
     { id: "overview", label: "Overview" },
-    { id: "timber", label: "Timber" },
-    { id: "plywood", label: "Plywood" },
-    { id: "mdf", label: "MDF & Chipboard" },
-    { id: "hardwares", label: "Hardwares" },
+    { id: "pipes", label: "Steel Pipes" },
   ];
 
-  const currentContent = constructionData[activeTab as keyof typeof constructionData] as ConstructionContent;
+  const currentContent = generalTradingData[activeTab as keyof typeof generalTradingData] as TradingContent;
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -61,8 +58,8 @@ const Construction = () => {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-20 md:py-0">
         <div className="absolute inset-0 z-0">
           <img
-            src={heroTimber}
-            alt="Construction Hero"
+            src={heroConstruction}
+            alt="General Trading Hero"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50"></div>
@@ -81,7 +78,7 @@ const Construction = () => {
                 if (currentContent.sections) {
                   scrollToSection('products-section');
                 } else {
-                  scrollToSection('construction-tabs');
+                  scrollToSection('trading-tabs');
                 }
               }} 
               variant="accent" 
@@ -95,8 +92,8 @@ const Construction = () => {
         </div>
       </section>
 
-      {/* Construction Solutions Tabs */}
-      <AnimatedSection id="construction-tabs" className="py-12 md:py-24 bg-white scroll-mt-24" animationType="fade-in-up">
+      {/* Trading Solutions Tabs */}
+      <AnimatedSection id="trading-tabs" className="py-12 md:py-24 bg-white scroll-mt-24" animationType="fade-in-up">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
             {/* Tab Navigation */}
@@ -219,10 +216,10 @@ const Construction = () => {
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 animate-fade-in-up">
-              Ready to Build Your Vision?
+              Ready to Upgrade Your Systems?
             </h2>
             <p className="text-xl mb-12 text-gray-300 animate-fade-in-up stagger-2">
-              Let's discuss your construction project and bring your ideas to life with our expertise and innovative solutions.
+              Let's discuss your project requirements and find the perfect solutions for your needs.
             </p>
             <div 
               className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up stagger-3 cursor-pointer"
@@ -251,4 +248,4 @@ const Construction = () => {
   );
 };
 
-export default Construction;
+export default GeneralTrading;

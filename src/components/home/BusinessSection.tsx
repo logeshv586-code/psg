@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Leaf, Heart, Building2, Plane, Cpu } from "lucide-react";
+import { Leaf, Heart, Building2, Plane, Cpu, Wind } from "lucide-react";
 
 interface BusinessCard {
   title: string;
@@ -32,6 +32,14 @@ const businessCards: BusinessCard[] = [
       "Construction and interiors supply provides building materials, furniture, decors and fixtures.",
     icon: <Building2 className="w-8 h-8" />,
     link: "/construction",
+    colorClass: "business-card-construction",
+  },
+  {
+    title: "HVAC Trading",
+    description:
+      "Complete MEP, HVAC, Fire Fighting, Plumbing, and Electrical solutions.",
+    icon: <Wind className="w-8 h-8" />,
+    link: "/hvac-trading",
     colorClass: "business-card-construction",
   },
   {
@@ -77,7 +85,7 @@ const BusinessSection = () => {
         </div>
 
         {/* Business Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
           {businessCards.map((card) => (
             <Link
               key={card.title}
