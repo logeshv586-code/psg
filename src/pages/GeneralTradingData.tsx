@@ -39,5 +39,43 @@ export const generalTradingData = {
         ]
       }
     ]
+  },
+  industrial: {
+    id: "industrial",
+    label: "Industrial Supplies",
+    title: "Industrial Supplies",
+    subtitle: "Comprehensive Industrial Solutions",
+    description: "We provide a wide range of industrial supplies including tools, equipment, and materials essential for manufacturing and construction operations. Our industrial solutions are designed to meet the highest quality standards.",
+    image: heroConstruction,
+    cta: "View Supplies",
+    sections: [
+      {
+        title: "Industrial Equipment",
+        description: "High-quality industrial equipment and tools for various manufacturing and construction applications.",
+        products: [
+          { name: "Power Tools", image: heroConstruction, category: "Tools" },
+          { name: "Safety Equipment", image: heroConstruction, category: "Safety" },
+          { name: "Measuring Instruments", image: heroConstruction, category: "Instruments" },
+          { name: "Welding Equipment", image: heroConstruction, category: "Equipment" },
+          { name: "Hydraulic Tools", image: heroConstruction, category: "Tools" },
+        ]
+      }
+    ]
+  },
+  logistics: {
+    id: "logistics",
+    label: "Logistics",
+    title: "Logistics Solutions",
+    subtitle: "Global Supply Chain Management",
+    description: "Our comprehensive logistics solutions ensure timely delivery and efficient supply chain management. We handle transportation, warehousing, and distribution with precision and reliability.",
+    image: heroConstruction,
+    cta: "Learn More",
+    features: [
+      "Global Shipping",
+      "Warehousing Services",
+      "Supply Chain Management",
+      "Customs Clearance",
+      "Last Mile Delivery"
+    ]
   }
 };

@@ -22,7 +22,7 @@ interface AnimatedButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
   className?: string;
-  variant?: 'primary' | 'secondary' | 'accent' | 'outline';
+  variant?: 'primary' | 'secondary' | 'accent' | 'outline' | 'custom';
   size?: 'sm' | 'md' | 'lg';
   animationType?: 'scale' | 'lift' | 'glow';
 }
@@ -96,6 +96,7 @@ export const AnimatedButton: React.FC<AnimatedButtonProps> = ({
     secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
     accent: 'bg-accent text-accent-foreground hover:bg-accent/90',
     outline: 'border border-border bg-transparent hover:bg-accent/10',
+    custom: '',
   };
 
   const sizeClasses = {

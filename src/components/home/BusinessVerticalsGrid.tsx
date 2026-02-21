@@ -7,6 +7,7 @@ import tourismImg from "../../assets/new images/Enhanced Dubai Skyline.png";
 import itImg from "../../assets/new images/Enhanced IT Professional.png";
 import digitalHealthImg from "../../assets/new images/Enhanced Digital Health.png";
 import mepInstallationSite from "../../assets/new images/MEP Installation Site.png";
+import generalTradingImg from "../../assets/new images/Construction Industry.png";
 
 const BusinessVerticalsGrid = () => {
   const verticals = [
@@ -51,6 +52,13 @@ const BusinessVerticalsGrid = () => {
       image: mepInstallationSite,
       link: "/hvac-trading",
       bgColor: "bg-orange-600",
+    },
+    {
+      title: "General Trading",
+      description: "Sourcing and delivering high-quality materials for diverse industrial and commercial needs.",
+      image: generalTradingImg,
+      link: "/general-trading",
+      bgColor: "bg-teal-600",
     },
   ];
 

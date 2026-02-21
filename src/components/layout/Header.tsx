@@ -1,6 +1,17 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { 
+  Menu, 
+  X, 
+  ChevronDown, 
+  Briefcase, 
+  Fan, 
+  TreePine, 
+  HeartPulse, 
+  Monitor, 
+  Plane, 
+  Leaf 
+} from "lucide-react";
 import psgLogo from "@/assets/psg-logo.png";
 import psgLogoFull from "@/assets/psg-logo-full.png";
 import coloredLogo from "@/assets/new images/psg_logo.png";
@@ -12,13 +23,13 @@ const navItems = [
     label: "Our Business",
     href: "#",
     children: [
-      { label: "General Trading", href: "/general-trading" },
-      { label: "HVAC Trading", href: "/hvac-trading" },
-      { label: "Timber", href: "/construction" },
-      { label: "Advanced Healthcare Supplies", href: "/advanced-healthcare" },
-      { label: "IT", href: "/software" },
-      { label: "Tourism", href: "/tourism" },
-      { label: "Environmental", href: "/environmental" },
+      { label: "General Trading", href: "/general-trading", icon: Briefcase },
+      { label: "HVAC Trading", href: "/hvac-trading", icon: Fan },
+      { label: "Timber", href: "/construction", icon: TreePine },
+      { label: "Advanced Healthcare Supplies", href: "/advanced-healthcare", icon: HeartPulse },
+      { label: "IT", href: "/software", icon: Monitor },
+      { label: "Tourism", href: "/tourism", icon: Plane },
+      { label: "Environmental", href: "/environmental", icon: Leaf },
     ],
   },
   { label: "Strategic Partnership", href: "/strategic-partnership" },
@@ -114,15 +125,23 @@ const Header = () => {
 
                 {/* Dropdown */}
                 {item.children && openDropdown === item.label && (
-                  <div className="absolute top-full left-0 pt-2 min-w-[200px] animate-fade-in">
-                    <div className="bg-card rounded-xl shadow-soft-lg border border-border overflow-hidden">
+                  <div className="absolute top-full left-0 pt-4 w-72 animate-fade-in-up origin-top-left z-50">
+                    <div className="bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/20 overflow-hidden p-2 ring-1 ring-black/5">
                       {item.children.map((child) => (
                         <Link
                           key={child.label}
                           to={child.href}
-                          className="block px-4 py-3 text-sm text-foreground/80 hover:bg-secondary hover:text-foreground transition-colors"
+                          className="group flex items-center gap-3 px-3 py-3 text-sm font-medium text-gray-600 rounded-xl hover:bg-blue-50/80 hover:text-blue-600 transition-all duration-200"
                         >
-                          {child.label}
+                          {child.icon && (
+                            <div className="p-2 rounded-lg bg-gray-50 text-gray-400 group-hover:bg-blue-100 group-hover:text-blue-600 transition-colors shadow-sm">
+                              <child.icon className="w-5 h-5" />
+                            </div>
+                          )}
+                          <span className="flex-1">{child.label}</span>
+                          <div className="opacity-0 group-hover:opacity-100 transform translate-x-[-5px] group-hover:translate-x-0 transition-all duration-200">
+                             <ChevronDown className="w-4 h-4 -rotate-90 text-blue-400" />
+                          </div>
                         </Link>
                       ))}
                     </div>
@@ -194,14 +213,15 @@ const Header = () => {
                       />
                     </button>
                     {openDropdown === item.label && (
-                      <div className="pb-3 pl-4 space-y-2">
+                      <div className="pb-3 pl-4 space-y-1 mt-1">
                         {item.children.map((child) => (
                           <Link
                             key={child.label}
                             to={child.href}
-                            className="block py-2 text-sm text-muted-foreground hover:text-foreground"
+                            className="flex items-center gap-3 py-2.5 px-3 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors"
                             onClick={() => setIsMenuOpen(false)}
                           >
+                            {child.icon && <child.icon className="w-4 h-4 opacity-70" />}
                             {child.label}
                           </Link>
                         ))}

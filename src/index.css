@@ -48,6 +48,8 @@
     --card-construction: 35 70% 90%;
     --card-tourism: 340 70% 92%;
     --card-software: 260 50% 92%;
+    --card-general-trading: 175 70% 90%;
+    --card-hvac: 25 90% 92%;
 
     /* Gradient backgrounds */
     --gradient-hero: linear-gradient(135deg, hsl(180 30% 96%) 0%, hsl(120 40% 95%) 100%);
