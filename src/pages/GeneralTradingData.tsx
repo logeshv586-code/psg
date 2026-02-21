@@ -1,7 +1,10 @@
 
 import heroConstruction from "@/assets/new images/Construction Industry.png";
+import type { TradingContent } from "@/types/trading";
 
-export const generalTradingData = {
+type TradingKeys = "overview" | "pipes" | "industrial" | "logistics";
+
+export const generalTradingData: Record<TradingKeys, TradingContent> = {
   overview: {
     id: "overview",
     label: "Overview",

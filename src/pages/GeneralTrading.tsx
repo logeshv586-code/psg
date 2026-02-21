@@ -24,30 +24,7 @@ import heroTrading from "@/assets/new images/Trading Website Hero 2.png";
 import trustBg from "@/assets/new images/Trading Website Hero 1.png";
 import { AnimatedSection, AnimatedCard, AnimatedButton, StaggeredList } from "@/components/shared/AnimatedComponents";
 import { generalTradingData } from "./GeneralTradingData";
-
-interface TradingSection {
-  title: string;
-  description: string;
-  products: {
-    name: string;
-    image: string;
-    category: string;
-    specifications?: string[];
-  }[];
-}
-
-interface TradingContent {
-  id: string;
-  label: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  image: string;
-  cta: string;
-  features?: string[];
-  sections?: TradingSection[];
-  stats?: { label: string; value: string; icon: React.ComponentType<{ className?: string }> }[];
-}
+import type { TradingContent } from "@/types/trading";
 
 const GeneralTrading = () => {
   const navigate = useNavigate();
@@ -72,10 +49,8 @@ const GeneralTrading = () => {
     { label: "Client Satisfaction", value: "98%", icon: Star },
   ];
 
-  const currentContent = generalTradingData[activeTab as keyof typeof generalTradingData] as TradingContent;
-
-  // Fallback to overview if tab data is not found
-  const safeContent = currentContent || generalTradingData.overview;
+  const currentContent: TradingContent = generalTradingData[activeTab as keyof typeof generalTradingData];
+  const safeContent: TradingContent = currentContent ?? generalTradingData.overview;
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -273,9 +248,6 @@ const GeneralTrading = () => {
                               </div>
                             )}
                             
-                            <button className="w-full mt-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white py-2 rounded-lg font-semibold hover:from-blue-700 hover:to-cyan-700 transition-all">
-                              View Details
-                            </button>
                           </AnimatedCard>
                         ))}
                       </div>

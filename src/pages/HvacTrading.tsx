@@ -278,9 +278,6 @@ const HvacTrading = () => {
                               </div>
                             )}
                             
-                            <button className="w-full mt-4 bg-gradient-to-r from-orange-600 to-amber-600 text-white py-2 rounded-lg font-semibold hover:from-orange-700 hover:to-amber-700 transition-all">
-                              View Specifications
-                            </button>
                           </AnimatedCard>
                         ))}
                       </div>
