@@ -4,7 +4,7 @@ import { motion, useMotionValue } from 'framer-motion';
 import Robot3D from './Robot3D';
 import MiniRobot from './MiniRobot';
 import WaitingRobot from './WaitingRobot';
-import { chatbotData } from '../../data/chatbotData';
+import { getActiveApiUrl } from '../../lib/apiConfig';
 
 const INITIAL_MESSAGES = [
   {
@@ -23,6 +23,11 @@ const Chatbot: React.FC = () => {
   const constraintsRef = useRef(null);
   const robotRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
+  const [apiUrl, setApiUrl] = useState<string>("http://localhost:8000");
+
+  useEffect(() => {
+    getActiveApiUrl().then(url => setApiUrl(url));
+  }, []);
 
   // Separate motion values for robot and chat window
   const robotX = useMotionValue(0);
@@ -33,6 +38,7 @@ const Chatbot: React.FC = () => {
   // Speech Recognition Refs
   const recognitionRef = useRef<any>(null);
   const [isListening, setIsListening] = useState(false);
+  const [isTranscribing, setIsTranscribing] = useState(false);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<BlobPart[]>([]);
   const streamRef = useRef<MediaStream | null>(null);
@@ -64,22 +70,20 @@ const Chatbot: React.FC = () => {
   }, []);
 
   const sendAudio = async (blob: Blob) => {
+    if (!blob || blob.size === 0) return;
     const fd = new FormData();
     fd.append('file', blob, 'speech.webm');
+    setIsTranscribing(true);
     try {
-      // Assuming localhost:8000 is the backend, but likely need to handle this gracefully if not available
-      const resp = await fetch('http://localhost:8000/transcribe', { method: 'POST', body: fd });
+      const resp = await fetch(`${apiUrl}/transcribe`, { method: 'POST', body: fd });
       if (!resp.ok) throw new Error('fail');
       const data = await resp.json();
       const t = (data && data.text) || '';
       if (t) setInputValue((prev) => (prev ? prev + ' ' + t : t));
     } catch (e) {
       console.warn("Audio transcription failed or backend unavailable", e);
-      const r = recognitionRef.current;
-      if (r) {
-        r.start();
-        setIsListening(true);
-      }
+    } finally {
+      setIsTranscribing(false);
     }
   };
 
@@ -111,7 +115,6 @@ const Chatbot: React.FC = () => {
           streamRef.current = null;
         }
         await sendAudio(blob);
-        setIsListening(false);
       };
       mediaRecorderRef.current = mr;
       mr.start();
@@ -128,6 +131,7 @@ const Chatbot: React.FC = () => {
     if (w && mr && mr.state !== 'inactive') {
       mr.stop();
       mediaRecorderRef.current = null;
+      setIsListening(false);
       return;
     }
     const r = recognitionRef.current;
@@ -147,23 +151,6 @@ const Chatbot: React.FC = () => {
     }
   };
 
-  const findResponse = (text: string) => {
-    const lowerText = text.toLowerCase();
-
-    // Check for keyword matches
-    const match = chatbotData.find(item =>
-      item.keywords.some(keyword => lowerText.includes(keyword))
-    );
-
-    if (match) {
-      return match.response;
-    }
-
-    // Fallback to default
-    const defaultResponse = chatbotData.find(item => item.id === 'default');
-    return defaultResponse ? defaultResponse.response : "I'm sorry, I didn't understand that.";
-  };
-
   const handleClearChat = () => {
     setMessages(INITIAL_MESSAGES);
   };
@@ -180,10 +167,18 @@ const Chatbot: React.FC = () => {
     setInputValue('');
     setIsLoading(true);
     try {
-      // Simulate backend delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const response = await fetch(`${apiUrl}/chat`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query: text }),
+      });
 
-      const responseText = findResponse(text);
+      if (!response.ok) {
+        throw new Error(`API error: ${response.status}`);
+      }
+
+      const data = await response.json();
+      const responseText = data.answer || "I'm sorry, I couldn't process your request.";
 
       const botMsg = {
         id: Date.now() + 1,
@@ -196,7 +191,7 @@ const Chatbot: React.FC = () => {
       const errorMsg = {
         id: Date.now() + 1,
         role: 'bot',
-        content: "Sorry, I encountered an error while processing your request.",
+        content: "Sorry, I encountered an error while communicating with the server.",
       };
       setMessages(prev => [...prev, errorMsg]);
     } finally {
@@ -381,11 +376,16 @@ const Chatbot: React.FC = () => {
               />
               <button
                 onClick={toggleListening}
-                className={`px-2.5 py-1.5 rounded-full border flex-shrink-0 transition-all ${isListening ? 'border-[#8CC63F] bg-[#8CC63F] text-[#172033]' : 'border-gray-300 bg-white text-gray-500'}`}
+                disabled={isTranscribing}
+                className={`px-2.5 py-1.5 rounded-full border flex-shrink-0 transition-all ${isListening ? 'border-red-400 bg-red-50 text-red-600' : isTranscribing ? 'border-amber-400 bg-amber-50 text-amber-600' : 'border-gray-300 bg-white text-gray-500'}`}
               >
                 <div className="flex items-center gap-1.5">
-                  <Mic className="w-3.5 h-3.5" />
-                  <span className="text-xs font-medium">{isListening ? 'On' : 'Voice'}</span>
+                  {isTranscribing ? (
+                    <div className="w-3.5 h-3.5 border-2 border-amber-500 border-t-transparent rounded-full animate-spin" />
+                  ) : (
+                    <Mic className={`w-3.5 h-3.5 ${isListening ? 'animate-pulse' : ''}`} />
+                  )}
+                  <span className="text-xs font-medium">{isListening ? 'Stop' : isTranscribing ? 'Wait' : 'Voice'}</span>
                 </div>
               </button>
 

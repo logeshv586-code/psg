@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+sentence-transformers
+faiss-cpu
+llama-cpp-python
+numpy<2.0.0
+pydantic
+requests
+openai
+faster-whisper
+huggingface_hub
