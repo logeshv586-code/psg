@@ -1,7 +1,7 @@
 
-import VirtualMedicalScribingImg from "../assets/Digital Health_files/a8ba5c8afdb45991203a5eec73595a6f-qydy79aaxqwqv79a1it4eugpoy70bbo1ewyaluyqv2.jpg";
-import MedicalTranscriptionImg from "../assets/Digital Health_files/7cd298736d839252c55182e6dae504a3-1-qyduuqfamhx676bptfb8p9czmc8pch726dkzclo0ou.jpg";
-import MedicalCodingImg from "../assets/Digital Health_files/1f69e56d9a8c12bd79a5ccfd18663010-1-qydv92goujjl93i544df8551qvl7qb3p5bqjtievsu.jpg";
+import VirtualMedicalScribingImg from "../assets/Digital Health_files/a8ba5c8afdb45991203a5eec73595a6f-qydy79aaxqwqv79a1it4eugpoy70bbo1ewyaluyqv2.webp";
+import MedicalTranscriptionImg from "../assets/Digital Health_files/7cd298736d839252c55182e6dae504a3-1-qyduuqfamhx676bptfb8p9czmc8pch726dkzclo0ou.webp";
+import MedicalCodingImg from "../assets/Digital Health_files/1f69e56d9a8c12bd79a5ccfd18663010-1-qydv92goujjl93i544df8551qvl7qb3p5bqjtievsu.webp";
 import MedicalSummarizationImg from "../assets/new images/Medical Summarization Service.webp";
 
 export const advancedHealthcareData = [

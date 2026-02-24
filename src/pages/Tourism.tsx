@@ -4,41 +4,41 @@ import Layout from "@/components/layout/Layout";
 import { AnimatedSection, AnimatedCard, AnimatedButton, StaggeredList } from "@/components/shared/AnimatedComponents";
 
 // Images
-import skydivingImg from "@/assets/tourism_images/07f201db989b67b27e1078ab2c931eae-scaled-qyaqk9uwzzxpgibik3iy0w68dr5sfewdof8lv9sbrk.jpg";
-import burjImg from "@/assets/tourism_images/3450719924e79a232e2e120205fc7ca0-scaled-qyaqp5mqi0mbrl871pi6h5tfgt3feta6ol8em0jpg0.jpg";
-import marinaImg from "@/assets/tourism_images/6f367ded12caace1a60c9659d7eb6918-1-qyaq23n8vb24zwpso8qlth9exkqbm2r76h6nuoqc28.jpg";
-import camelImg from "@/assets/tourism_images/890bfe499b5c1f6b2f848b53920805c2-qyap0zyl3q9oq0lybpdqwcbet1lqs6gmeu5owhqro0.jpg";
-import ferrariImg from "@/assets/tourism_images/d2d02fe1c8745078ebc1ec38294a045d-scaled-qyaqshy2st711odfj5ifcbgfi4mes2jtt4qk1flbbk.jpg";
-import coupleImg from "@/assets/tourism_images/174613dbe56b4f7e41a6d704e6ee3ab5-1024x1024.png";
+import skydivingImg from "@/assets/tourism_images/07f201db989b67b27e1078ab2c931eae-scaled-qyaqk9uwzzxpgibik3iy0w68dr5sfewdof8lv9sbrk.webp";
+import burjImg from "@/assets/tourism_images/3450719924e79a232e2e120205fc7ca0-scaled-qyaqp5mqi0mbrl871pi6h5tfgt3feta6ol8em0jpg0.webp";
+import marinaImg from "@/assets/tourism_images/6f367ded12caace1a60c9659d7eb6918-1-qyaq23n8vb24zwpso8qlth9exkqbm2r76h6nuoqc28.webp";
+import camelImg from "@/assets/tourism_images/890bfe499b5c1f6b2f848b53920805c2-qyap0zyl3q9oq0lybpdqwcbet1lqs6gmeu5owhqro0.webp";
+import ferrariImg from "@/assets/tourism_images/d2d02fe1c8745078ebc1ec38294a045d-scaled-qyaqshy2st711odfj5ifcbgfi4mes2jtt4qk1flbbk.webp";
+import coupleImg from "@/assets/tourism_images/174613dbe56b4f7e41a6d704e6ee3ab5-1024x1024.webp";
 
-import group197 from "@/assets/tourism_images/Group-197.png";
-import group8 from "@/assets/tourism_images/Group-8.png";
-import group9 from "@/assets/tourism_images/Group-9.png";
-import maskGroup15 from "@/assets/tourism_images/Mask-group-15.png";
-import visaImg from "@/assets/tourism_images/Group-358-2-qyasg9ilk47k6xnmh3q2xoik1at1gc3o7eqizg6sze.png";
-import group337 from "@/assets/tourism_images/Group-337.png"; // UAE extra image
+import group197 from "@/assets/tourism_images/Group-197.webp";
+import group8 from "@/assets/tourism_images/Group-8.webp";
+import group9 from "@/assets/tourism_images/Group-9.webp";
+import maskGroup15 from "@/assets/tourism_images/Mask-group-15.webp";
+import visaImg from "@/assets/tourism_images/Group-358-2-qyasg9ilk47k6xnmh3q2xoik1at1gc3o7eqizg6sze.webp";
+import group337 from "@/assets/tourism_images/Group-337.webp"; // UAE extra image
 import group582 from "@/assets/tourism_images/Group-582.svg"; // Souvenir signature?
-import group283 from "@/assets/tourism_images/Group-283.png"; // Souvenir signature?
+import group283 from "@/assets/tourism_images/Group-283.webp"; // Souvenir signature?
 
 // UAE Logos
-import logo378 from "@/assets/tourism_images/Group-378-1-150x69.png";
-import logo380 from "@/assets/tourism_images/Group-380-1.png";
-import logo383 from "@/assets/tourism_images/Group-383-1.png";
-import logo384 from "@/assets/tourism_images/Group-384-1.png";
-import logo385 from "@/assets/tourism_images/Group-385-1.png";
-import logo388 from "@/assets/tourism_images/Group-388-1.png";
+import logo378 from "@/assets/tourism_images/Group-378-1-150x69.webp";
+import logo380 from "@/assets/tourism_images/Group-380-1.webp";
+import logo383 from "@/assets/tourism_images/Group-383-1.webp";
+import logo384 from "@/assets/tourism_images/Group-384-1.webp";
+import logo385 from "@/assets/tourism_images/Group-385-1.webp";
+import logo388 from "@/assets/tourism_images/Group-388-1.webp";
 
-import logo258 from "@/assets/tourism_images/logo-258x300.png";
+import logo258 from "@/assets/tourism_images/logo-258x300.webp";
 
 // Saudi Logos
-import saudi627 from "@/assets/tourism_images/Group-627.png";
-import saudi628 from "@/assets/tourism_images/Group-628.png";
-import saudi392 from "@/assets/tourism_images/Group-392.png";
-import saudi629 from "@/assets/tourism_images/Group-629.png";
-import saudi634 from "@/assets/tourism_images/Group-634.png";
-import saudi633 from "@/assets/tourism_images/Group-633.png";
-import saudi632 from "@/assets/tourism_images/Group-632.png";
-import saudi631 from "@/assets/tourism_images/Group-631.png";
+import saudi627 from "@/assets/tourism_images/Group-627.webp";
+import saudi628 from "@/assets/tourism_images/Group-628.webp";
+import saudi392 from "@/assets/tourism_images/Group-392.webp";
+import saudi629 from "@/assets/tourism_images/Group-629.webp";
+import saudi634 from "@/assets/tourism_images/Group-634.webp";
+import saudi633 from "@/assets/tourism_images/Group-633.webp";
+import saudi632 from "@/assets/tourism_images/Group-632.webp";
+import saudi631 from "@/assets/tourism_images/Group-631.webp";
 
 import heroTourism from "@/assets/new images/Enhanced Dubai Skyline.webp";
 

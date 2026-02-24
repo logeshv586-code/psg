@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Layout from "@/components/layout/Layout";
 import { useToast } from "@/hooks/use-toast";
-import careerImage from "@/assets/career-hero.png";
+import careerImage from "@/assets/career-hero.webp";
 import sideImage from "@/assets/new images/Enhanced IT Professional.webp";
 
 const Career = () => {

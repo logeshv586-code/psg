@@ -2,8 +2,8 @@ import { useState } from "react";
 import Layout from "@/components/layout/Layout";
 import { MapPin, Mail, Phone } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import contactHero from "@/assets/contact-hero.png";
-import qrCode from "@/assets/qr-code.jpg";
+import contactHero from "@/assets/contact-hero.webp";
+import qrCode from "@/assets/qr-code.webp";
 import { MotionSection, MotionItem } from "@/components/ui/motion-ui";
 import { motion } from "framer-motion";
 

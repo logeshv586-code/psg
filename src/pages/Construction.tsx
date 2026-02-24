@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import { ChevronRight } from "lucide-react";
-import heroTimber from "@/assets/scraped/hero-timber.jpg";
+import heroTimber from "@/assets/scraped/hero-timber.webp";
 import heroConstruction from "@/assets/new images/Construction Industry.webp";
 import { AnimatedSection, AnimatedCard, AnimatedButton, StaggeredList } from "@/components/shared/AnimatedComponents";
 import { constructionData } from "./ConstructionData";

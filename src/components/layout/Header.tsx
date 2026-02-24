@@ -12,8 +12,8 @@ import {
   Plane, 
   Leaf 
 } from "lucide-react";
-import psgLogo from "@/assets/psg-logo.png";
-import psgLogoFull from "@/assets/psg-logo-full.png";
+import psgLogo from "@/assets/psg-logo.webp";
+import psgLogoFull from "@/assets/psg-logo-full.webp";
 import coloredLogo from "@/assets/new images/psg_logo.webp";
 
 const navItems = [

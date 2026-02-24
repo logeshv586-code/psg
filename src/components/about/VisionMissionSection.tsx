@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import targetImg from "../../assets/target.png";
+import targetImg from "../../assets/target.webp";
 import { MotionSection, MotionCard } from "@/components/ui/motion-ui";
 import { motion } from "framer-motion";
 

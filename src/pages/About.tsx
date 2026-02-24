@@ -1,5 +1,5 @@
 import Layout from "@/components/layout/Layout";
-import aboutHero from "@/assets/about-hero.jpg";
+import aboutHero from "@/assets/about-hero.webp";
 import ServicesSlider from "@/components/about/ServicesSlider";
 import AboutBusinessCardsSection from "@/components/about/AboutBusinessCardsSection";
 import { MotionSection } from "@/components/ui/motion-ui";

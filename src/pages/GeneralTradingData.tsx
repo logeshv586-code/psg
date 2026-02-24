@@ -3,22 +3,22 @@ import heroConstruction from "@/assets/new images/Construction Industry.webp";
 import type { TradingContent } from "@/types/trading";
 
 // Section hero images
-import generalTradingSolutions from "@/assets/generaltrading/General Trading Solutions.png";
-import logisticsSolutions from "@/assets/generaltrading/Logistics Solutions.png";
+import generalTradingSolutions from "@/assets/generaltrading/General Trading Solutions.webp";
+import logisticsSolutions from "@/assets/generaltrading/Logistics Solutions.webp";
 
 // Steel Pipes images
-import seamlessSteelPipes from "@/assets/generaltrading/Seamless Steel Pipes.png";
-import weldedSteelPipes from "@/assets/generaltrading/Welded Steel Pipes.png";
-import galvanizedSteelPipes from "@/assets/generaltrading/Galvanized Steel Pipes.png";
-import carbonSteelPipe from "@/assets/generaltrading/Carbon Steel Pipe.png";
-import stainlessSteelPipes from "@/assets/generaltrading/Stainless Steel Pipes.png";
+import seamlessSteelPipes from "@/assets/generaltrading/Seamless Steel Pipes.webp";
+import weldedSteelPipes from "@/assets/generaltrading/Welded Steel Pipes.webp";
+import galvanizedSteelPipes from "@/assets/generaltrading/Galvanized Steel Pipes.webp";
+import carbonSteelPipe from "@/assets/generaltrading/Carbon Steel Pipe.webp";
+import stainlessSteelPipes from "@/assets/generaltrading/Stainless Steel Pipes.webp";
 
 // Industrial Supplies images
-import powerTools from "@/assets/generaltrading/Power Tools.png";
-import safetyEquipment from "@/assets/generaltrading/Safety Equipment.png";
-import measuringInstruments from "@/assets/generaltrading/Measuring Instruments.png";
-import weldingEquipment from "@/assets/generaltrading/Welding Equipment.png";
-import hydraulicTools from "@/assets/generaltrading/Hydraulic Tools.png";
+import powerTools from "@/assets/generaltrading/Power Tools.webp";
+import safetyEquipment from "@/assets/generaltrading/Safety Equipment.webp";
+import measuringInstruments from "@/assets/generaltrading/Measuring Instruments.webp";
+import weldingEquipment from "@/assets/generaltrading/Welding Equipment.webp";
+import hydraulicTools from "@/assets/generaltrading/Hydraulic Tools.webp";
 
 type TradingKeys = "overview" | "pipes" | "industrial" | "logistics";
 

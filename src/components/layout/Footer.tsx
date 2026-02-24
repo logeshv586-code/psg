@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin } from "lucide-react";
-import psgLogoFull from "@/assets/psg-logo-full.png";
-import qrCode from "@/assets/qr-code.jpg";
+import psgLogoFull from "@/assets/psg-logo-full.webp";
+import qrCode from "@/assets/qr-code.webp";
 
 const usefulLinks = [
   { label: "Software Development & AI", href: "/software" },

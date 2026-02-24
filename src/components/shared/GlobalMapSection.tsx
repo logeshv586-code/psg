@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import mapImg from "../../assets/new images/Enhanced Global Network.webp";
-import logoImg from "../../assets/psg_logo-removebg-preview-1.png";
+import logoImg from "../../assets/psg_logo-removebg-preview-1.webp";
 import { ArrowRight } from "lucide-react";
 
 const GlobalMapSection = () => {
