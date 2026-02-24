@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import heroSoftware from "@/assets/new images/Enhanced IT Professional.png";
-import heroTourism from "@/assets/new images/Enhanced Dubai Skyline.png";
-import heroHealth from "@/assets/new images/Enhanced Digital Health.png";
-import heroTimber from "@/assets/new images/Enhanced Timber Logs.png";
-import heroEnvironmental from "@/assets/new images/Enhanced Environmental.png";
+import heroSoftware from "@/assets/new images/Enhanced IT Professional.webp";
+import heroTourism from "@/assets/new images/Enhanced Dubai Skyline.webp";
+import heroHealth from "@/assets/new images/Enhanced Digital Health.webp";
+import heroTimber from "@/assets/new images/Enhanced Timber Logs.webp";
+import heroEnvironmental from "@/assets/new images/Enhanced Environmental.webp";
 
 const services = [
   {

@@ -1,13 +1,13 @@
 
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import environmentalImg from "../../assets/new images/Enhanced Environmental.png";
-import constructionImg from "../../assets/new images/Enhanced Timber Logs.png";
-import tourismImg from "../../assets/new images/Enhanced Dubai Skyline.png";
-import itImg from "../../assets/new images/Enhanced IT Professional.png";
-import digitalHealthImg from "../../assets/new images/Enhanced Digital Health.png";
-import mepInstallationSite from "../../assets/new images/MEP Installation Site.png";
-import generalTradingImg from "../../assets/new images/Construction Industry.png";
+import environmentalImg from "../../assets/new images/Enhanced Environmental.webp";
+import constructionImg from "../../assets/new images/Enhanced Timber Logs.webp";
+import tourismImg from "../../assets/new images/Enhanced Dubai Skyline.webp";
+import itImg from "../../assets/new images/Enhanced IT Professional.webp";
+import digitalHealthImg from "../../assets/new images/Enhanced Digital Health.webp";
+import mepInstallationSite from "../../assets/new images/MEP Installation Site.webp";
+import generalTradingImg from "../../assets/new images/Construction Industry.webp";
 
 const BusinessVerticalsGrid = () => {
   const verticals = [
@@ -87,8 +87,8 @@ const BusinessVerticalsGrid = () => {
                 </p>
                 <div className="inline-flex items-center gap-2 text-white font-semibold">
                   Learn More
-                  <div className="bg-lime-400 rounded-full p-1.5 group-hover:translate-x-1 transition-transform">
-                    <ArrowRight className="w-4 h-4 text-primary" />
+                  <div className="bg-lime-400 rounded-full p-2 group-hover:translate-x-1 transition-transform">
+                    <ArrowRight className="w-5 h-5 text-white" strokeWidth={2.5} />
                   </div>
                 </div>
               </div>

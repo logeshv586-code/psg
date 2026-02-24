@@ -1,13 +1,12 @@
 import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ArrowUpRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import arrowIcon from "@/assets/arrow-icon.png";
-import digitalHealth from "@/assets/new images/Enhanced Digital Health.png";
-import construction from "@/assets/new images/Construction Industry.png";
-import dubai from "@/assets/new images/Enhanced Dubai Skyline.png";
-import finance from "@/assets/new images/Finance Professional.png";
-import sustainability from "@/assets/new images/Sustainability Concept.png";
+import digitalHealth from "@/assets/new images/Enhanced Digital Health.webp";
+import construction from "@/assets/new images/Construction Industry.webp";
+import dubai from "@/assets/new images/Enhanced Dubai Skyline.webp";
+import finance from "@/assets/new images/Finance Professional.webp";
+import sustainability from "@/assets/new images/Sustainability Concept.webp";
 
 interface Slide {
   id: number;
@@ -170,6 +169,8 @@ const HeroSlider = () => {
                     src={currentSlideData.image}
                     alt={currentSlideData.category}
                     className="w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] object-cover"
+                    fetchPriority="high"
+                    decoding="async"
                   />
                 </div>
 
@@ -178,12 +179,8 @@ const HeroSlider = () => {
                   <p className="text-white/90 font-medium">
                     {currentSlideData.category}
                   </p>
-                  <Link to={currentSlideData.link} className="circle-arrow bg-white/10 hover:bg-white/20 border-white/20">
-                    <img
-                      src={arrowIcon}
-                      alt="View more"
-                      className="w-full h-full object-contain invert brightness-0"
-                    />
+                  <Link to={currentSlideData.link} className="circle-arrow bg-white/10 hover:bg-white/20 border-white/20 flex items-center justify-center">
+                    <ArrowUpRight className="w-6 h-6 text-white" strokeWidth={2} />
                   </Link>
                 </div>
 
@@ -202,9 +199,8 @@ const HeroSlider = () => {
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`slider-dot ${
-                index === currentSlide ? "bg-white w-8" : "bg-white/40 hover:bg-white/60"
-              }`}
+              className={`slider-dot ${index === currentSlide ? "bg-white w-8" : "bg-white/40 hover:bg-white/60"
+                }`}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}

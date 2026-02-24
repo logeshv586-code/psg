@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
-import { 
-  ChevronRight, 
-  ArrowRight, 
-  Phone, 
-  Mail, 
-  Shield, 
-  Award, 
+import {
+  ChevronRight,
+  ArrowRight,
+  Phone,
+  Mail,
+  Shield,
+  Award,
   TrendingUp,
   Building2,
   Package,
@@ -23,8 +23,8 @@ import {
   Wrench,
   Home
 } from "lucide-react";
-import heroHvac from "@/assets/new images/HVAC Trading Hero 3.png";
-import techBg from "@/assets/new images/HVAC Trading Hero 1.png";
+import heroHvac from "@/assets/new images/HVAC Trading Hero 3.webp";
+import techBg from "@/assets/new images/HVAC Trading Hero 1.webp";
 import { AnimatedSection, AnimatedCard, AnimatedButton, StaggeredList } from "@/components/shared/AnimatedComponents";
 import { hvacTradingData } from "./HvacTradingData";
 
@@ -90,7 +90,7 @@ const HvacTrading = () => {
       {/* Hero Section - Enterprise HVAC Design */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-20 md:py-0 bg-cover bg-center"
         style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${heroHvac})` }}>
-        
+
         <div className="container mx-auto px-6">
           <div className={`max-w-3xl text-white transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <h1 className="text-6xl font-bold mb-6">
@@ -100,25 +100,25 @@ const HvacTrading = () => {
               <br />
               <span>Solutions</span>
             </h1>
-            
+
             <p className="text-xl leading-relaxed">
-              PSG delivers cutting-edge HVAC, fire fighting, and MEP solutions with 
+              PSG delivers cutting-edge HVAC, fire fighting, and MEP solutions with
               energy efficiency, sustainability, and uncompromising quality standards.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up stagger-4">
-              <AnimatedButton 
-                onClick={() => scrollToSection('hvac-tabs')} 
-                variant="custom" 
+              <AnimatedButton
+                onClick={() => scrollToSection('hvac-tabs')}
+                variant="custom"
                 size="lg"
                 className="bg-gradient-to-r from-orange-600 to-amber-600 text-white hover:from-orange-700 hover:to-amber-700 px-8 py-4 text-lg"
               >
                 Explore Systems
                 <ArrowRight className="ml-2 w-5 h-5" />
               </AnimatedButton>
-              
-              <AnimatedButton 
-                variant="outline" 
+
+              <AnimatedButton
+                variant="outline"
                 size="lg"
                 className="border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 text-lg"
                 onClick={() => navigate('/contact')}
@@ -163,11 +163,10 @@ const HvacTrading = () => {
                 <AnimatedButton
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`px-6 py-3 rounded-full font-semibold transition-all ${
-                    activeTab === tab.id 
-                      ? 'bg-gradient-to-r from-orange-600 to-amber-600 text-white shadow-lg shadow-orange-500/25' 
+                  className={`px-6 py-3 rounded-full font-semibold transition-all ${activeTab === tab.id
+                      ? 'bg-gradient-to-r from-orange-600 to-amber-600 text-white shadow-lg shadow-orange-500/25'
                       : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-                  }`}
+                    }`}
                   size="md"
                   animationType={activeTab === tab.id ? 'scale' : 'lift'}
                   variant="custom"
@@ -220,13 +219,15 @@ const HvacTrading = () => {
 
                 <div className="relative">
                   <AnimatedCard hoverEffect="glow" className="rounded-2xl overflow-hidden shadow-2xl">
-                    <img 
-                      src={currentContent.image} 
+                    <img
+                      src={currentContent.image}
                       alt={currentContent.title}
                       className="w-full h-96 object-cover"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </AnimatedCard>
-                  
+
                   {/* Professional Overlay */}
                   <div className="absolute -top-4 -right-4 bg-gradient-to-br from-orange-600 to-amber-600 text-white p-4 rounded-xl shadow-lg">
                     <Settings className="w-6 h-6" />
@@ -245,7 +246,7 @@ const HvacTrading = () => {
                           {section.description}
                         </p>
                       </div>
-                      
+
                       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                         {section.products.map((product, pIndex) => (
                           <AnimatedCard
@@ -255,10 +256,12 @@ const HvacTrading = () => {
                             animationDelay={pIndex * 100}
                           >
                             <div className="bg-gradient-to-br from-slate-50 to-orange-50 rounded-xl p-4 mb-4 h-32 flex items-center justify-center">
-                              <img 
-                                src={product.image} 
+                              <img
+                                src={product.image}
                                 alt={product.name}
                                 className="w-full h-full object-contain"
+                                loading="lazy"
+                                decoding="async"
                                 onError={(e) => {
                                   (e.target as HTMLImageElement).src = `https://via.placeholder.com/150?text=${encodeURIComponent(product.name)}`;
                                 }}
@@ -266,7 +269,7 @@ const HvacTrading = () => {
                             </div>
                             <h5 className="font-bold text-slate-900 text-lg mb-2">{product.name}</h5>
                             <p className="text-sm text-slate-500 mb-3">{product.category}</p>
-                            
+
                             {product.specifications && (
                               <div className="space-y-1">
                                 {product.specifications.map((spec, sIndex) => (
@@ -277,7 +280,7 @@ const HvacTrading = () => {
                                 ))}
                               </div>
                             )}
-                            
+
                           </AnimatedCard>
                         ))}
                       </div>
@@ -293,53 +296,53 @@ const HvacTrading = () => {
       {/* Enterprise Technology Section */}
       <AnimatedSection className="py-24 bg-gradient-to-br from-slate-900 via-orange-900 to-slate-800 text-white relative overflow-hidden" animationType="fade-in-up">
         <div className="absolute inset-0 bg-cover bg-center opacity-30" style={{ backgroundImage: `url(${techBg})` }}></div>
-        
+
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold mb-8">
               <Zap className="w-4 h-4" />
               Innovation & Technology
             </div>
-            
+
             <h2 className="text-4xl md:text-6xl font-bold mb-8 animate-fade-in-up">
               Smart Building Solutions
             </h2>
-            
+
             <p className="text-xl md:text-2xl mb-12 text-orange-100 max-w-4xl mx-auto leading-relaxed">
-              Integrating IoT, AI, and automation technologies to create intelligent building systems 
+              Integrating IoT, AI, and automation technologies to create intelligent building systems
               that optimize comfort, safety, and energy efficiency.
             </p>
-            
+
             <div className="grid md:grid-cols-4 gap-8 mb-12">
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center">
                 <Thermometer className="w-12 h-12 text-orange-400 mx-auto mb-4" />
                 <h3 className="text-lg font-bold mb-2">Smart Climate</h3>
                 <p className="text-orange-100 text-sm">AI-powered temperature control</p>
               </div>
-              
+
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center">
                 <Wind className="w-12 h-12 text-amber-400 mx-auto mb-4" />
                 <h3 className="text-lg font-bold mb-2">Air Quality</h3>
                 <p className="text-orange-100 text-sm">Real-time monitoring & purification</p>
               </div>
-              
+
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center">
                 <Shield className="w-12 h-12 text-orange-400 mx-auto mb-4" />
                 <h3 className="text-lg font-bold mb-2">Fire Safety</h3>
                 <p className="text-orange-100 text-sm">Advanced detection & suppression</p>
               </div>
-              
+
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center">
                 <BarChart3 className="w-12 h-12 text-amber-400 mx-auto mb-4" />
                 <h3 className="text-lg font-bold mb-2">Energy Analytics</h3>
                 <p className="text-orange-100 text-sm">Performance optimization insights</p>
               </div>
             </div>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <AnimatedButton 
+              <AnimatedButton
                 className="bg-gradient-to-r from-orange-600 to-amber-600 text-white hover:from-orange-700 hover:to-amber-700 px-8 py-4 text-lg"
-                size="lg" 
+                size="lg"
                 animationType="scale"
                 variant="custom"
                 onClick={() => navigate('/contact')}
@@ -347,9 +350,9 @@ const HvacTrading = () => {
                 Schedule Consultation
                 <ArrowRight className="ml-2 w-5 h-5" />
               </AnimatedButton>
-              
-              <AnimatedButton 
-                variant="outline" 
+
+              <AnimatedButton
+                variant="outline"
                 size="lg"
                 className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm px-8 py-4 text-lg"
                 animationType="lift"
@@ -370,28 +373,28 @@ const HvacTrading = () => {
                 <Wrench className="w-4 h-4" />
                 Technical Support
               </div>
-              
+
               <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
                 Ready to Upgrade Your Building Systems?
               </h2>
-              
+
               <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto">
-                Connect with our MEP specialists to design and implement advanced building systems 
+                Connect with our MEP specialists to design and implement advanced building systems
                 that enhance comfort, safety, and efficiency.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                 <a href="tel:+97172586848" className="flex items-center justify-center gap-3 bg-gradient-to-r from-orange-600 to-amber-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-orange-700 hover:to-amber-700 transition-all">
                   <Phone className="w-5 h-5" />
                   +971 72586848
                 </a>
-                
+
                 <a href="mailto:sales@psgbiz.com" className="flex items-center justify-center gap-3 bg-slate-100 text-slate-700 px-8 py-4 rounded-xl font-semibold hover:bg-slate-200 transition-all">
                   <Mail className="w-5 h-5" />
                   sales@psgbiz.com
                 </a>
               </div>
-              
+
               <p className="text-slate-500">
                 24/7 emergency support and maintenance services available
               </p>

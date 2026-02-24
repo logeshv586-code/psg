@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Layout from "@/components/layout/Layout";
 import { softwareTabsData } from "./SoftwareData";
-import softwareHero from "@/assets/new images/softwareai.png";
+import softwareHero from "@/assets/new images/softwareai.webp";
 import { ragTypes } from "@/data/ragData";
 
 const Software = () => {

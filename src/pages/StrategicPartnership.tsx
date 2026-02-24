@@ -1,19 +1,19 @@
 import Layout from "@/components/layout/Layout";
-import { 
-  ExternalLink, 
-  Handshake, 
-  Target, 
-  TrendingUp, 
-  Users, 
-  Construction, 
-  HeartPulse, 
-  Leaf, 
-  Plane, 
+import {
+  ExternalLink,
+  Handshake,
+  Target,
+  TrendingUp,
+  Users,
+  Construction,
+  HeartPulse,
+  Leaf,
+  Plane,
   Code2,
   ArrowRight
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import partnershipsBg from "@/assets/new images/Strategic Partnership.png";
+import partnershipsBg from "@/assets/new images/Strategic Partnership.webp";
 import { motion, Variants } from "framer-motion";
 
 const partnershipBenefits = [
@@ -110,23 +110,25 @@ const StrategicPartnership = () => {
             transition={{ duration: 10, ease: "easeOut" }}
             className="w-full h-full"
           >
-            <img 
-              src={partnershipsBg} 
-              alt="Strategic Partnerships Background" 
+            <img
+              src={partnershipsBg}
+              alt="Strategic Partnerships Background"
               className="w-full h-full object-cover object-top"
+              fetchPriority="high"
+              decoding="async"
             />
           </motion.div>
           <div className="absolute inset-0 bg-gradient-to-br from-navy/90 via-navy/70 to-black/60"></div>
         </div>
 
         <div className="container mx-auto px-4 lg:px-8 py-20 relative z-10 flex flex-col items-center text-center">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="max-w-4xl"
           >
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.4 }}
@@ -138,7 +140,7 @@ const StrategicPartnership = () => {
               </span>
             </motion.div>
             <h1 className="text-4xl lg:text-6xl xl:text-7xl font-heading font-bold text-white mb-6 tracking-tight">
-              Partnerships for <br/>
+              Partnerships for <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-400 to-emerald-400">
                 Mutual Success
               </span>
@@ -154,7 +156,7 @@ const StrategicPartnership = () => {
       <section className="py-20 lg:py-32 bg-background relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
         <div className="container mx-auto px-4 lg:px-8">
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
@@ -177,7 +179,7 @@ const StrategicPartnership = () => {
       {/* Our Partners Grid */}
       <section className="py-16 lg:py-24 bg-secondary/30">
         <div className="container mx-auto px-4 lg:px-8">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -193,7 +195,7 @@ const StrategicPartnership = () => {
               </p>
             </div>
 
-            <motion.div 
+            <motion.div
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
@@ -236,7 +238,7 @@ const StrategicPartnership = () => {
       <section className="py-20 lg:py-32 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center mb-16">
-            <motion.h2 
+            <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -244,7 +246,7 @@ const StrategicPartnership = () => {
             >
               Why Partner with PSG?
             </motion.h2>
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -255,7 +257,7 @@ const StrategicPartnership = () => {
             </motion.p>
           </div>
 
-          <motion.div 
+          <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -270,21 +272,21 @@ const StrategicPartnership = () => {
                 className="relative group bg-card rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-border/50 hover:border-lime-400/30 overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-lime-400/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                
+
                 <div className="relative z-10">
                   <div className="w-16 h-16 mb-6 rounded-2xl bg-gradient-to-br from-lime-400/10 to-lime-400/20 flex items-center justify-center text-lime-600 group-hover:scale-110 transition-transform duration-300 shadow-inner">
                     {benefit.icon}
                   </div>
-                  
+
                   <h3 className="text-xl font-heading font-bold text-foreground mb-3 group-hover:text-lime-600 transition-colors duration-300">
                     {benefit.title}
                   </h3>
-                  
+
                   <p className="text-muted-foreground leading-relaxed text-sm lg:text-base">
                     {benefit.description}
                   </p>
                 </div>
-                
+
                 <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-lime-400/0 via-lime-400/50 to-lime-400/0 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
               </motion.div>
             ))}
@@ -300,7 +302,7 @@ const StrategicPartnership = () => {
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <motion.h2 
+            <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -308,7 +310,7 @@ const StrategicPartnership = () => {
             >
               Partnership Opportunities
             </motion.h2>
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -318,8 +320,8 @@ const StrategicPartnership = () => {
               Explore diverse sectors where we can create impact together
             </motion.p>
           </div>
-          
-          <motion.div 
+
+          <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -327,7 +329,7 @@ const StrategicPartnership = () => {
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {sectors.map((sector, index) => (
-              <motion.div 
+              <motion.div
                 key={index}
                 variants={itemVariants}
                 className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:bg-white/10 hover:border-lime-400/30 transition-all duration-300 group"
@@ -350,7 +352,7 @@ const StrategicPartnership = () => {
       {/* CTA Section */}
       <section className="py-24 bg-background relative">
         <div className="container mx-auto px-4 lg:px-8">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -358,7 +360,7 @@ const StrategicPartnership = () => {
           >
             {/* Background Gradient */}
             <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy to-lime-900/20"></div>
-            
+
             <div className="relative z-10 max-w-3xl mx-auto">
               <h2 className="text-3xl lg:text-5xl font-heading font-bold text-white mb-8">
                 Ready to Forge a Strategic Alliance?

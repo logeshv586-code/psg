@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -131,8 +131,13 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Poppins', sans-serif;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
     @apply font-semibold tracking-tight;
   }
 
@@ -151,6 +156,7 @@
 }
 
 @layer components {
+
   /* Hero section styles */
   .hero-heading {
     @apply text-3xl md:text-4xl lg:text-5xl font-bold leading-tight;
@@ -290,6 +296,7 @@
 }
 
 @layer utilities {
+
   /* Smooth scroll */
   .scroll-smooth {
     scroll-behavior: smooth;
@@ -494,7 +501,7 @@
   }
 
   .hover-glow {
-    @apply transition-all duration-300 ease-out hover:shadow-[0_0_20px_rgba(134,239,172,0.3)];
+    @apply transition-all duration-300 ease-out hover:shadow-[0_0_20px_#86efac4d];
   }
 
   .hover-shimmer {
@@ -502,7 +509,7 @@
   }
 
   .hover-border-glow {
-    @apply transition-all duration-300 ease-out hover:border-accent hover:shadow-[0_0_0_2px_rgba(134,239,172,0.3)];
+    @apply transition-all duration-300 ease-out hover:border-accent hover:shadow-[0_0_0_2px_#86efac4d];
   }
 
   /* Interactive elements */
@@ -587,7 +594,9 @@
 
   /* Hide scrollbar for IE, Edge and Firefox */
   .no-scrollbar {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
   }
 }

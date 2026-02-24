@@ -16,11 +16,11 @@ const scrapedImages = import.meta.glob<ImgModule>('@/assets/scraped/*.{png,jpg,j
 const tourismImages = import.meta.glob<ImgModule>('@/assets/tourism_images/*.{png,jpg,jpeg,webp}', { eager: true });
 
 // Specific hero image
-import heroImage from "@/assets/new images/Future Smart City.png";
-import enhancedSoftware from "@/assets/new images/Enhanced IT Professional.png";
-import enhancedHealth from "@/assets/new images/Enhanced Digital Health.png";
-import enhancedEnvironmental from "@/assets/new images/Enhanced Environmental.png";
-import enhancedTimber from "@/assets/new images/Enhanced Timber Logs.png";
+import heroImage from "@/assets/new images/Future Smart City.webp";
+import enhancedSoftware from "@/assets/new images/Enhanced IT Professional.webp";
+import enhancedHealth from "@/assets/new images/Enhanced Digital Health.webp";
+import enhancedEnvironmental from "@/assets/new images/Enhanced Environmental.webp";
+import enhancedTimber from "@/assets/new images/Enhanced Timber Logs.webp";
 
 // Combine and process images
 const rawImages = [
@@ -34,7 +34,7 @@ const galleryImages = rawImages
   .map(([path, module], index) => {
     let src = module.default;
     const filename = path.split('/').pop()?.split('.')[0] || "";
-    
+
     // Override src for specific hero items to use enhanced versions
     if (filename === 'hero-software') src = enhancedSoftware;
     if (filename === 'hero-health') src = enhancedHealth;
@@ -44,12 +44,12 @@ const galleryImages = rawImages
     // Filter out logos, small icons, and non-photo assets based on filename
     const lowerFilename = filename.toLowerCase();
     const excludePatterns = [
-      'logo', 'icon', 'group', 'vector', 'mask', 'frame', 
+      'logo', 'icon', 'group', 'vector', 'mask', 'frame',
       'xmlid', 'target', 'arrow', 'qr-code', 'qr code',
       'common-logo', '150x150', '300x', 'global network',
       '174613dbe', 'scaled', 'softwareai'
     ];
-    
+
     if (excludePatterns.some(pattern => lowerFilename.includes(pattern))) return null;
 
     // Create a display title
@@ -70,7 +70,7 @@ const galleryImages = rawImages
     let category = "Business";
     if (path.includes("tourism")) category = "Tourism";
     else if (path.includes("scraped")) category = "Projects";
-    
+
     return {
       id: index,
       src,
@@ -133,6 +133,8 @@ const Media = () => {
             src={heroImage}
             alt="Media Hero"
             className="w-full h-full object-cover"
+            fetchPriority="high"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
         </div>
@@ -162,7 +164,7 @@ const Media = () => {
               <h2 className="text-3xl lg:text-4xl font-heading font-bold mb-2">Lets Talk Business</h2>
               <p className="text-muted-foreground">Visualizing our expertise and global reach.</p>
             </div>
-            
+
             <div className="flex flex-wrap justify-center gap-2">
               {categories.map(cat => (
                 <Button
@@ -179,7 +181,7 @@ const Media = () => {
           </div>
 
           {/* Gallery Grid */}
-          <motion.div 
+          <motion.div
             layout
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
           >
@@ -202,6 +204,7 @@ const Media = () => {
                       alt={image.alt}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       loading="lazy"
+                      decoding="async"
                     />
                   </div>
 
@@ -214,9 +217,9 @@ const Media = () => {
                       {image.title}
                     </h3>
                     <div className="mt-2 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-150">
-                       <span className="inline-flex items-center text-xs text-primary-foreground bg-primary/20 backdrop-blur-sm border border-primary/30 px-3 py-1 rounded-full">
-                         <ZoomIn className="w-3 h-3 mr-1" /> View
-                       </span>
+                      <span className="inline-flex items-center text-xs text-primary-foreground bg-primary/20 backdrop-blur-sm border border-primary/30 px-3 py-1 rounded-full">
+                        <ZoomIn className="w-3 h-3 mr-1" /> View
+                      </span>
                     </div>
                   </div>
                 </motion.div>
@@ -233,7 +236,7 @@ const Media = () => {
           {/* Footer Note */}
           <div className="mt-16 text-center border-t pt-8 max-w-2xl mx-auto">
             <p className="text-muted-foreground text-sm">
-              Our portfolio spans across timber sourcing, construction materials, and large-scale MEP installations. 
+              Our portfolio spans across timber sourcing, construction materials, and large-scale MEP installations.
               We are committed to delivering excellence in every project.
             </p>
           </div>
@@ -245,7 +248,7 @@ const Media = () => {
         <DialogContent className="max-w-[95vw] h-[90vh] md:h-auto md:max-w-[90vw] lg:max-w-[1200px] p-0 bg-black/95 border-none shadow-2xl focus:outline-none flex items-center justify-center">
           {activeImage && (
             <div className="relative w-full h-full flex items-center justify-center outline-none">
-              <button 
+              <button
                 onClick={closeImage}
                 className="absolute top-4 right-4 z-50 p-2 bg-black/50 hover:bg-white/20 rounded-full text-white transition-colors"
               >

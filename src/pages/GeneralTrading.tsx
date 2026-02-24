@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
-import { 
-  ChevronRight, 
-  ArrowRight, 
-  Phone, 
-  Mail, 
-  Globe, 
-  Shield, 
-  Award, 
+import {
+  ChevronRight,
+  ArrowRight,
+  Phone,
+  Mail,
+  Globe,
+  Shield,
+  Award,
   TrendingUp,
   Building2,
   Package,
@@ -20,8 +20,8 @@ import {
   MapPin,
   BarChart3
 } from "lucide-react";
-import heroTrading from "@/assets/new images/Trading Website Hero 2.png";
-import trustBg from "@/assets/new images/Trading Website Hero 1.png";
+import heroTrading from "@/assets/new images/Trading Website Hero 2.webp";
+import trustBg from "@/assets/new images/Trading Website Hero 1.webp";
 import { AnimatedSection, AnimatedCard, AnimatedButton, StaggeredList } from "@/components/shared/AnimatedComponents";
 import { generalTradingData } from "./GeneralTradingData";
 import type { TradingContent } from "@/types/trading";
@@ -64,7 +64,7 @@ const GeneralTrading = () => {
       {/* Hero Section - Enterprise Level Design */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-20 md:py-0 bg-cover bg-center"
         style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${heroTrading})` }}>
-        
+
         <div className="container mx-auto px-6">
           <div className={`max-w-3xl text-white transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <h1 className="text-6xl font-bold mb-6">
@@ -74,22 +74,22 @@ const GeneralTrading = () => {
               <br />
               <span>Excellence</span>
             </h1>
-            
+
             <p className="text-xl leading-relaxed">
-              PSG delivers world-class trading solutions with uncompromising quality, 
+              PSG delivers world-class trading solutions with uncompromising quality,
               global reach, and trusted partnerships across diverse industrial sectors.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 mt-8">
-              <button 
-                onClick={() => scrollToSection('trading-tabs')} 
+              <button
+                onClick={() => scrollToSection('trading-tabs')}
                 className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-4 text-lg rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all flex items-center gap-2"
               >
                 Explore Solutions
                 <ArrowRight className="w-5 h-5" />
               </button>
-              
-              <button 
+
+              <button
                 onClick={() => navigate('/contact')}
                 className="border-2 border-white text-white px-8 py-4 text-lg rounded-lg hover:bg-white hover:text-gray-900 transition-all flex items-center gap-2"
               >
@@ -133,11 +133,10 @@ const GeneralTrading = () => {
                 <AnimatedButton
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`px-6 py-3 rounded-full font-semibold transition-all ${
-                    activeTab === tab.id 
-                      ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg shadow-blue-500/25' 
+                  className={`px-6 py-3 rounded-full font-semibold transition-all ${activeTab === tab.id
+                      ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white shadow-lg shadow-blue-500/25'
                       : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-                  }`}
+                    }`}
                   size="md"
                   animationType={activeTab === tab.id ? 'scale' : 'lift'}
                   variant="custom"
@@ -190,13 +189,15 @@ const GeneralTrading = () => {
 
                 <div className="relative">
                   <AnimatedCard hoverEffect="glow" className="rounded-2xl overflow-hidden shadow-2xl">
-                    <img 
-                      src={safeContent.image} 
+                    <img
+                      src={safeContent.image}
                       alt={safeContent.title}
                       className="w-full h-96 object-cover"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </AnimatedCard>
-                  
+
                   {/* Professional Overlay */}
                   <div className="absolute -top-4 -right-4 bg-gradient-to-br from-blue-600 to-cyan-600 text-white p-4 rounded-xl shadow-lg">
                     <BarChart3 className="w-6 h-6" />
@@ -215,7 +216,7 @@ const GeneralTrading = () => {
                           {section.description}
                         </p>
                       </div>
-                      
+
                       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                         {section.products.map((product, pIndex) => (
                           <AnimatedCard
@@ -225,10 +226,12 @@ const GeneralTrading = () => {
                             animationDelay={pIndex * 100}
                           >
                             <div className="bg-gradient-to-br from-slate-50 to-blue-50 rounded-xl p-4 mb-4 h-32 flex items-center justify-center">
-                              <img 
-                                src={product.image} 
+                              <img
+                                src={product.image}
                                 alt={product.name}
                                 className="w-full h-full object-contain"
+                                loading="lazy"
+                                decoding="async"
                                 onError={(e) => {
                                   (e.target as HTMLImageElement).src = `https://via.placeholder.com/150?text=${encodeURIComponent(product.name)}`;
                                 }}
@@ -236,7 +239,7 @@ const GeneralTrading = () => {
                             </div>
                             <h5 className="font-bold text-slate-900 text-lg mb-2">{product.name}</h5>
                             <p className="text-sm text-slate-500 mb-3">{product.category}</p>
-                            
+
                             {product.specifications && (
                               <div className="space-y-1">
                                 {product.specifications.map((spec, sIndex) => (
@@ -247,7 +250,7 @@ const GeneralTrading = () => {
                                 ))}
                               </div>
                             )}
-                            
+
                           </AnimatedCard>
                         ))}
                       </div>
@@ -263,47 +266,47 @@ const GeneralTrading = () => {
       {/* Enterprise Trust Section */}
       <AnimatedSection className="py-24 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 text-white relative overflow-hidden" animationType="fade-in-up">
         <div className="absolute inset-0 bg-cover bg-center opacity-30" style={{ backgroundImage: `url(${trustBg})` }}></div>
-        
+
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full text-sm font-semibold mb-8">
               <Shield className="w-4 h-4" />
               Trusted by Industry Leaders
             </div>
-            
+
             <h2 className="text-4xl md:text-6xl font-bold mb-8 animate-fade-in-up">
               Your Trusted Trading Partner
             </h2>
-            
+
             <p className="text-xl md:text-2xl mb-12 text-blue-100 max-w-4xl mx-auto leading-relaxed">
-              With over 15 years of experience, we combine global reach with local expertise to deliver 
+              With over 15 years of experience, we combine global reach with local expertise to deliver
               exceptional trading solutions that drive your business forward.
             </p>
-            
+
             <div className="grid md:grid-cols-3 gap-8 mb-12">
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center">
                 <Globe className="w-12 h-12 text-blue-400 mx-auto mb-4" />
                 <h3 className="text-xl font-bold mb-2">Global Network</h3>
                 <p className="text-blue-100">Strategic partnerships across 50+ countries</p>
               </div>
-              
+
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center">
                 <Award className="w-12 h-12 text-cyan-400 mx-auto mb-4" />
                 <h3 className="text-xl font-bold mb-2">Quality Certified</h3>
                 <p className="text-blue-100">ISO certified processes and procedures</p>
               </div>
-              
+
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 text-center">
                 <Users className="w-12 h-12 text-blue-400 mx-auto mb-4" />
                 <h3 className="text-xl font-bold mb-2">Client Focus</h3>
                 <p className="text-blue-100">Dedicated account management team</p>
               </div>
             </div>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <AnimatedButton 
+              <AnimatedButton
                 className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white hover:from-blue-700 hover:to-cyan-700 px-8 py-4 text-lg"
-                size="lg" 
+                size="lg"
                 animationType="scale"
                 variant="custom"
                 onClick={() => navigate('/contact')}
@@ -311,9 +314,9 @@ const GeneralTrading = () => {
                 Start Your Project
                 <ArrowRight className="ml-2 w-5 h-5" />
               </AnimatedButton>
-              
-              <AnimatedButton 
-                variant="outline" 
+
+              <AnimatedButton
+                variant="outline"
                 size="lg"
                 className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm px-8 py-4 text-lg"
                 animationType="lift"
@@ -334,28 +337,28 @@ const GeneralTrading = () => {
                 <Phone className="w-4 h-4" />
                 Get Expert Consultation
               </div>
-              
+
               <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
                 Ready to Transform Your Supply Chain?
               </h2>
-              
+
               <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto">
-                Connect with our trading experts to discover how we can optimize your procurement 
+                Connect with our trading experts to discover how we can optimize your procurement
                 process and deliver exceptional value to your business.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
                 <a href="tel:+97172586848" className="flex items-center justify-center gap-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-blue-700 hover:to-cyan-700 transition-all">
                   <Phone className="w-5 h-5" />
                   +971 72586848
                 </a>
-                
+
                 <a href="mailto:sales@psgbiz.com" className="flex items-center justify-center gap-3 bg-slate-100 text-slate-700 px-8 py-4 rounded-xl font-semibold hover:bg-slate-200 transition-all">
                   <Mail className="w-5 h-5" />
                   sales@psgbiz.com
                 </a>
               </div>
-              
+
               <p className="text-slate-500">
                 Available 24/7 for urgent inquiries and emergency procurement needs
               </p>

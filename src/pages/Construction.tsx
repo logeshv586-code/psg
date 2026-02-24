@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import { ChevronRight } from "lucide-react";
 import heroTimber from "@/assets/scraped/hero-timber.jpg";
-import heroConstruction from "@/assets/new images/Construction Industry.png";
+import heroConstruction from "@/assets/new images/Construction Industry.webp";
 import { AnimatedSection, AnimatedCard, AnimatedButton, StaggeredList } from "@/components/shared/AnimatedComponents";
 import { constructionData } from "./ConstructionData";
 
@@ -64,10 +64,12 @@ const Construction = () => {
             src={heroTimber}
             alt="Construction Hero"
             className="w-full h-full object-cover"
+            fetchPriority="high"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/50"></div>
         </div>
-        
+
         <div className="container mx-auto px-4 relative z-10 text-white text-center">
           <div className={`max-w-4xl mx-auto transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-4 md:mb-6 animate-fade-in-up stagger-1">
@@ -76,15 +78,15 @@ const Construction = () => {
             <p className="text-lg md:text-2xl mb-6 md:mb-8 animate-fade-in-up stagger-2">
               {currentContent.subtitle}
             </p>
-            <AnimatedButton 
+            <AnimatedButton
               onClick={() => {
                 if (currentContent.sections) {
                   scrollToSection('products-section');
                 } else {
                   scrollToSection('construction-tabs');
                 }
-              }} 
-              variant="accent" 
+              }}
+              variant="accent"
               size="lg"
               className="animate-fade-in-up stagger-4 w-full md:w-auto"
             >
@@ -126,7 +128,7 @@ const Construction = () => {
                     <h3 className="text-xl md:text-2xl text-gray-600 mb-6 animate-fade-in-left stagger-2">
                       {currentContent.subtitle}
                     </h3>
-                    <div 
+                    <div
                       className="text-lg text-gray-700 leading-relaxed animate-fade-in-left stagger-3"
                       dangerouslySetInnerHTML={{ __html: currentContent.description }}
                     />
@@ -154,16 +156,18 @@ const Construction = () => {
 
                 <div className="relative sticky top-24">
                   <AnimatedCard hoverEffect="glow" className="rounded-2xl overflow-hidden">
-                    <img 
-                      src={currentContent.image} 
+                    <img
+                      src={currentContent.image}
                       alt={currentContent.title}
                       className="w-full h-96 object-cover"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </AnimatedCard>
-                  
+
                   {/* Floating elements */}
                   <div className="absolute -top-4 -right-4 w-16 h-16 bg-accent/20 rounded-full animate-float"></div>
-                  <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-primary/20 rounded-full animate-float" style={{animationDelay: '1s'}}></div>
+                  <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-primary/20 rounded-full animate-float" style={{ animationDelay: '1s' }}></div>
                 </div>
               </div>
 
@@ -175,13 +179,13 @@ const Construction = () => {
                       <div className="mb-8 border-b border-gray-200 pb-4">
                         <h3 className="text-3xl font-bold text-gray-900 mb-3">{section.title}</h3>
                         {section.description && (
-                          <div 
+                          <div
                             className="text-lg text-gray-600 max-w-3xl"
                             dangerouslySetInnerHTML={{ __html: section.description }}
                           />
                         )}
                       </div>
-                      
+
                       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
                         {section.products.map((product, pIndex) => (
                           <AnimatedCard
@@ -191,10 +195,12 @@ const Construction = () => {
                             animationDelay={pIndex * 50}
                           >
                             <div className="bg-white rounded-lg p-2 mb-3 shadow-sm h-24 md:h-32 flex items-center justify-center">
-                              <img 
-                                src={product.image} 
+                              <img
+                                src={product.image}
                                 alt={product.name}
                                 className="w-full h-full object-contain"
+                                loading="lazy"
+                                decoding="async"
                                 onError={(e) => {
                                   (e.target as HTMLImageElement).src = `https://via.placeholder.com/150?text=${encodeURIComponent(product.name)}`;
                                 }}
@@ -224,21 +230,21 @@ const Construction = () => {
             <p className="text-xl mb-12 text-gray-300 animate-fade-in-up stagger-2">
               Let's discuss your construction project and bring your ideas to life with our expertise and innovative solutions.
             </p>
-            <div 
+            <div
               className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up stagger-3 cursor-pointer"
               onClick={() => navigate('/contact')}
             >
-              <AnimatedButton 
-                variant="accent" 
-                size="lg" 
+              <AnimatedButton
+                variant="accent"
+                size="lg"
                 animationType="scale"
               >
                 Start Your Project
                 <ChevronRight className="ml-2 w-5 h-5" />
               </AnimatedButton>
-              <AnimatedButton 
-                variant="outline" 
-                size="lg" 
+              <AnimatedButton
+                variant="outline"
+                size="lg"
                 animationType="lift"
               >
                 Request Consultation

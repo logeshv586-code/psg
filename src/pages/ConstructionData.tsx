@@ -1,7 +1,7 @@
 
 import heroTimber from "@/assets/scraped/hero-timber.jpg";
-import heroConstruction from "@/assets/new images/Construction Industry.png";
-import mepInstallationSite from "@/assets/new images/MEP Installation Site.png";
+import heroConstruction from "@/assets/new images/Construction Industry.webp";
+import mepInstallationSite from "@/assets/new images/MEP Installation Site.webp";
 
 // Helper to get images from assets
 type ImgModule = { default: string };

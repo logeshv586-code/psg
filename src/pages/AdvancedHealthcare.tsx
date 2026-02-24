@@ -1,11 +1,11 @@
 
 import React, { useState } from 'react';
 import Layout from "@/components/layout/Layout";
-import DigitalHealthHero from "../assets/new images/Enhanced Digital Health.png";
-import MedicalSummarizationImg from "../assets/new images/Natural Medical Summarization.png";
-import VirtualScribingImg from "../assets/new images/Enhanced Lab Coat Professional.png";
-import MedicalTranscriptionImg from "../assets/new images/Enhanced Nurse with Tablet.png";
-import MedicalCodingImg from "../assets/new images/Enhanced Holographic Medical Display.png";
+import DigitalHealthHero from "../assets/new images/Enhanced Digital Health.webp";
+import MedicalSummarizationImg from "../assets/new images/Natural Medical Summarization.webp";
+import VirtualScribingImg from "../assets/new images/Enhanced Lab Coat Professional.webp";
+import MedicalTranscriptionImg from "../assets/new images/Enhanced Nurse with Tablet.webp";
+import MedicalCodingImg from "../assets/new images/Enhanced Holographic Medical Display.webp";
 
 const AdvancedHealthcare = () => {
   const [activeTab, setActiveTab] = useState('scribing');
@@ -17,7 +17,7 @@ const AdvancedHealthcare = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section 
+      <section
         className="relative h-screen bg-cover bg-center flex items-center justify-start"
         style={{
           backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${DigitalHealthHero})`,
@@ -59,25 +59,25 @@ const AdvancedHealthcare = () => {
       <section className="pb-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="flex flex-wrap border-b border-gray-200 mb-12">
-            <button 
+            <button
               className={`px-8 py-4 font-semibold transition ${activeTab === 'scribing' ? 'bg-gray-100 text-gray-900 border-b-2 border-blue-600' : 'text-gray-500 hover:text-blue-600'}`}
               onClick={() => showTab('scribing')}
             >
               Virtual Medical Scribing
             </button>
-            <button 
+            <button
               className={`px-8 py-4 font-semibold transition ${activeTab === 'transcription' ? 'bg-gray-100 text-gray-900 border-b-2 border-blue-600' : 'text-gray-500 hover:text-blue-600'}`}
               onClick={() => showTab('transcription')}
             >
               Medical Transcription
             </button>
-            <button 
+            <button
               className={`px-8 py-4 font-semibold transition ${activeTab === 'coding' ? 'bg-gray-100 text-gray-900 border-b-2 border-blue-600' : 'text-gray-500 hover:text-blue-600'}`}
               onClick={() => showTab('coding')}
             >
               Medical Coding
             </button>
-            <button 
+            <button
               className={`px-8 py-4 font-semibold transition ${activeTab === 'summarization' ? 'bg-gray-100 text-gray-900 border-b-2 border-blue-600' : 'text-gray-500 hover:text-blue-600'}`}
               onClick={() => showTab('summarization')}
             >
@@ -105,7 +105,7 @@ const AdvancedHealthcare = () => {
                 </div>
               </div>
               <div className="rounded-3xl overflow-hidden shadow-2xl">
-                <img src={VirtualScribingImg} alt="Virtual Scribing" className="w-full h-auto" />
+                <img src={VirtualScribingImg} alt="Virtual Scribing" className="w-full h-auto" loading="lazy" decoding="async" />
               </div>
             </div>
           </div>
@@ -125,7 +125,7 @@ const AdvancedHealthcare = () => {
                 </ul>
               </div>
               <div className="rounded-3xl overflow-hidden shadow-2xl">
-                <img src={MedicalTranscriptionImg} alt="Medical Transcription" className="w-full h-auto" />
+                <img src={MedicalTranscriptionImg} alt="Medical Transcription" className="w-full h-auto" loading="lazy" decoding="async" />
               </div>
             </div>
           </div>
@@ -145,7 +145,7 @@ const AdvancedHealthcare = () => {
                 </ul>
               </div>
               <div className="rounded-3xl overflow-hidden shadow-2xl">
-                <img src={MedicalCodingImg} alt="Medical Coding" className="w-full h-auto" />
+                <img src={MedicalCodingImg} alt="Medical Coding" className="w-full h-auto" loading="lazy" decoding="async" />
               </div>
             </div>
           </div>
@@ -165,7 +165,7 @@ const AdvancedHealthcare = () => {
                 </ul>
               </div>
               <div className="rounded-3xl overflow-hidden shadow-2xl">
-                <img src={MedicalSummarizationImg} alt="Medical Summarization" className="w-full h-auto" />
+                <img src={MedicalSummarizationImg} alt="Medical Summarization" className="w-full h-auto" loading="lazy" decoding="async" />
               </div>
             </div>
           </div>

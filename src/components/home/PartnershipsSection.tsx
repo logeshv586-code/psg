@@ -1,4 +1,4 @@
-import partnershipImg from "../../assets/new images/Enhanced IT Professional.png";
+import partnershipImg from "../../assets/new images/Enhanced IT Professional.webp";
 import { MotionSection, MotionItem } from "@/components/ui/motion-ui";
 import { motion } from "framer-motion";
 

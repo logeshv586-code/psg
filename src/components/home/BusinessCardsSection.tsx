@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import environmentalImg from "../../assets/new images/Enhanced Environmental.png";
-import digitalHealthImg from "../../assets/new images/Enhanced Digital Health.png";
-import tourismImg from "../../assets/new images/Enhanced Dubai Skyline.png";
-import timberImg from "../../assets/new images/Enhanced Timber Logs.png";
-import softwareImg from "../../assets/new images/Enhanced IT Professional.png";
-import arrowIcon from "../../assets/arrow-icon.png";
+import environmentalImg from "../../assets/new images/Enhanced Environmental.webp";
+import digitalHealthImg from "../../assets/new images/Enhanced Digital Health.webp";
+import tourismImg from "../../assets/new images/Enhanced Dubai Skyline.webp";
+import timberImg from "../../assets/new images/Enhanced Timber Logs.webp";
+import softwareImg from "../../assets/new images/Enhanced IT Professional.webp";
+import { ArrowUpRight } from "lucide-react";
 import { MotionSection, MotionItem } from "@/components/ui/motion-ui";
 
 const BusinessCardsSection = () => {
@@ -55,7 +55,7 @@ const BusinessCardsSection = () => {
                   <div className="inline-flex items-center gap-2 sm:gap-3 text-white text-xs sm:text-sm font-medium">
                     <span>Learn More</span>
                     <span className="grid h-7 w-7 sm:h-9 sm:w-9 place-items-center rounded-full bg-accent text-primary transition-transform duration-200 group-hover:translate-x-0.5">
-                      <img src={arrowIcon} alt="" className="h-3 w-3 sm:h-4 sm:w-4" draggable={false} />
+                      <ArrowUpRight className="h-4 w-4 sm:h-5 sm:w-5 text-white" strokeWidth={2.5} />
                     </span>
                   </div>
                 </div>
@@ -85,7 +85,7 @@ const BusinessCardsSection = () => {
                   <div className="inline-flex items-center gap-3 text-white text-sm font-medium">
                     <span>Learn More</span>
                     <span className="grid h-9 w-9 place-items-center rounded-full bg-accent text-primary transition-transform duration-200 group-hover:translate-x-0.5">
-                      <img src={arrowIcon} alt="" className="h-4 w-4" draggable={false} />
+                      <ArrowUpRight className="h-4 w-4 sm:h-5 sm:w-5 text-white" strokeWidth={2.5} />
                     </span>
                   </div>
                 </div>
@@ -116,7 +116,7 @@ const BusinessCardsSection = () => {
                 <div className="mt-6 inline-flex items-center gap-3 text-white text-sm font-medium">
                   <span>Learn More</span>
                   <span className="grid h-9 w-9 place-items-center rounded-full bg-accent text-primary transition-transform duration-200 group-hover:translate-x-0.5">
-                    <img src={arrowIcon} alt="" className="h-4 w-4" draggable={false} />
+                    <ArrowUpRight className="h-4 w-4 sm:h-5 sm:w-5 text-white" strokeWidth={2.5} />
                   </span>
                 </div>
               </div>
@@ -147,7 +147,7 @@ const BusinessCardsSection = () => {
                   <div className="inline-flex items-center gap-3 text-white text-sm font-medium">
                     <span>Learn More</span>
                     <span className="grid h-9 w-9 place-items-center rounded-full bg-accent text-primary transition-transform duration-200 group-hover:translate-x-0.5">
-                      <img src={arrowIcon} alt="" className="h-4 w-4" draggable={false} />
+                      <ArrowUpRight className="h-4 w-4 sm:h-5 sm:w-5 text-white" strokeWidth={2.5} />
                     </span>
                   </div>
                 </div>
@@ -177,7 +177,7 @@ const BusinessCardsSection = () => {
                   <div className="inline-flex items-center gap-3 text-white text-sm font-medium">
                     <span>Learn More</span>
                     <span className="grid h-9 w-9 place-items-center rounded-full bg-accent text-primary transition-transform duration-200 group-hover:translate-x-0.5">
-                      <img src={arrowIcon} alt="" className="h-4 w-4" draggable={false} />
+                      <ArrowUpRight className="h-4 w-4 sm:h-5 sm:w-5 text-white" strokeWidth={2.5} />
                     </span>
                   </div>
                 </div>

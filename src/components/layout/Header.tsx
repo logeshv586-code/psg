@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import psgLogo from "@/assets/psg-logo.png";
 import psgLogoFull from "@/assets/psg-logo-full.png";
-import coloredLogo from "@/assets/new images/psg_logo.png";
+import coloredLogo from "@/assets/new images/psg_logo.webp";
 
 const navItems = [
   { label: "Home", href: "/" },

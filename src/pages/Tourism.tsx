@@ -40,7 +40,7 @@ import saudi633 from "@/assets/tourism_images/Group-633.png";
 import saudi632 from "@/assets/tourism_images/Group-632.png";
 import saudi631 from "@/assets/tourism_images/Group-631.png";
 
-import heroTourism from "@/assets/new images/Enhanced Dubai Skyline.png"; 
+import heroTourism from "@/assets/new images/Enhanced Dubai Skyline.webp";
 
 const Tourism = () => {
   const [activeTab, setActiveTab] = useState("uae");
@@ -59,66 +59,66 @@ const Tourism = () => {
   ];
 
   const tabContent: Record<string, {
-      title: string;
-      text: React.ReactNode;
-      image: string;
-      logos?: string[];
-      extraImage?: string;
+    title: string;
+    text: React.ReactNode;
+    image: string;
+    logos?: string[];
+    extraImage?: string;
   }> = {
-      uae: {
-          title: "UAE Tourism",
-          text: (
-            <>
-              <p className="mb-4">At PSG, we are delighted to offer an exclusive selection of customized tour packages tailored to help you explore the most Iconic and Breathtaking attractions across the UAE.</p>
-              <p>Whether you're seeking an adventure, relaxation or cultural discovery we ensure every experience is unforgettable.</p>
-            </>
-          ),
-          image: marinaImg,
-          logos: [logo378, logo380, logo388, logo383, logo384, logo385],
-          extraImage: group337
-      },
-      saudi: {
-          title: "SAUDI TOURISM",
-          text: (
-              <>
-                  <p className="mb-4">At PSG, we are delighted to offer an exclusive selection of customized tour packages tailored to help you explore the most Iconic and Breathtaking attractions across the UAE.</p>
-                  <p>Whether you're seeking an adventure, relaxation or cultural discovery we ensure every experience is unforgettable.</p>
-              </>
-          ),
-          image: camelImg,
-          logos: [saudi627, saudi628, saudi392, saudi629, saudi634, saudi633, saudi632, saudi631]
-      },
-      solo: {
-          title: "SOLO TRAVELERS & BACKPACKERS",
-          text: (
-              <>
-                  <p className="mb-4">We understand that life may feel overwhelming and sometimes all you need is an escape to reset and recharge.</p>
-                  <p>Whether you're a solo traveler seeking adventure or a backpacker in search of new horizons our tailored travel and adventure packages are designed to help you step away from the everyday and embark on a transformative journey.</p>
-              </>
-          ),
-          image: skydivingImg,
-      },
-      honeymoon: {
-          title: "ROMANTIC HONEYMOON PACKAGES",
-          text: (
-              <>
-                  <p className="mb-4">Celebrate your love with a honeymoon that's as unique as your relationship. Our exclusive Honeymoon Packages are crafted for couples seeking an Intimate and Memorable Escape.</p>
-                  <p>From secluded beaches to cozy mountain retreats each itinerary is filled with thoughtful surprises and once in a lifetime experience to make your honeymoon truly special.</p>
-              </>
-          ),
-          image: burjImg,
-      },
-      group: {
-          title: "GROUP TOURS WITH A PERSONAL TOUCH",
-          text: (
-              <>
-                  <p className="mb-4">At PSG, we believe group travel is about more than just sightseeing, it's about creating lasting bonds.</p>
-                  <p className="mb-4">Our group tours feature Fun and Interactive experiences from team building activities, Gaming to Cozy Campfires and cultural Immersions.</p>
-                  <p>Whether you're traveling with family, friends or colleagues, our group tours offer a perfect blend of adventure, connection and shared experiences that will stay with you long after the trip ends.</p>
-              </>
-          ),
-          image: ferrariImg,
-      }
+    uae: {
+      title: "UAE Tourism",
+      text: (
+        <>
+          <p className="mb-4">At PSG, we are delighted to offer an exclusive selection of customized tour packages tailored to help you explore the most Iconic and Breathtaking attractions across the UAE.</p>
+          <p>Whether you're seeking an adventure, relaxation or cultural discovery we ensure every experience is unforgettable.</p>
+        </>
+      ),
+      image: marinaImg,
+      logos: [logo378, logo380, logo388, logo383, logo384, logo385],
+      extraImage: group337
+    },
+    saudi: {
+      title: "SAUDI TOURISM",
+      text: (
+        <>
+          <p className="mb-4">At PSG, we are delighted to offer an exclusive selection of customized tour packages tailored to help you explore the most Iconic and Breathtaking attractions across the UAE.</p>
+          <p>Whether you're seeking an adventure, relaxation or cultural discovery we ensure every experience is unforgettable.</p>
+        </>
+      ),
+      image: camelImg,
+      logos: [saudi627, saudi628, saudi392, saudi629, saudi634, saudi633, saudi632, saudi631]
+    },
+    solo: {
+      title: "SOLO TRAVELERS & BACKPACKERS",
+      text: (
+        <>
+          <p className="mb-4">We understand that life may feel overwhelming and sometimes all you need is an escape to reset and recharge.</p>
+          <p>Whether you're a solo traveler seeking adventure or a backpacker in search of new horizons our tailored travel and adventure packages are designed to help you step away from the everyday and embark on a transformative journey.</p>
+        </>
+      ),
+      image: skydivingImg,
+    },
+    honeymoon: {
+      title: "ROMANTIC HONEYMOON PACKAGES",
+      text: (
+        <>
+          <p className="mb-4">Celebrate your love with a honeymoon that's as unique as your relationship. Our exclusive Honeymoon Packages are crafted for couples seeking an Intimate and Memorable Escape.</p>
+          <p>From secluded beaches to cozy mountain retreats each itinerary is filled with thoughtful surprises and once in a lifetime experience to make your honeymoon truly special.</p>
+        </>
+      ),
+      image: burjImg,
+    },
+    group: {
+      title: "GROUP TOURS WITH A PERSONAL TOUCH",
+      text: (
+        <>
+          <p className="mb-4">At PSG, we believe group travel is about more than just sightseeing, it's about creating lasting bonds.</p>
+          <p className="mb-4">Our group tours feature Fun and Interactive experiences from team building activities, Gaming to Cozy Campfires and cultural Immersions.</p>
+          <p>Whether you're traveling with family, friends or colleagues, our group tours offer a perfect blend of adventure, connection and shared experiences that will stay with you long after the trip ends.</p>
+        </>
+      ),
+      image: ferrariImg,
+    }
   };
 
   const currentContent = tabContent[activeTab];
@@ -132,29 +132,31 @@ const Tourism = () => {
             src={heroTourism}
             alt="Tourism Hero"
             className="w-full h-full object-cover"
+            fetchPriority="high"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-black/40"></div>
         </div>
-        
+
         <div className="container mx-auto px-4 relative z-10 text-white h-full flex flex-col justify-center">
           <div className={`max-w-4xl mt-20 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <h1 className="text-6xl md:text-8xl font-bold mb-8 tracking-tight animate-fade-in-up stagger-1 hover-scale">Tourism</h1>
-            
+
             <div className="relative pl-6 border-l-4 border-[#C785EC] mb-12 animate-fade-in-up stagger-2">
               <p className="text-xl md:text-3xl font-light leading-relaxed italic">
                 "Traveling, It leaves you speechless, then turns you into a storyteller"
               </p>
               <p className="text-lg mt-4 font-semibold text-[#C785EC]">– Ibn Battuta</p>
             </div>
-            
+
             <a href="#tour-form" className="bg-[#0e1a35] text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-slate-900 transition-all flex items-center gap-3 group w-fit animate-fade-in-up stagger-3 interactive-button">
-              Get in touch 
+              Get in touch
               <span className="bg-[#C785EC] rounded-full w-8 h-8 flex items-center justify-center text-[#0e1a35] group-hover:scale-110 transition-transform">
                 <ArrowRight size={18} />
               </span>
             </a>
           </div>
-          
+
         </div>
       </section>
 
@@ -162,28 +164,28 @@ const Tourism = () => {
       <AnimatedSection className="py-24 bg-white relative overflow-hidden" animationType="fade-in-up">
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center mb-16 relative">
-             <div className="absolute -top-10 -left-20 pointer-events-none hidden md:block animate-float">
-                <img src={group8} alt="Decor" className="w-64 opacity-50" />
+            <div className="absolute -top-10 -left-20 pointer-events-none hidden md:block animate-float">
+              <img src={group8} alt="Decor" className="w-64 opacity-50" loading="lazy" decoding="async" />
             </div>
             <h2 className="text-5xl md:text-6xl font-bold mb-8 text-[#0e1a35] leading-tight relative z-10 animate-fade-in-up stagger-2">
               Explore the World<br />
               with PSG Tourism
             </h2>
             <div className="space-y-6 text-lg text-gray-700 leading-relaxed max-w-4xl mx-auto">
-                <p className="animate-fade-in-up stagger-3">
+              <p className="animate-fade-in-up stagger-3">
                 Start planning your dream getaway today and create memories that will last forever.
-                </p>
-                <p className="animate-fade-in-up stagger-4">
+              </p>
+              <p className="animate-fade-in-up stagger-4">
                 At PSG Tourism, we focus on creating custom travel experiences for all types of travellers. Whether you're seeking adventure through trekking and hiking, looking to Indulge in a Romantic Honeymoon, or Planning a memorable Group Tour, we offer the perfect package for you. Our carefully crafted itineraries span destinations across the globe, offering something for every type of explorer.
-                </p>
+              </p>
             </div>
-             <div className="absolute -bottom-10 -right-20 pointer-events-none hidden md:block animate-float" style={{animationDelay: '1s'}}>
-                <img src={group8} alt="Decor" className="w-64 opacity-50 transform rotate-180" />
+            <div className="absolute -bottom-10 -right-20 pointer-events-none hidden md:block animate-float" style={{ animationDelay: '1s' }}>
+              <img src={group8} alt="Decor" className="w-64 opacity-50 transform rotate-180" loading="lazy" decoding="async" />
             </div>
           </div>
 
           <div className="w-full mb-24 animate-scale-in stagger-5">
-             <img src={group197} alt="World Map" className="w-full h-auto object-contain hover-scale" />
+            <img src={group197} alt="World Map" className="w-full h-auto object-contain hover-scale" loading="lazy" decoding="async" />
           </div>
         </div>
       </AnimatedSection>
@@ -191,85 +193,85 @@ const Tourism = () => {
       {/* Effortless Travel Solutions */}
       <AnimatedSection className="py-24 bg-[#FDF4FF]" animationType="fade-in-right">
         <div className="container mx-auto px-4">
-            <div className="flex flex-col md:flex-row items-center gap-16 max-w-7xl mx-auto">
-                <div className="flex-1">
-                    <AnimatedButton variant="outline" size="sm" className="mb-6" animationType="lift">
-                        Why Choose PSG <span className="bg-[#C785EC] rounded-full w-2 h-2 ml-2"></span>
-                    </AnimatedButton>
-                    <h2 className="text-4xl md:text-5xl font-bold mb-8 text-[#0e1a35] animate-fade-in-up stagger-2">
-                        Effortless Travel<br />
-                        Solutions with PSG
-                    </h2>
-                    <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
-                        <p className="animate-fade-in-up stagger-3">
-                            At PSG Tourism, we focus on creating custom travel experiences for all types of travellers. Whether you're seeking adventure through trekking and hiking, looking to Indulge in a Romantic Honeymoon, or Planning a memorable Group Tour, we offer the perfect package for you. Our carefully crafted itineraries span destinations across the globe, offering something for every type of explorer.
-                        </p>
-                        <p className="animate-fade-in-up stagger-4">
-                            In addition to visa services, PSG provides affordable, tailored tourism packages designed to meet the needs of both leisure and business travelers. Our solutions are crafted to deliver exceptional experiences without exceeding your budget.
-                        </p>
-                        <p className="animate-fade-in-up stagger-5">
-                            Choose PSG for hassle-free travel planning, expert guidance, and seamless support every step of the way.
-                        </p>
-                    </div>
-                </div>
-                <div className="flex-1 flex gap-4">
-                     <div className="flex-1">
-                        <AnimatedCard hoverEffect="lift" className="rounded-3xl overflow-hidden">
-                           <img src={group9} alt="Travel 1" className="w-full h-auto rounded-3xl shadow-lg hover-scale" />
-                        </AnimatedCard>
-                     </div>
-                     <div className="flex-1 pt-12">
-                        <AnimatedCard hoverEffect="lift" className="rounded-3xl overflow-hidden stagger-2">
-                           <img src={maskGroup15} alt="Travel 2" className="w-full h-auto rounded-3xl shadow-lg hover-scale" />
-                        </AnimatedCard>
-                     </div>
-                </div>
+          <div className="flex flex-col md:flex-row items-center gap-16 max-w-7xl mx-auto">
+            <div className="flex-1">
+              <AnimatedButton variant="outline" size="sm" className="mb-6" animationType="lift">
+                Why Choose PSG <span className="bg-[#C785EC] rounded-full w-2 h-2 ml-2"></span>
+              </AnimatedButton>
+              <h2 className="text-4xl md:text-5xl font-bold mb-8 text-[#0e1a35] animate-fade-in-up stagger-2">
+                Effortless Travel<br />
+                Solutions with PSG
+              </h2>
+              <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
+                <p className="animate-fade-in-up stagger-3">
+                  At PSG Tourism, we focus on creating custom travel experiences for all types of travellers. Whether you're seeking adventure through trekking and hiking, looking to Indulge in a Romantic Honeymoon, or Planning a memorable Group Tour, we offer the perfect package for you. Our carefully crafted itineraries span destinations across the globe, offering something for every type of explorer.
+                </p>
+                <p className="animate-fade-in-up stagger-4">
+                  In addition to visa services, PSG provides affordable, tailored tourism packages designed to meet the needs of both leisure and business travelers. Our solutions are crafted to deliver exceptional experiences without exceeding your budget.
+                </p>
+                <p className="animate-fade-in-up stagger-5">
+                  Choose PSG for hassle-free travel planning, expert guidance, and seamless support every step of the way.
+                </p>
+              </div>
             </div>
+            <div className="flex-1 flex gap-4">
+              <div className="flex-1">
+                <AnimatedCard hoverEffect="lift" className="rounded-3xl overflow-hidden">
+                  <img src={group9} alt="Travel 1" className="w-full h-auto rounded-3xl shadow-lg hover-scale" loading="lazy" decoding="async" />
+                </AnimatedCard>
+              </div>
+              <div className="flex-1 pt-12">
+                <AnimatedCard hoverEffect="lift" className="rounded-3xl overflow-hidden stagger-2">
+                  <img src={maskGroup15} alt="Travel 2" className="w-full h-auto rounded-3xl shadow-lg hover-scale" loading="lazy" decoding="async" />
+                </AnimatedCard>
+              </div>
+            </div>
+          </div>
         </div>
       </AnimatedSection>
 
       {/* VISA Services */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4">
-            <div className="flex flex-col md:flex-row items-center gap-16 max-w-7xl mx-auto">
-                <div className="flex-1 w-full">
-                    <div className="rounded-3xl overflow-hidden shadow-2xl">
-                        <img src={visaImg} className="w-full h-full object-cover" alt="Visa Services" />
-                    </div>
-                </div>
-                <div className="flex-1">
-                    <button className="bg-white text-[#0e1a35] px-6 py-2 rounded-full font-bold text-sm mb-6 border border-gray-100 shadow-sm flex items-center gap-2">
-                        WHAT WE DO <span className="bg-[#C785EC] rounded-full w-2 h-2"></span>
-                    </button>
-                    <h2 className="text-4xl md:text-5xl font-bold mb-8 text-[#0e1a35]">VISA Services</h2>
-                    <div className="space-y-6 text-lg text-gray-700 leading-relaxed mb-10">
-                        <p>
-                            At PSG, we offer comprehensive end-to-end visa consultation services for GCC countries, ensuring a smooth and efficient application process.
-                        </p>
-                        <p>
-                            Our expert team simplifies the visa procedure with minimal documentation requirements saving your valuable time and effort.
-                        </p>
-                         <p>
-                            At PSG, we offer comprehensive end-to-end visa consultation services for GCC countries, ensuring a smooth and efficient application process.
-                        </p>
-                    </div>
-                    <div className="space-y-4 mb-10">
-                        <div className="flex items-center gap-3 text-[#0e1a35] font-semibold text-lg">
-                            <span className="text-[#C785EC]"><ArrowRight size={20} /></span> Preparation of Dubai Visas
-                        </div>
-                         <div className="flex items-center gap-3 text-[#0e1a35] font-semibold text-lg">
-                            <span className="text-[#C785EC]"><ArrowRight size={20} /></span> Preparation of Saudi Arabia Visas
-                        </div>
-                    </div>
-                    
-                    <button className="bg-[#0e1a35] text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-slate-900 transition-all flex items-center gap-3 group">
-                      Learn More 
-                      <span className="bg-[#C785EC] rounded-full w-8 h-8 flex items-center justify-center text-[#0e1a35] group-hover:scale-110 transition-transform">
-                        <ArrowRight size={18} />
-                      </span>
-                    </button>
-                </div>
+          <div className="flex flex-col md:flex-row items-center gap-16 max-w-7xl mx-auto">
+            <div className="flex-1 w-full">
+              <div className="rounded-3xl overflow-hidden shadow-2xl">
+                <img src={visaImg} className="w-full h-full object-cover" alt="Visa Services" loading="lazy" decoding="async" />
+              </div>
             </div>
+            <div className="flex-1">
+              <button className="bg-white text-[#0e1a35] px-6 py-2 rounded-full font-bold text-sm mb-6 border border-gray-100 shadow-sm flex items-center gap-2">
+                WHAT WE DO <span className="bg-[#C785EC] rounded-full w-2 h-2"></span>
+              </button>
+              <h2 className="text-4xl md:text-5xl font-bold mb-8 text-[#0e1a35]">VISA Services</h2>
+              <div className="space-y-6 text-lg text-gray-700 leading-relaxed mb-10">
+                <p>
+                  At PSG, we offer comprehensive end-to-end visa consultation services for GCC countries, ensuring a smooth and efficient application process.
+                </p>
+                <p>
+                  Our expert team simplifies the visa procedure with minimal documentation requirements saving your valuable time and effort.
+                </p>
+                <p>
+                  At PSG, we offer comprehensive end-to-end visa consultation services for GCC countries, ensuring a smooth and efficient application process.
+                </p>
+              </div>
+              <div className="space-y-4 mb-10">
+                <div className="flex items-center gap-3 text-[#0e1a35] font-semibold text-lg">
+                  <span className="text-[#C785EC]"><ArrowRight size={20} /></span> Preparation of Dubai Visas
+                </div>
+                <div className="flex items-center gap-3 text-[#0e1a35] font-semibold text-lg">
+                  <span className="text-[#C785EC]"><ArrowRight size={20} /></span> Preparation of Saudi Arabia Visas
+                </div>
+              </div>
+
+              <button className="bg-[#0e1a35] text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-slate-900 transition-all flex items-center gap-3 group">
+                Learn More
+                <span className="bg-[#C785EC] rounded-full w-8 h-8 flex items-center justify-center text-[#0e1a35] group-hover:scale-110 transition-transform">
+                  <ArrowRight size={18} />
+                </span>
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -277,12 +279,12 @@ const Tourism = () => {
       <section className="py-24 bg-[#FDF4FF]">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
-             <div className="text-center mb-12">
-                <button className="bg-white text-[#0e1a35] px-6 py-2 rounded-full font-bold text-sm mb-6 border border-gray-100 shadow-sm flex items-center gap-2 mx-auto">
-                    WHAT WE DO <span className="bg-[#C785EC] rounded-full w-2 h-2"></span>
-                </button>
-                <h2 className="text-4xl md:text-5xl font-bold text-[#0e1a35]">PSG Tourism</h2>
-             </div>
+            <div className="text-center mb-12">
+              <button className="bg-white text-[#0e1a35] px-6 py-2 rounded-full font-bold text-sm mb-6 border border-gray-100 shadow-sm flex items-center gap-2 mx-auto">
+                WHAT WE DO <span className="bg-[#C785EC] rounded-full w-2 h-2"></span>
+              </button>
+              <h2 className="text-4xl md:text-5xl font-bold text-[#0e1a35]">PSG Tourism</h2>
+            </div>
 
             {/* Tabs Navigation */}
             <div className="flex flex-wrap justify-center gap-4 md:gap-8 mb-12 border-b border-gray-200 pb-4">
@@ -290,11 +292,10 @@ const Tourism = () => {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`text-lg font-medium transition-all pb-4 border-b-2 px-4 ${
-                    activeTab === tab.id
+                  className={`text-lg font-medium transition-all pb-4 border-b-2 px-4 ${activeTab === tab.id
                       ? "text-[#0e1a35] border-[#0e1a35] font-bold"
                       : "text-gray-500 border-transparent hover:text-[#C785EC]"
-                  }`}
+                    }`}
                 >
                   {tab.label}
                 </button>
@@ -303,39 +304,39 @@ const Tourism = () => {
 
             {/* Content */}
             <div className="flex flex-col md:flex-row gap-12 items-start">
-                 <div className="flex-1 pt-8">
-                    <h3 className="text-3xl font-bold mb-8 text-[#0e1a35] uppercase">{currentContent.title}</h3>
-                    
-                    {currentContent.logos && (
-                        <div className="flex flex-wrap gap-4 mb-8">
-                             {currentContent.logos.map((logo, index) => (
-                                 <img key={index} src={logo} alt="Logo" className="h-12 object-contain" />
-                             ))}
-                        </div>
-                    )}
+              <div className="flex-1 pt-8">
+                <h3 className="text-3xl font-bold mb-8 text-[#0e1a35] uppercase">{currentContent.title}</h3>
 
-                    {currentContent.extraImage && (
-                        <div className="mb-8">
-                            <img src={currentContent.extraImage} alt="Extra" className="h-16 object-contain" />
-                        </div>
-                    )}
+                {currentContent.logos && (
+                  <div className="flex flex-wrap gap-4 mb-8">
+                    {currentContent.logos.map((logo, index) => (
+                      <img key={index} src={logo} alt="Logo" className="h-12 object-contain" loading="lazy" decoding="async" />
+                    ))}
+                  </div>
+                )}
 
-                    <div className="text-lg text-gray-700 leading-relaxed mb-8">
-                        {currentContent.text}
-                    </div>
+                {currentContent.extraImage && (
+                  <div className="mb-8">
+                    <img src={currentContent.extraImage} alt="Extra" className="h-16 object-contain" loading="lazy" decoding="async" />
+                  </div>
+                )}
 
-                    <button className="bg-[#0e1a35] text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-slate-900 transition-all flex items-center gap-3 group">
-                      Learn more 
-                      <span className="bg-[#C785EC] rounded-full w-8 h-8 flex items-center justify-center text-[#0e1a35] group-hover:scale-110 transition-transform">
-                        <ArrowRight size={18} />
-                      </span>
-                    </button>
-                 </div>
-                 <div className="flex-1 w-full">
-                     <div className="rounded-3xl overflow-hidden shadow-xl h-[400px] md:h-[500px]">
-                         <img src={currentContent.image} alt={currentContent.title} className="w-full h-full object-cover" />
-                     </div>
-                 </div>
+                <div className="text-lg text-gray-700 leading-relaxed mb-8">
+                  {currentContent.text}
+                </div>
+
+                <button className="bg-[#0e1a35] text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-slate-900 transition-all flex items-center gap-3 group">
+                  Learn more
+                  <span className="bg-[#C785EC] rounded-full w-8 h-8 flex items-center justify-center text-[#0e1a35] group-hover:scale-110 transition-transform">
+                    <ArrowRight size={18} />
+                  </span>
+                </button>
+              </div>
+              <div className="flex-1 w-full">
+                <div className="rounded-3xl overflow-hidden shadow-xl h-[400px] md:h-[500px]">
+                  <img src={currentContent.image} alt={currentContent.title} className="w-full h-full object-cover" loading="lazy" decoding="async" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -344,41 +345,41 @@ const Tourism = () => {
       {/* Souvenir Section */}
       <section className="py-24 bg-white overflow-hidden">
         <div className="container mx-auto px-4">
-           <div className="flex flex-col md:flex-row items-center gap-16 max-w-7xl mx-auto">
-                <div className="flex-1">
-                    <button className="bg-white text-[#0e1a35] px-6 py-2 rounded-full font-bold text-sm mb-6 border border-gray-100 shadow-sm flex items-center gap-2">
-                        WHY CHOOSE PSG <span className="bg-[#C785EC] rounded-full w-2 h-2"></span>
-                    </button>
-                    <h2 className="text-4xl md:text-5xl font-bold mb-8 text-[#0e1a35]">A Thoughtful Souvenir</h2>
-                    <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
-                        <p>
-                            We believe the memories of your travel should live on long after you return home.
-                        </p>
-                        <p>
-                            As a token of appreciation for choosing PSG, we present our valued customers with a special gift at the end of every tour.
-                        </p>
-                        <p>
-                            These keepsakes are our way of saying thank you and ensuring that PSG will always be a part of your travel story.
-                        </p>
-                    </div>
-                    
-                    <div className="mt-12 space-y-6">
-                        <img src={group582} alt="Signature" className="h-24 object-contain" />
-                        <img src={group283} alt="Signature 2" className="h-16 object-contain" />
-                    </div>
+          <div className="flex flex-col md:flex-row items-center gap-16 max-w-7xl mx-auto">
+            <div className="flex-1">
+              <button className="bg-white text-[#0e1a35] px-6 py-2 rounded-full font-bold text-sm mb-6 border border-gray-100 shadow-sm flex items-center gap-2">
+                WHY CHOOSE PSG <span className="bg-[#C785EC] rounded-full w-2 h-2"></span>
+              </button>
+              <h2 className="text-4xl md:text-5xl font-bold mb-8 text-[#0e1a35]">A Thoughtful Souvenir</h2>
+              <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
+                <p>
+                  We believe the memories of your travel should live on long after you return home.
+                </p>
+                <p>
+                  As a token of appreciation for choosing PSG, we present our valued customers with a special gift at the end of every tour.
+                </p>
+                <p>
+                  These keepsakes are our way of saying thank you and ensuring that PSG will always be a part of your travel story.
+                </p>
+              </div>
+
+              <div className="mt-12 space-y-6">
+                <img src={group582} alt="Signature" className="h-24 object-contain" loading="lazy" decoding="async" />
+                <img src={group283} alt="Signature 2" className="h-16 object-contain" loading="lazy" decoding="async" />
+              </div>
+            </div>
+            <div className="flex-1 relative">
+              <div className="absolute inset-0 bg-[#FDF4FF] rounded-full transform scale-90 translate-x-8 translate-y-8 -z-10"></div>
+              <div className="relative z-10">
+                <img src={coupleImg} alt="Souvenir" className="w-full max-w-md mx-auto rounded-full border-8 border-white shadow-2xl aspect-square object-cover" loading="lazy" decoding="async" />
+
+                {/* Decor elements */}
+                <div className="absolute top-0 right-0 text-[#C785EC] transform translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded-full shadow-lg">
+                  <Plane className="w-8 h-8" />
                 </div>
-                <div className="flex-1 relative">
-                     <div className="absolute inset-0 bg-[#FDF4FF] rounded-full transform scale-90 translate-x-8 translate-y-8 -z-10"></div>
-                     <div className="relative z-10">
-                        <img src={coupleImg} alt="Souvenir" className="w-full max-w-md mx-auto rounded-full border-8 border-white shadow-2xl aspect-square object-cover" />
-                         
-                         {/* Decor elements */}
-                         <div className="absolute top-0 right-0 text-[#C785EC] transform translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded-full shadow-lg">
-                             <Plane className="w-8 h-8" />
-                         </div>
-                     </div>
-                </div>
-           </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -406,7 +407,7 @@ const Tourism = () => {
               <div className="space-y-6 mt-12">
                 <div className="flex items-center gap-4 text-gray-700 group cursor-pointer">
                   <div className="w-12 h-12 bg-[#F3E8FF] rounded-full flex items-center justify-center text-[#0e1a35] group-hover:bg-[#C785EC] transition-colors">
-                     <Phone className="w-5 h-5" />
+                    <Phone className="w-5 h-5" />
                   </div>
                   <span className="text-xl font-medium">+971 72586848</span>
                 </div>
@@ -417,9 +418,9 @@ const Tourism = () => {
                   <span className="text-xl font-medium">Sales@psgbiz.com</span>
                 </div>
               </div>
-              
+
               <div className="mt-12">
-                  <img src={logo258} alt="PSG Logo" className="w-48 object-contain" />
+                <img src={logo258} alt="PSG Logo" className="w-48 object-contain" loading="lazy" decoding="async" />
               </div>
             </div>
 
@@ -427,38 +428,38 @@ const Tourism = () => {
             <div className="bg-white p-8 md:p-12 rounded-3xl shadow-lg">
               <form className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label className="block text-gray-700 mb-2 font-medium">Your first name</label>
-                        <input type="text" placeholder="enter your first name" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#C785EC] bg-gray-50" />
-                    </div>
-                    <div>
-                        <label className="block text-gray-700 mb-2 font-medium">Your last name</label>
-                        <input type="text" placeholder="enter your last name" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#C785EC] bg-gray-50" />
-                    </div>
+                  <div>
+                    <label className="block text-gray-700 mb-2 font-medium">Your first name</label>
+                    <input type="text" placeholder="enter your first name" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#C785EC] bg-gray-50" />
+                  </div>
+                  <div>
+                    <label className="block text-gray-700 mb-2 font-medium">Your last name</label>
+                    <input type="text" placeholder="enter your last name" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#C785EC] bg-gray-50" />
+                  </div>
                 </div>
                 <div>
-                    <label className="block text-gray-700 mb-2 font-medium">Your email address</label>
-                    <input type="email" placeholder="enter your email address" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#C785EC] bg-gray-50" />
+                  <label className="block text-gray-700 mb-2 font-medium">Your email address</label>
+                  <input type="email" placeholder="enter your email address" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#C785EC] bg-gray-50" />
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label className="block text-gray-700 mb-2 font-medium">Your phone number</label>
-                        <input type="tel" placeholder="enter your phone number" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#C785EC] bg-gray-50" />
-                    </div>
-                     <div>
-                        <label className="block text-gray-700 mb-2 font-medium">Your date</label>
-                        <input type="date" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#C785EC] bg-gray-50 text-gray-500" />
-                    </div>
+                  <div>
+                    <label className="block text-gray-700 mb-2 font-medium">Your phone number</label>
+                    <input type="tel" placeholder="enter your phone number" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#C785EC] bg-gray-50" />
+                  </div>
+                  <div>
+                    <label className="block text-gray-700 mb-2 font-medium">Your date</label>
+                    <input type="date" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#C785EC] bg-gray-50 text-gray-500" />
+                  </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label className="block text-gray-700 mb-2 font-medium">Your destination</label>
-                        <input type="text" placeholder="enter your destination" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#C785EC] bg-gray-50" />
-                    </div>
-                    <div>
-                        <label className="block text-gray-700 mb-2 font-medium">Guest</label>
-                        <input type="number" placeholder="enter number of guest" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#C785EC] bg-gray-50" />
-                    </div>
+                  <div>
+                    <label className="block text-gray-700 mb-2 font-medium">Your destination</label>
+                    <input type="text" placeholder="enter your destination" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#C785EC] bg-gray-50" />
+                  </div>
+                  <div>
+                    <label className="block text-gray-700 mb-2 font-medium">Guest</label>
+                    <input type="number" placeholder="enter number of guest" className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#C785EC] bg-gray-50" />
+                  </div>
                 </div>
 
                 <button type="submit" className="w-full bg-[#FDF4FF] text-[#0e1a35] border border-[#f3e8ff] px-8 py-4 rounded-xl font-bold text-lg hover:bg-[#F3E8FF] transition-colors mt-4 flex justify-center items-center gap-2">
@@ -469,7 +470,7 @@ const Tourism = () => {
           </div>
         </div>
       </section>
-      
+
 
     </Layout>
   );

@@ -1,5 +1,5 @@
 
-import heroConstruction from "@/assets/new images/Construction Industry.png";
+import heroConstruction from "@/assets/new images/Construction Industry.webp";
 import type { TradingContent } from "@/types/trading";
 
 type TradingKeys = "overview" | "pipes" | "industrial" | "logistics";
