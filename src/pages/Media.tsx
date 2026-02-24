@@ -15,12 +15,7 @@ const scrapedImages = import.meta.glob<ImgModule>('@/assets/scraped/*.{png,jpg,j
 // Instead, let's include some high quality ones from tourism if relevant, or just stick to the professional ones.
 const tourismImages = import.meta.glob<ImgModule>('@/assets/tourism_images/*.{png,jpg,jpeg,webp}', { eager: true });
 
-// Specific hero image
-import heroImage from "@/assets/new images/Future Smart City.webp";
-import enhancedSoftware from "@/assets/new images/Enhanced IT Professional.webp";
-import enhancedHealth from "@/assets/new images/Enhanced Digital Health.webp";
-import enhancedEnvironmental from "@/assets/new images/Enhanced Environmental.webp";
-import enhancedTimber from "@/assets/new images/Enhanced Timber Logs.webp";
+
 
 // Combine and process images
 const rawImages = [
@@ -35,11 +30,6 @@ const galleryImages = rawImages
     let src = module.default;
     const filename = path.split('/').pop()?.split('.')[0] || "";
 
-    // Override src for specific hero items to use enhanced versions
-    if (filename === 'hero-software') src = enhancedSoftware;
-    if (filename === 'hero-health') src = enhancedHealth;
-    if (filename === 'hero-environmental') src = enhancedEnvironmental;
-    if (filename === 'hero-timber') src = enhancedTimber;
 
     // Filter out logos, small icons, and non-photo assets based on filename
     const lowerFilename = filename.toLowerCase();
@@ -47,7 +37,7 @@ const galleryImages = rawImages
       'logo', 'icon', 'group', 'vector', 'mask', 'frame',
       'xmlid', 'target', 'arrow', 'qr-code', 'qr code',
       'common-logo', '150x150', '300x', 'global network',
-      '174613dbe', 'scaled', 'softwareai'
+      '174613dbe', 'scaled', 'softwareai', 'hero-', 'sustainability concept'
     ];
 
     if (excludePatterns.some(pattern => lowerFilename.includes(pattern))) return null;
@@ -80,8 +70,8 @@ const galleryImages = rawImages
     };
   })
   .filter((img): img is NonNullable<typeof img> => img !== null)
-  // Remove duplicates based on src
-  .filter((img, index, self) => index === self.findIndex((t) => t.src === img.src))
+  // Remove duplicates based on title to handle different extensions
+  .filter((img, index, self) => index === self.findIndex((t) => t.title === img.title))
   // Sort slightly to mix them or keep them grouped? Grouped by category might be nice, but random mix is more dynamic.
   // Let's keep them somewhat sorted by category for now.
   .sort((a, b) => a.category.localeCompare(b.category));
@@ -130,7 +120,7 @@ const Media = () => {
       <section className="relative h-[50vh] min-h-[400px] w-full flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src={heroImage}
+            src={newImages['/src/assets/new images/Future Smart City.webp']?.default || rawImages[0]?.[1]?.default}
             alt="Media Hero"
             className="w-full h-full object-cover"
             fetchPriority="high"
@@ -210,12 +200,6 @@ const Media = () => {
 
                   {/* Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                    <p className="text-white text-sm font-medium opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-100">
-                      {image.category}
-                    </p>
-                    <h3 className="text-white text-lg font-bold opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
-                      {image.title}
-                    </h3>
                     <div className="mt-2 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-150">
                       <span className="inline-flex items-center text-xs text-primary-foreground bg-primary/20 backdrop-blur-sm border border-primary/30 px-3 py-1 rounded-full">
                         <ZoomIn className="w-3 h-3 mr-1" /> View
@@ -261,10 +245,7 @@ const Media = () => {
                 className="max-w-full max-h-[85vh] object-contain shadow-2xl"
               />
 
-              <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 to-transparent text-white">
-                <h3 className="text-xl font-bold">{activeImage.title}</h3>
-                <p className="text-sm text-gray-300">{activeImage.category}</p>
-              </div>
+
 
               <button
                 type="button"
