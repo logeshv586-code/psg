@@ -2,6 +2,7 @@
 *.gguf
 qwen_model/
 python_backend/qwen_model/
+python_backend/whisper_models/
 
 # Python
 __pycache__/
