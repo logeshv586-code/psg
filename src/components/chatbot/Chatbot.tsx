@@ -23,7 +23,7 @@ const Chatbot: React.FC = () => {
   const constraintsRef = useRef(null);
   const robotRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
-  const [apiUrl, setApiUrl] = useState<string>("http://localhost:8000");
+  const [apiUrl, setApiUrl] = useState<string>("https://psgbiz.com/api");
 
   useEffect(() => {
     getActiveApiUrl().then(url => setApiUrl(url));
