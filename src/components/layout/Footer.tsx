@@ -151,37 +151,47 @@ const Footer = () => {
           {/* Contact */}
           <div>
             <h4 className="text-lg font-heading font-semibold mb-4">
-              Contact us
+              Global office
             </h4>
+            <div className="mb-2 font-semibold">Saudi Arabia</div>
             <ul className="space-y-3">
               <li className="flex items-center gap-3 text-sm text-primary-foreground/70">
                 <Phone className="w-4 h-4 flex-shrink-0" />
                 <div>
-                  <a href="tel:+971543785531" className="hover:text-primary-foreground block">
-                    +971 543785531
+                  <a href="tel:+966508218146" className="hover:text-primary-foreground block">
+                    +966-508218146
                   </a>
-                  <a href="tel:+97172586848" className="hover:text-primary-foreground block">
-                    +971 72586848
+                  <a href="tel:+966544720554" className="hover:text-primary-foreground block">
+                    +966-544720554
                   </a>
                 </div>
               </li>
-              <li className="flex items-center gap-3 text-sm text-primary-foreground/70">
-                <Mail className="w-4 h-4 flex-shrink-0" />
-                <a
-                  href="mailto:Sales@psgbiz.com"
-                  className="hover:text-primary-foreground"
-                >
-                  Sales@psgbiz.com
-                </a>
+              <li className="flex flex-col gap-2 text-sm text-primary-foreground/70">
+                <div className="flex items-center gap-3">
+                  <Mail className="w-4 h-4 flex-shrink-0" />
+                  <a
+                    href="mailto:sales@psgbiz.com"
+                    className="hover:text-primary-foreground"
+                  >
+                    sales@psgbiz.com
+                  </a>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Mail className="w-4 h-4 flex-shrink-0 opacity-0" />
+                  <a
+                    href="mailto:ceo@psgbiz.com"
+                    className="hover:text-primary-foreground"
+                  >
+                    ceo@psgbiz.com
+                  </a>
+                </div>
               </li>
               <li className="flex items-start gap-3 text-sm text-primary-foreground/70">
                 <MapPin className="w-4 h-4 flex-shrink-0 mt-0.5" />
                 <span>
-                  Compass Building - Al Shuhada' Rd
+                  King Abdulaziz St, Al Dawasir, Dammam 32416,
                   <br />
-                  Al Hamra Industrial Free Zone
-                  <br />
-                  Ras Al Khaimah - UAE
+                  United Arab Emirates
                 </span>
               </li>
             </ul>

@@ -116,7 +116,7 @@ const Contact = () => {
           <div className="absolute inset-0 bg-black/50" />
         </div>
         <div className="relative container mx-auto px-4 lg:px-8 text-center z-10">
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -236,18 +236,17 @@ const Contact = () => {
             <MotionSection delay={0.4} className="lg:col-span-2">
               <div className="bg-card rounded-2xl p-4 sm:p-6 lg:p-8 shadow-soft">
                 <h2 className="text-xl sm:text-2xl font-heading font-bold text-foreground mb-4 sm:mb-6">
-                  Addresses
+                  Global office
                 </h2>
 
                 <div className="mb-8">
                   <h3 className="text-lg font-heading font-semibold text-foreground mb-3">
-                    Ras Al Khaimah
+                    Saudi Arabia
                   </h3>
                   <div className="flex items-start gap-3 text-muted-foreground">
                     <MapPin className="w-5 h-5 flex-shrink-0 mt-0.5 text-accent" />
                     <p className="text-sm leading-relaxed">
-                      Compass Building - Al Shuhada' Rd - Al Hamra Industrial
-                      Free Zone - Ras Al Khaimah - United Arab Emirates
+                      King Abdulaziz St, Al Dawasir, Dammam 32416, United Arab Emirates
                     </p>
                   </div>
                 </div>
@@ -259,21 +258,37 @@ const Contact = () => {
                   <ul className="space-y-3">
                     <li className="flex items-center gap-3 text-muted-foreground">
                       <Mail className="w-5 h-5 flex-shrink-0 text-accent" />
-                      <a
-                        href="mailto:Sales@psgbiz.com"
-                        className="text-sm hover:text-foreground transition-colors"
-                      >
-                        Sales@psgbiz.com
-                      </a>
+                      <div className="flex flex-col gap-1">
+                        <a
+                          href="mailto:sales@psgbiz.com"
+                          className="text-sm hover:text-foreground transition-colors"
+                        >
+                          sales@psgbiz.com
+                        </a>
+                        <a
+                          href="mailto:ceo@psgbiz.com"
+                          className="text-sm hover:text-foreground transition-colors"
+                        >
+                          ceo@psgbiz.com
+                        </a>
+                      </div>
                     </li>
-                    <li className="flex items-center gap-3 text-muted-foreground">
-                      <Phone className="w-5 h-5 flex-shrink-0 text-accent" />
-                      <a
-                        href="tel:+97172586848"
-                        className="text-sm hover:text-foreground transition-colors"
-                      >
-                        +971 72586848
-                      </a>
+                    <li className="flex items-start gap-3 text-muted-foreground">
+                      <Phone className="w-5 h-5 flex-shrink-0 text-accent mt-0.5" />
+                      <div className="flex flex-col gap-1">
+                        <a
+                          href="tel:+966508218146"
+                          className="text-sm hover:text-foreground transition-colors block"
+                        >
+                          +966-508218146
+                        </a>
+                        <a
+                          href="tel:+966544720554"
+                          className="text-sm hover:text-foreground transition-colors block"
+                        >
+                          +966-544720554
+                        </a>
+                      </div>
                     </li>
                   </ul>
                 </div>
@@ -311,7 +326,7 @@ const Contact = () => {
             </MotionSection>
           </div>
         </div>
-       </section>
+      </section>
 
     </Layout>
   );

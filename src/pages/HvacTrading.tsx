@@ -164,8 +164,8 @@ const HvacTrading = () => {
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
                   className={`px-6 py-3 rounded-full font-semibold transition-all ${activeTab === tab.id
-                      ? 'bg-gradient-to-r from-orange-600 to-amber-600 text-white shadow-lg shadow-orange-500/25'
-                      : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                    ? 'bg-gradient-to-r from-orange-600 to-amber-600 text-white shadow-lg shadow-orange-500/25'
+                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
                     }`}
                   size="md"
                   animationType={activeTab === tab.id ? 'scale' : 'lift'}
@@ -384,15 +384,27 @@ const HvacTrading = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <a href="tel:+97172586848" className="flex items-center justify-center gap-3 bg-gradient-to-r from-orange-600 to-amber-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-orange-700 hover:to-amber-700 transition-all">
-                  <Phone className="w-5 h-5" />
-                  +971 72586848
-                </a>
+                <div className="flex flex-col gap-2">
+                  <a href="tel:+966508218146" className="flex items-center justify-center gap-3 bg-gradient-to-r from-orange-600 to-amber-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-orange-700 hover:to-amber-700 transition-all w-full">
+                    <Phone className="w-5 h-5" />
+                    +966-508218146
+                  </a>
+                  <a href="tel:+966544720554" className="flex items-center justify-center gap-3 bg-gradient-to-r from-orange-600 to-amber-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-orange-700 hover:to-amber-700 transition-all w-full">
+                    <Phone className="w-5 h-5" />
+                    +966-544720554
+                  </a>
+                </div>
 
-                <a href="mailto:sales@psgbiz.com" className="flex items-center justify-center gap-3 bg-slate-100 text-slate-700 px-8 py-4 rounded-xl font-semibold hover:bg-slate-200 transition-all">
-                  <Mail className="w-5 h-5" />
-                  sales@psgbiz.com
-                </a>
+                <div className="flex flex-col gap-2">
+                  <a href="mailto:sales@psgbiz.com" className="flex items-center justify-center gap-3 bg-slate-100 text-slate-700 px-8 py-4 rounded-xl font-semibold hover:bg-slate-200 transition-all w-full">
+                    <Mail className="w-5 h-5" />
+                    sales@psgbiz.com
+                  </a>
+                  <a href="mailto:ceo@psgbiz.com" className="flex items-center justify-center gap-3 bg-slate-100 text-slate-700 px-8 py-4 rounded-xl font-semibold hover:bg-slate-200 transition-all w-full">
+                    <Mail className="w-5 h-5" />
+                    ceo@psgbiz.com
+                  </a>
+                </div>
               </div>
 
               <p className="text-slate-500">

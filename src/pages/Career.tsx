@@ -37,7 +37,7 @@ const Career = () => {
 
     toast({
       title: "Enquiry received!",
-      description: "Please also email your resume to Sales@psgbiz.com",
+      description: "Please also email your resume to sales@psgbiz.com",
     });
 
     setFormData({
@@ -80,10 +80,10 @@ const Career = () => {
             Take the first step toward an exciting career with us! Fill out
             the form and email your resume to{" "}
             <a
-              href="mailto:Sales@psgbiz.com"
+              href="mailto:sales@psgbiz.com"
               className="text-white underline underline-offset-2 hover:text-accent transition-colors"
             >
-              Sales@psgbiz.com
+              sales@psgbiz.com
             </a>
           </p>
         </div>
@@ -93,7 +93,7 @@ const Career = () => {
       <section className="py-16 bg-gradient-to-b from-[#d9eef4] to-[#e8f5df]">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="w-full max-w-6xl mx-auto bg-white/60 backdrop-blur-md rounded-2xl shadow-xl overflow-hidden flex flex-col lg:flex-row">
-            
+
             {/* Left Side: Side Image */}
             <div className="lg:w-5/12 relative min-h-[300px] lg:min-h-full">
               <img

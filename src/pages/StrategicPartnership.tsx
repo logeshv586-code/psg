@@ -68,11 +68,8 @@ const sectors = [
 ];
 
 const partners = [
-  { name: "Touchmark Descience", href: "https://touchmarkdes.com/" },
-  { name: "Maqnah", href: "https://www.maqnah.com/" },
   { name: "R&R Environment", href: "https://www.rnrenvironmental.com/" },
   { name: "Era Timbers", href: "https://eratimbers.com/" },
-  { name: "Plymarc", href: "https://www.plymarc.com/" },
 ];
 
 const containerVariants: Variants = {

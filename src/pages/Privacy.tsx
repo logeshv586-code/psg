@@ -122,13 +122,12 @@ const Privacy = () => {
           <p className="mb-4">For questions or requests regarding this Privacy Policy, contact:</p>
           <div className="bg-muted p-6 rounded-lg border border-border">
             <p className="mb-2">
-              <span className="font-semibold text-foreground">Email:</span> <a href="mailto:Sales@psgbiz.com" className="text-primary hover:underline">Sales@psgbiz.com</a>
+              <span className="font-semibold text-foreground">Email:</span> <a href="mailto:sales@psgbiz.com" className="text-primary hover:underline">sales@psgbiz.com</a>, <a href="mailto:ceo@psgbiz.com" className="text-primary hover:underline">ceo@psgbiz.com</a>
             </p>
             <p>
               <span className="font-semibold text-foreground">Address:</span><br />
-              Compass Building - Al Shuhada' Rd<br />
-              Al Hamra Industrial Free Zone<br />
-              Ras Al Khaimah - UAE
+              King Abdulaziz St, Al Dawasir<br />
+              Dammam 32416 - United Arab Emirates
             </p>
           </div>
         </>

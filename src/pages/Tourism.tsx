@@ -293,8 +293,8 @@ const Tourism = () => {
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
                   className={`text-lg font-medium transition-all pb-4 border-b-2 px-4 ${activeTab === tab.id
-                      ? "text-[#0e1a35] border-[#0e1a35] font-bold"
-                      : "text-gray-500 border-transparent hover:text-[#C785EC]"
+                    ? "text-[#0e1a35] border-[#0e1a35] font-bold"
+                    : "text-gray-500 border-transparent hover:text-[#C785EC]"
                     }`}
                 >
                   {tab.label}
@@ -406,16 +406,22 @@ const Tourism = () => {
 
               <div className="space-y-6 mt-12">
                 <div className="flex items-center gap-4 text-gray-700 group cursor-pointer">
-                  <div className="w-12 h-12 bg-[#F3E8FF] rounded-full flex items-center justify-center text-[#0e1a35] group-hover:bg-[#C785EC] transition-colors">
+                  <div className="w-12 h-12 bg-[#F3E8FF] rounded-full flex items-center justify-center text-[#0e1a35] group-hover:bg-[#C785EC] transition-colors flex-shrink-0">
                     <Phone className="w-5 h-5" />
                   </div>
-                  <span className="text-xl font-medium">+971 72586848</span>
+                  <div className="flex flex-col">
+                    <span className="text-xl font-medium">+966 508218146</span>
+                    <span className="text-xl font-medium">+966 544720554</span>
+                  </div>
                 </div>
                 <div className="flex items-center gap-4 text-gray-700 group cursor-pointer">
-                  <div className="w-12 h-12 bg-[#F3E8FF] rounded-full flex items-center justify-center text-[#0e1a35] group-hover:bg-[#C785EC] transition-colors">
+                  <div className="w-12 h-12 bg-[#F3E8FF] rounded-full flex items-center justify-center text-[#0e1a35] group-hover:bg-[#C785EC] transition-colors flex-shrink-0">
                     <Mail className="w-5 h-5" />
                   </div>
-                  <span className="text-xl font-medium">Sales@psgbiz.com</span>
+                  <div className="flex flex-col">
+                    <span className="text-xl font-medium">sales@psgbiz.com</span>
+                    <span className="text-xl font-medium">ceo@psgbiz.com</span>
+                  </div>
                 </div>
               </div>
 
