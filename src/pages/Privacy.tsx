@@ -138,7 +138,6 @@ const Privacy = () => {
   return (
     <PolicyViewer
       title="Privacy Policy"
-      lastUpdated="March 15, 2024"
       intro={
         <p>
           This Privacy Policy explains how we collect, use, and protect your personal information.
