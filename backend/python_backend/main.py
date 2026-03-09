@@ -4,6 +4,7 @@ os.environ["HF_HUB_DISABLE_SYMLINKS"] = "1"
 
 from fastapi import FastAPI, HTTPException
 from fastapi import UploadFile, File
+from fastapi.responses import StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 try:
@@ -149,7 +150,7 @@ async def lifespan(app: FastAPI):
                 pass
         allowed_topics = list({t.strip(): None for t in allowed_topics}.keys())
         # Manual additions for better semantic matching
-        allowed_topics.extend(["Greetings", "Hello", "Hi", "PSG", "Prime Source Global", "Who are you", "Bot identity", "General chat"])
+        allowed_topics.extend(["Greetings", "Hello", "Hi", "PSG", "Prime Source Global", "Who are you", "Bot identity", "General chat", "Timber", "Wood", "Construction", "Interior design"])
         restricted_topics = list({t.strip(): None for t in restricted_topics}.keys())
         models["allowed_topics"] = allowed_topics
         models["restricted_topics"] = restricted_topics
@@ -350,35 +351,43 @@ def _semantic_guard(query: str):
     is_allowed = allowed_score >= 0.30 and allowed_score >= restricted_score
     return is_allowed, allowed_score, restricted_score
 
-@app.post("/chat", response_model=QueryResponse)
+def stream_message(message: str, sources: list = None):
+    def generate():
+        yield f"data: {json.dumps({'token': message})}\n\n"
+        if sources:
+            yield f"data: {json.dumps({'sources': sources})}\n\n"
+        yield "data: [DONE]\n\n"
+    return StreamingResponse(generate(), media_type="text/event-stream")
+
+@app.post("/chat")
 def chat(request: QueryRequest):
     query = request.query
     
     intent, confidence = _rasa_intent(query)
     
-    # Defined explicitly 'by user requirement
-    OUT_OF_DOMAIN_MSG = "This question is outside the assistant’s scope. Please ask about Company Overview, Services and Offerings, Digital Health, Construction and Interior Supplies, Environmental Consultancy, Software and AI Solutions, Travel and Tourism, Careers, Contact Information, Partners, and Business Model, as well as technology platforms such as e-Trainia, LMS, ERP, EdTech solutions, mobile applications, features, pricing, support, and integrations. You may also ask about training and workforce development including training institutes, skill development agencies, corporate learning and development, HR and payroll, along with business operations, finance, and marketing. Additionally, queries related to construction, timber, and interior solutions such as timber products, sawn timber, round logs, plywood, MDF, chip board, hardware, doors, composite wood, furniture, carpentry, interior design, and construction materials are supported."
+    # Defined explicitly by user requirement
+    OUT_OF_DOMAIN_MSG = "This question is outside the assistant's scope. Please ask about Company Overview, Services and Offerings, Digital Health, Construction and Interior Supplies, Environmental Consultancy, Software and AI Solutions, Travel and Tourism, Careers, Contact Information, Partners, and Business Model, as well as technology platforms such as e-Trainia, LMS, ERP, EdTech solutions, mobile applications, features, pricing, support, and integrations. You may also ask about training and workforce development including training institutes, skill development agencies, corporate learning and development, HR and payroll, along with business operations, finance, and marketing. Additionally, queries related to construction, timber, and interior solutions such as timber products, sawn timber, round logs, plywood, MDF, chip board, hardware, doors, composite wood, furniture, carpentry, interior design, and construction materials are supported."
 
     if intent is not None:
         if intent in set(models.get("restricted_topics", [])) or confidence < 0.35:
-            return QueryResponse(answer=OUT_OF_DOMAIN_MSG, sources=[])
+            return stream_message(OUT_OF_DOMAIN_MSG)
     else:
         # Simple greeting check
         if query.lower().strip() in ["hi", "hello", "hey", "greetings", "good morning", "good evening"]:
-            return QueryResponse(answer="Hello! How can I help you with Prime Source Global today?", sources=[])
+            return stream_message("Hello! How can I help you with Prime Source Global today?")
 
         # Capabilities check
         if query.lower().strip().strip("?") in ["what can you do", "help", "what do you do", "capabilities"]:
              topics = ", ".join(models.get("allowed_topics", [])[:10]) # Limit to first 10 to avoid too long list
-             return QueryResponse(answer=f"I can help you with information about Prime Source Global, including: {topics}. You can ask me about our services, partners, careers, or contact details.", sources=[])
+             return stream_message(f"I can help you with information about Prime Source Global, including: {topics}. You can ask me about our services, partners, careers, or contact details.")
 
 
         ok, a_s, r_s = _semantic_guard(query)
         if not ok:
-            return QueryResponse(answer=OUT_OF_DOMAIN_MSG, sources=[])
+            return stream_message(OUT_OF_DOMAIN_MSG)
     
     if MOCK_MODE:
-        return QueryResponse(answer=f"I am running in MOCK MODE. You asked: {query}. The backend is connected but LLM is disabled for stability.", sources=[])
+        return stream_message(f"I am running in MOCK MODE. You asked: {query}. The backend is connected but LLM is disabled for stability.")
 
     if not models.get('llm'):
          raise HTTPException(status_code=503, detail="System not fully initialized (Model missing)")
@@ -423,22 +432,32 @@ def chat(request: QueryRequest):
     # Prompt Construction
     prompt = construct_prompt(query, context_str)
     
-    # Generate
-    output = models['llm'](
-        prompt, 
-        max_tokens=GENERATION_MAX_TOKENS, 
-        stop=["<|im_end|>", "[/INST]", "###"], 
-        echo=False,
-        temperature=TEMPERATURE
-    )
-    
-    answer = output['choices'][0]['text'].strip()
+    # Generate with Streaming
+    def generate():
+        try:
+            full_response = ""
+            for chunk in models['llm'](
+                prompt, 
+                max_tokens=GENERATION_MAX_TOKENS, 
+                stop=["<|im_end|>", "[/INST]", "###"], 
+                echo=False,
+                temperature=TEMPERATURE,
+                stream=True
+            ):
+                token = chunk['choices'][0]['text']
+                # Correct model hallucination on the fly if possible, 
+                # though partial replacement is tricky. 
+                # For now, we do a simple replacement on tokens.
+                token = token.replace("BRS Global", "Prime Source Global").replace("BRS", "PSG")
+                yield f"data: {json.dumps({'token': token})}\n\n"
+            
+            # Send sources at the end
+            yield f"data: {json.dumps({'sources': sources})}\n\n"
+            yield "data: [DONE]\n\n"
+        except Exception as e:
+            yield f"data: {json.dumps({'error': str(e)})}\n\n"
 
-    # Post-processing: Correct model hallucination of BRS -> PSG
-    answer = answer.replace("BRS Global", "Prime Source Global")
-    answer = answer.replace("BRS", "PSG")
-    
-    return QueryResponse(answer=answer, sources=sources)
+    return StreamingResponse(generate(), media_type="text/event-stream")
 
 if __name__ == "__main__":
     import uvicorn

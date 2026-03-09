@@ -166,6 +166,15 @@ const Chatbot: React.FC = () => {
     setMessages(prev => [...prev, userMsg]);
     setInputValue('');
     setIsLoading(true);
+
+    // Create a scaffold message for the bot to fill
+    const botMsgId = Date.now() + 1;
+    const botMsg = {
+      id: botMsgId,
+      role: 'bot',
+      content: '',
+    };
+
     try {
       const response = await fetch(`${apiUrl}/chat`, {
         method: 'POST',
@@ -177,19 +186,62 @@ const Chatbot: React.FC = () => {
         throw new Error(`API error: ${response.status}`);
       }
 
-      const data = await response.json();
-      const responseText = data.answer || "I'm sorry, I couldn't process your request.";
+      if (!response.body) {
+        throw new Error("No response body");
+      }
 
-      const botMsg = {
-        id: Date.now() + 1,
-        role: 'bot',
-        content: responseText,
-      };
-      setMessages(prev => [...prev, botMsg]);
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let accumulatedContent = '';
+      let firstChunk = true;
+      let buffer = '';
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        const chunk = decoder.decode(value, { stream: true });
+        buffer += chunk;
+        const lines = buffer.split('\n');
+
+        // Keep the last partial line in the buffer
+        buffer = lines.pop() || '';
+
+        for (const line of lines) {
+          const trimmedLine = line.trim();
+          if (!trimmedLine || !trimmedLine.startsWith('data: ')) continue;
+
+          const dataStr = trimmedLine.slice(6).trim();
+          if (dataStr === '[DONE]') break;
+
+          try {
+            const data = JSON.parse(dataStr);
+            if (data.token) {
+              if (firstChunk) {
+                setMessages(prev => [...prev, botMsg]);
+                firstChunk = false;
+                setIsLoading(false);
+              }
+              accumulatedContent += data.token;
+              setMessages(prev =>
+                prev.map(m => m.id === botMsgId ? { ...m, content: accumulatedContent } : m)
+              );
+            } else if (data.sources) {
+              console.log("Sources received:", data.sources);
+            } else if (data.error) {
+              throw new Error(data.error);
+            }
+          } catch (e) {
+            console.error("Error parsing SSE chunk:", e, "Line:", trimmedLine);
+          }
+        }
+      }
     } catch (error) {
       console.error('Error:', error);
+      setIsLoading(false);
       const errorMsg = {
-        id: Date.now() + 1,
+        id: Date.now() + 2,
         role: 'bot',
         content: "Sorry, I encountered an error while communicating with the server.",
       };
