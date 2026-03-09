@@ -127,7 +127,7 @@ const Privacy = () => {
             <p>
               <span className="font-semibold text-foreground">Address:</span><br />
               King Abdulaziz St, Al Dawasir<br />
-              Dammam 32416 - United Arab Emirates
+              Dammam 32416 - Saudi Arabia
             </p>
           </div>
         </>

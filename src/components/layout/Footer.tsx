@@ -154,56 +154,64 @@ const Footer = () => {
               Global office
             </h4>
             <div className="mb-2 font-semibold">Saudi Arabia</div>
-            <ul className="space-y-3">
-              <li className="flex items-center gap-3 text-sm text-primary-foreground/70">
-                <Phone className="w-4 h-4 flex-shrink-0" />
-                <div>
-                  <a href="tel:+966508218146" className="hover:text-primary-foreground block">
-                    +966-508218146
-                  </a>
-                  <a href="tel:+966544720554" className="hover:text-primary-foreground block">
-                    +966-544720554
-                  </a>
-                </div>
-              </li>
-              <li className="flex flex-col gap-2 text-sm text-primary-foreground/70">
-                <div className="flex items-center gap-3">
-                  <Mail className="w-4 h-4 flex-shrink-0" />
-                  <a
-                    href="mailto:sales@psgbiz.com"
-                    className="hover:text-primary-foreground"
-                  >
-                    sales@psgbiz.com
-                  </a>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Mail className="w-4 h-4 flex-shrink-0 opacity-0" />
-                  <a
-                    href="mailto:ceo@psgbiz.com"
-                    className="hover:text-primary-foreground"
-                  >
-                    ceo@psgbiz.com
-                  </a>
-                </div>
-              </li>
-              <li className="flex items-start gap-3 text-sm text-primary-foreground/70">
-                <MapPin className="w-4 h-4 flex-shrink-0 mt-0.5" />
-                <span>
-                  King Abdulaziz St, Al Dawasir, Dammam 32416,
-                  <br />
-                  United Arab Emirates
-                </span>
-              </li>
-            </ul>
-            <div className="mt-6">
-              <img
-                src={qrCode}
-                alt="WhatsApp QR Code"
-                className="w-24 h-24 rounded-lg"
-              />
-              <p className="text-xs text-primary-foreground/60 mt-2">
-                Scan to start a WhatsApp chat
-              </p>
+            <div className="flex items-start justify-between gap-4">
+              <ul className="space-y-3 flex-1">
+                <li className="flex items-center gap-3 text-sm text-primary-foreground/70">
+                  <Phone className="w-4 h-4 flex-shrink-0" />
+                  <div>
+                    <a href="tel:+966508218146" className="hover:text-primary-foreground block">
+                      +966-508218146
+                    </a>
+                    <a href="tel:+966544720554" className="hover:text-primary-foreground block">
+                      +966-544720554
+                    </a>
+                  </div>
+                </li>
+                <li className="flex flex-col gap-2 text-sm text-primary-foreground/70">
+                  <div className="flex items-center gap-3">
+                    <Mail className="w-4 h-4 flex-shrink-0" />
+                    <a
+                      href="mailto:sales@psgbiz.com"
+                      className="hover:text-primary-foreground"
+                    >
+                      sales@psgbiz.com
+                    </a>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Mail className="w-4 h-4 flex-shrink-0 opacity-0" />
+                    <a
+                      href="mailto:ceo@psgbiz.com"
+                      className="hover:text-primary-foreground"
+                    >
+                      ceo@psgbiz.com
+                    </a>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3 text-sm text-primary-foreground/70">
+                  <MapPin className="w-4 h-4 flex-shrink-0 mt-0.5" />
+                  <span>
+                    King Abdulaziz St, Al Dawasir, Dammam 32416,
+                    <br />
+                    Saudi Arabia
+                  </span>
+                </li>
+              </ul>
+              <div className="shrink-0 text-right">
+                <div className="text-sm font-semibold mb-2">WhatsApp Us</div>
+                <a
+                  href="https://wa.me/966508218146"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Open WhatsApp chat"
+                >
+                  <img
+                    src={qrCode}
+                    alt="WhatsApp QR Code"
+                    className="w-24 h-24 rounded-lg inline-block"
+                  />
+                </a>
+                <p className="text-xs text-primary-foreground/60 mt-2">Scan or Click</p>
+              </div>
             </div>
           </div>
         </div>
